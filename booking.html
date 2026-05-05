@@ -49,56 +49,129 @@
   </div>
 
   <main>
-    <section class="booking-section section">
+    <!-- BOOKING CHOICE: WhatsApp or Online Form -->
+    <section class="section">
       <div class="container">
-        <div class="booking-grid">
-          <div>
-            <span class="eyebrow"><span data-lang="nl">Afspraak maken</span><span data-lang="en">Book</span></span>
-            <h2 class="section-title">
-              <span data-lang="nl">Persoonlijk advies via <em>WhatsApp</em>.</span>
-              <span data-lang="en">Personal service via <em>WhatsApp</em>.</span>
-            </h2>
-            <p class="section-intro" data-lang="nl">Bij Ghana House werken we per klant op maat. Een snel WhatsApp-bericht en we kijken samen wat past bij jouw haar, je agenda en je budget. Geen ingewikkelde online kalender — gewoon direct contact met onze stylisten.</p>
-            <p class="section-intro" data-lang="en">At Ghana House every client gets a tailored approach. A quick WhatsApp and we'll figure out together what suits your hair, your schedule and your budget. No complicated online calendar — just direct contact with our stylists.</p>
+        <div class="booking-choice-grid">
 
-            <ul class="booking-features">
-              <li data-lang="nl">Direct contact met onze stylisten — geen wachtrij</li>
-              <li data-lang="en">Direct line to our stylists — no queue</li>
-              <li data-lang="nl">Persoonlijk advies vooraf, geen verrassingen achteraf</li>
-              <li data-lang="en">Personal advice up front, no surprises after</li>
-              <li data-lang="nl">Bevestiging meestal binnen 1 uur tijdens openingstijden</li>
-              <li data-lang="en">Confirmation usually within 1 hour during opening hours</li>
-              <li data-lang="nl">Annuleren of verzetten? Stuur ons een berichtje</li>
-              <li data-lang="en">Cancel or reschedule? Just send us a message</li>
-              <li data-lang="nl">Foto's en referenties welkom — laat zien wat je wilt</li>
-              <li data-lang="en">Photos and references welcome — show us what you want</li>
-            </ul>
-          </div>
-
-          <div class="booking-card">
-            <span class="booking-card-eyebrow">
-              <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
-              WhatsApp
-            </span>
+          <!-- WhatsApp option -->
+          <div class="booking-choice-card">
             <h3>
-              <span data-lang="nl">Stuur ons een <em>bericht</em></span>
-              <span data-lang="en">Send us a <em>message</em></span>
+              <span data-lang="nl">Via <em style="color:var(--gh-gold-deep); font-style:italic;">WhatsApp</em></span>
+              <span data-lang="en">Via <em style="color:var(--gh-gold-deep); font-style:italic;">WhatsApp</em></span>
             </h3>
-            <p data-lang="nl">Tik op de knop en je begint direct een WhatsApp-gesprek met ons. Vermeld welke service je zoekt, je voorkeurs-data, en eventueel een foto.</p>
-            <p data-lang="en">Tap the button and start a WhatsApp conversation with us right away. Mention which service you'd like, your preferred dates, and optionally a photo.</p>
-
-            <a href="#" data-wa="booking" target="_blank" rel="noopener noreferrer" class="btn btn-wa btn-lg">
-              <svg viewBox="0 0 32 32" width="20" height="20" fill="currentColor" aria-hidden="true">
-                <path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/>
-              </svg>
+            <p data-lang="nl">Direct contact, snelste bevestiging tijdens openingstijden. Stuur foto&#39;s en referenties mee.</p>
+            <p data-lang="en">Direct contact, fastest confirmation during opening hours. Send photos and references.</p>
+            <a href="#" data-wa="booking" target="_blank" rel="noopener noreferrer" class="btn btn-wa" style="width:100%;">
+              <svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
               <span data-lang="nl">Open WhatsApp</span><span data-lang="en">Open WhatsApp</span>
             </a>
-
-            <div class="booking-meta">
-              <a href="tel:+31687030400">+31 6 8703 0400</a>
-              <span class="opening-status-mini" id="openingStatusMini"></span>
-            </div>
           </div>
+
+          <!-- Online form option -->
+          <div class="booking-choice-card featured">
+            <span class="booking-choice-badge">
+              <span data-lang="nl">Nieuw</span><span data-lang="en">New</span>
+            </span>
+            <h3>
+              <span data-lang="nl">Online <em style="color:var(--gh-gold-deep); font-style:italic;">aanvraag</em></span>
+              <span data-lang="en">Online <em style="color:var(--gh-gold-deep); font-style:italic;">request</em></span>
+            </h3>
+            <p data-lang="nl">Vul het formulier in en wij bevestigen via WhatsApp of e-mail. Handig buiten openingstijden.</p>
+            <p data-lang="en">Fill in the form and we&#39;ll confirm via WhatsApp or email. Convenient outside opening hours.</p>
+            <a href="#booking-form" class="btn btn-vibrant" style="width:100%;">
+              <span data-lang="nl">Vul formulier in ↓</span>
+              <span data-lang="en">Fill in form ↓</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ONLINE BOOKING FORM -->
+    <section class="section" id="booking-form" style="background: var(--cream-deep);">
+      <div class="container container-narrow">
+        <div class="booking-form-card">
+          <div class="form-header">
+            <span class="eyebrow"><span data-lang="nl">Online aanvraag</span><span data-lang="en">Online request</span></span>
+            <h3 style="margin-top:18px;">
+              <span data-lang="nl">Vraag een <em>afspraak</em> aan</span>
+              <span data-lang="en">Request an <em>appointment</em></span>
+            </h3>
+            <p data-lang="nl">We bevestigen meestal binnen 1 uur tijdens openingstijden. Velden met * zijn verplicht.</p>
+            <p data-lang="en">We usually confirm within 1 hour during opening hours. Fields marked * are required.</p>
+          </div>
+
+          <form id="bookingForm" class="form-grid" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="bk-name"><span data-lang="nl">Naam *</span><span data-lang="en">Name *</span></label>
+                <input type="text" id="bk-name" name="name" required autocomplete="name" />
+              </div>
+              <div class="form-field">
+                <label for="bk-phone"><span data-lang="nl">Telefoon *</span><span data-lang="en">Phone *</span></label>
+                <input type="tel" id="bk-phone" name="phone" required autocomplete="tel" placeholder="+31 6 ..." />
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="bk-email">E-mail</label>
+              <input type="email" id="bk-email" name="email" autocomplete="email" />
+              <span class="hint" data-lang="nl">Optioneel — voor bevestigingsmail</span>
+              <span class="hint" data-lang="en">Optional — for confirmation email</span>
+            </div>
+
+            <div class="form-field">
+              <label for="bk-service"><span data-lang="nl">Welke dienst? *</span><span data-lang="en">Which service? *</span></label>
+              <select id="bk-service" name="service" required>
+                <option value="">— <span data-lang="nl">Kies een dienst</span><span data-lang="en">Choose a service</span> —</option>
+                <option value="Sew-in extensions">Sew-in extensions (€120+)</option>
+                <option value="Lace frontals">Lace frontals (€180+)</option>
+                <option value="Closures 4x4">Closures 4×4 (€140+)</option>
+                <option value="Box braids">Box braids (€100+)</option>
+                <option value="Twist outs">Twist outs (€60+)</option>
+                <option value="Cornrows">Cornrows &amp; styling (€45+)</option>
+                <option value="Heren knipbeurt">Heren knipbeurt / Men&#39;s cut (€25+)</option>
+                <option value="Kids cut">Kinderknip / Kids cut (€15+)</option>
+                <option value="Wig install">Wig install (€80+)</option>
+                <option value="Anders">Anders / Other</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="bk-date"><span data-lang="nl">Voorkeurs-datum *</span><span data-lang="en">Preferred date *</span></label>
+                <input type="date" id="bk-date" name="date" required />
+              </div>
+              <div class="form-field">
+                <label for="bk-time"><span data-lang="nl">Voorkeurs-tijd *</span><span data-lang="en">Preferred time *</span></label>
+                <select id="bk-time" name="time" required>
+                  <option value="">—</option>
+                  <option value="ochtend">Ochtend / Morning (10:30 - 13:00)</option>
+                  <option value="middag">Middag / Afternoon (13:00 - 16:00)</option>
+                  <option value="laat">Laat / Late (16:00 - 19:00)</option>
+                  <option value="flexibel">Flexibel / Flexible</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="bk-message"><span data-lang="nl">Bericht / details</span><span data-lang="en">Message / details</span></label>
+              <textarea id="bk-message" name="message" rows="4" placeholder="Lengte, kleur, referenties..."></textarea>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-dark" id="bk-submit">
+                <span data-lang="nl">Aanvraag versturen</span>
+                <span data-lang="en">Send request</span>
+              </button>
+              <div class="form-status" id="bk-status"></div>
+            </div>
+
+            <p style="font-size:12px; color:var(--neutral-500); margin-top:8px; margin-bottom:0;" data-lang="nl">Door dit formulier in te dienen ga je akkoord met dat we je gegevens gebruiken om contact op te nemen over je aanvraag.</p>
+            <p style="font-size:12px; color:var(--neutral-500); margin-top:8px; margin-bottom:0;" data-lang="en">By submitting this form you agree that we use your details to contact you about your request.</p>
+          </form>
         </div>
       </div>
     </section>

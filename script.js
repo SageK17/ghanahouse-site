@@ -164,3 +164,109 @@
     }
   });
 })();
+
+/* ============================================================
+   ONLINE BOOKING FORM HANDLER
+   ============================================================ */
+(function () {
+  'use strict';
+
+  // CONFIG: Update this to your deployed Render backend URL after deploy
+  // Example: 'https://ghanahouse-admin.onrender.com'
+  var API_BASE = window.GHANAHOUSE_API || 'https://ghanahouse-admin.onrender.com';
+
+  var form = document.getElementById('bookingForm');
+  if (!form) return;
+
+  var submitBtn = document.getElementById('bk-submit');
+  var status = document.getElementById('bk-status');
+
+  // Set min date to today
+  var dateInput = document.getElementById('bk-date');
+  if (dateInput) {
+    var today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+  }
+
+  function setStatus(msg, type) {
+    status.textContent = msg;
+    status.className = 'form-status ' + (type || '');
+  }
+
+  function clearErrors() {
+    form.querySelectorAll('.form-field.has-error').forEach(function (el) {
+      el.classList.remove('has-error');
+    });
+  }
+
+  function markError(fieldId) {
+    var input = document.getElementById(fieldId);
+    if (input) input.closest('.form-field').classList.add('has-error');
+  }
+
+  function validate(data) {
+    clearErrors();
+    var errors = [];
+    if (!data.name || data.name.length < 2) { errors.push('name'); markError('bk-name'); }
+    if (!data.phone || data.phone.length < 6) { errors.push('phone'); markError('bk-phone'); }
+    if (!data.service) { errors.push('service'); markError('bk-service'); }
+    if (!data.date) { errors.push('date'); markError('bk-date'); }
+    if (!data.time) { errors.push('time'); markError('bk-time'); }
+    if (data.email && !/^\S+@\S+\.\S+$/.test(data.email)) { errors.push('email'); markError('bk-email'); }
+    return errors;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var html = document.documentElement;
+    var data = {
+      name: form.name.value.trim(),
+      phone: form.phone.value.trim(),
+      email: form.email.value.trim(),
+      service: form.service.value,
+      date: form.date.value,
+      time: form.time.value,
+      message: form.message.value.trim(),
+      lang: html.lang || 'nl'
+    };
+
+    var errors = validate(data);
+    if (errors.length) {
+      setStatus(html.lang === 'en'
+        ? 'Please fill in the required fields.'
+        : 'Vul de verplichte velden in.', 'error');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = '...';
+    setStatus(html.lang === 'en' ? 'Sending...' : 'Versturen...', '');
+
+    fetch(API_BASE + '/api/booking', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Server returned ' + res.status);
+        return res.json();
+      })
+      .then(function () {
+        form.reset();
+        setStatus(html.lang === 'en'
+          ? 'Request sent! We\'ll be in touch soon.'
+          : 'Aanvraag verstuurd! We nemen snel contact op.', 'success');
+        submitBtn.disabled = false;
+        submitBtn.textContent = html.lang === 'en' ? 'Send request' : 'Aanvraag versturen';
+      })
+      .catch(function (err) {
+        console.error('Booking submit failed:', err);
+        setStatus(html.lang === 'en'
+          ? 'Could not send. Please try WhatsApp instead.'
+          : 'Kon niet versturen. Probeer anders WhatsApp.', 'error');
+        submitBtn.disabled = false;
+        submitBtn.textContent = html.lang === 'en' ? 'Send request' : 'Aanvraag versturen';
+      });
+  });
+})();
