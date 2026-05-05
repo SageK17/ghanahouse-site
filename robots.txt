@@ -1,0 +1,10 @@
+# Ghana House — robots.txt
+# Currently disallowing all crawling while the site is being finalized.
+# When ready to launch, replace contents with:
+#   User-agent: *
+#   Allow: /
+#   Sitemap: https://ghanahouse.nl/sitemap.xml
+# AND remove the <meta name="robots" content="noindex"> tags from each .html file.
+
+User-agent: *
+Disallow: /
