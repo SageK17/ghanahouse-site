@@ -167,10 +167,34 @@
             </div>
 
             <div class="form-field">
-              <label><span data-lang="nl">Beschikbare tijden *</span><span data-lang="en">Available times *</span></label>
-              <div class="availability-help"><span data-lang="nl">Groen = vrij · Geel = nog 1 stoel · Rood = vol</span><span data-lang="en">Green = free · Yellow = 1 chair left · Red = full</span></div>
-              <div class="availability-loading" id="availLoading"><span data-lang="nl">Tijden laden...</span><span data-lang="en">Loading times...</span></div>
-              <div class="availability-week" id="availWeek"></div>
+              <label><span data-lang="nl">Datum &amp; tijd *</span><span data-lang="en">Date &amp; time *</span></label>
+              <div class="availability-help"><span data-lang="nl">1. Kies een dag · 2. Kies een tijd</span><span data-lang="en">1. Pick a day · 2. Pick a time</span></div>
+
+              <!-- Calendar widget -->
+              <div class="bk-calendar" id="bkCalendar">
+                <div class="bk-cal-header">
+                  <button type="button" class="bk-cal-nav" id="bkCalPrev" aria-label="Vorige maand">‹</button>
+                  <div class="bk-cal-month" id="bkCalMonth">—</div>
+                  <button type="button" class="bk-cal-nav" id="bkCalNext" aria-label="Volgende maand">›</button>
+                </div>
+                <div class="bk-cal-weekdays">
+                  <div>Ma</div><div>Di</div><div>Wo</div><div>Do</div><div>Vr</div><div>Za</div><div>Zo</div>
+                </div>
+                <div class="bk-cal-grid" id="bkCalGrid"></div>
+                <div class="bk-cal-legend">
+                  <span><span class="bk-cal-dot open"></span><span data-lang="nl">Beschikbaar</span><span data-lang="en">Available</span></span>
+                  <span><span class="bk-cal-dot partial"></span><span data-lang="nl">Bijna vol</span><span data-lang="en">Almost full</span></span>
+                  <span><span class="bk-cal-dot full"></span><span data-lang="nl">Vol</span><span data-lang="en">Full</span></span>
+                </div>
+              </div>
+
+              <!-- Time slots — appear after date pick -->
+              <div class="bk-times" id="bkTimes" style="display:none;">
+                <div class="bk-times-label" id="bkTimesLabel"></div>
+                <div class="bk-times-grid" id="bkTimesGrid"></div>
+              </div>
+
+              <div class="availability-loading" id="availLoading"><span data-lang="nl">Kalender laden...</span><span data-lang="en">Loading calendar...</span></div>
               <input type="hidden" name="date" id="bk-date" />
               <input type="hidden" name="slot_start" id="bk-slot-start" />
               <input type="hidden" name="time" id="bk-time" />

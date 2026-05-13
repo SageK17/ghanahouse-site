@@ -164,8 +164,10 @@
   }
 })();
 
+
 /* ============================================================
-   ONLINE BOOKING FORM — Heren knipbeurt + Kids cut only
+   ONLINE BOOKING FORM v4.1 — Month calendar + slot picker
+   Heren knipbeurt + Kids cut only
    ============================================================ */
 (function () {
   'use strict';
@@ -177,96 +179,203 @@
 
   var submitBtn = document.getElementById('bk-submit');
   var status = document.getElementById('bk-status');
-  var availWeek = document.getElementById('availWeek');
   var availLoading = document.getElementById('availLoading');
   var hiddenDate = document.getElementById('bk-date');
   var hiddenSlot = document.getElementById('bk-slot-start');
   var hiddenTime = document.getElementById('bk-time');
 
+  var calMonth = document.getElementById('bkCalMonth');
+  var calGrid = document.getElementById('bkCalGrid');
+  var calPrev = document.getElementById('bkCalPrev');
+  var calNext = document.getElementById('bkCalNext');
+  var timesWrap = document.getElementById('bkTimes');
+  var timesLabel = document.getElementById('bkTimesLabel');
+  var timesGrid = document.getElementById('bkTimesGrid');
+
+  // State
+  var availabilityData = null;   // raw API response
+  var dayMap = {};               // date -> day object
+  var cursor = new Date();       // currently displayed month
+  cursor.setDate(1);
+  cursor.setHours(0,0,0,0);
+  var selectedDate = null;       // 'YYYY-MM-DD'
+
+  function ymd(d) {
+    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  }
+  function startOfWeekMon(d) {
+    var x = new Date(d); x.setHours(0,0,0,0);
+    var dow = x.getDay();
+    var diff = (dow === 0 ? -6 : 1 - dow);
+    x.setDate(x.getDate() + diff);
+    return x;
+  }
+  function monthLabel(d, lang) {
+    var nl = ['Januari','Februari','Maart','April','Mei','Juni','Juli','Augustus','September','Oktober','November','December'];
+    var en = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var arr = lang === 'en' ? en : nl;
+    return arr[d.getMonth()] + ' ' + d.getFullYear();
+  }
+
   function loadAvailability() {
-    fetch(API_BASE + '/api/availability')
+    // Load 60 days ahead (covers ~2 months of viewable calendar)
+    var today = new Date(); today.setHours(0,0,0,0);
+    var start = ymd(today);
+    var endDate = new Date(today); endDate.setDate(endDate.getDate() + 60);
+    var end = ymd(endDate);
+
+    fetch(API_BASE + '/api/availability?start=' + start + '&end=' + end)
       .then(function (r) { return r.json(); })
-      .then(renderAvailability)
+      .then(function (data) {
+        availabilityData = data;
+        dayMap = {};
+        (data.days || []).forEach(function (d) { dayMap[d.date] = d; });
+        if (availLoading) availLoading.style.display = 'none';
+        renderCalendar();
+      })
       .catch(function (err) {
         console.error('Availability load failed:', err);
-        if (availLoading) availLoading.textContent = document.documentElement.lang === 'en'
-          ? 'Could not load availability. Refresh the page.'
-          : 'Beschikbaarheid kon niet geladen worden. Ververs de pagina.';
+        var lang = document.documentElement.lang;
+        if (availLoading) availLoading.textContent = lang === 'en'
+          ? 'Could not load calendar. Refresh the page.'
+          : 'Kalender kon niet geladen worden. Ververs de pagina.';
       });
   }
 
-  function dowName(dow, lang) {
-    if (lang === 'en') return ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][dow];
-    return ['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag'][dow];
+  function renderCalendar() {
+    var lang = document.documentElement.lang || 'nl';
+    calMonth.textContent = monthLabel(cursor, lang);
+
+    // Disable prev if cursor is current month
+    var todayMonth = new Date(); todayMonth.setDate(1); todayMonth.setHours(0,0,0,0);
+    calPrev.disabled = cursor <= todayMonth;
+
+    var first = new Date(cursor.getFullYear(), cursor.getMonth(), 1);
+    var gridStart = startOfWeekMon(first);
+    var todayStr = ymd(new Date());
+    var html = '';
+
+    for (var i = 0; i < 42; i++) {
+      var d = new Date(gridStart); d.setDate(d.getDate() + i);
+      var dateStr = ymd(d);
+      var inMonth = d.getMonth() === cursor.getMonth();
+      var isPast = dateStr < todayStr;
+      var isToday = dateStr === todayStr;
+      var day = dayMap[dateStr];
+
+      var classes = ['bk-cal-day'];
+      if (!inMonth) classes.push('other-month');
+      if (isToday) classes.push('today');
+      if (isPast && !isToday) classes.push('past');
+
+      var hasData = !!day;
+      var disabled = isPast || !inMonth || !hasData;
+
+      if (hasData && inMonth && !isPast) {
+        if (!day.isOpen) {
+          classes.push('closed');
+          disabled = true;
+        } else {
+          var anyFree = day.slots.some(function (s) { return s.capacityRemaining > 0; });
+          var anyPartial = day.slots.some(function (s) { return s.capacityRemaining > 0 && s.capacityRemaining < s.capacityTotal; });
+          var allFull = day.slots.every(function (s) { return s.capacityRemaining === 0; });
+          if (allFull) { classes.push('full'); disabled = true; }
+          else if (anyPartial) classes.push('partial');
+          else classes.push('open');
+        }
+      } else if (!inMonth || isPast) {
+        disabled = true;
+      }
+
+      if (selectedDate === dateStr) classes.push('selected');
+
+      var attrs = 'data-date="' + dateStr + '"';
+      if (disabled) attrs += ' aria-disabled="true"';
+
+      html += '<button type="button" class="' + classes.join(' ') + '" ' + attrs + '>' + d.getDate() + '</button>';
+    }
+    calGrid.innerHTML = html;
+
+    // Wire clicks
+    calGrid.querySelectorAll('.bk-cal-day').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (btn.getAttribute('aria-disabled') === 'true') return;
+        if (btn.classList.contains('past') || btn.classList.contains('other-month') || btn.classList.contains('closed') || btn.classList.contains('full')) return;
+        selectDate(btn.getAttribute('data-date'));
+      });
+    });
   }
 
-  function renderAvailability(data) {
-    if (!data || !data.days) {
-      if (availLoading) availLoading.textContent = 'Geen data.';
-      return;
-    }
+  function selectDate(dateStr) {
+    selectedDate = dateStr;
+    hiddenDate.value = dateStr;
+    // Reset time selection — user must pick a time after picking a date
+    hiddenSlot.value = '';
+    hiddenTime.value = '';
+
+    // Update calendar visual
+    calGrid.querySelectorAll('.bk-cal-day.selected').forEach(function (b) { b.classList.remove('selected'); });
+    var picked = calGrid.querySelector('[data-date="' + dateStr + '"]');
+    if (picked) picked.classList.add('selected');
+
+    renderTimes(dateStr);
+  }
+
+  function renderTimes(dateStr) {
     var lang = document.documentElement.lang || 'nl';
-    if (availLoading) availLoading.style.display = 'none';
+    var day = dayMap[dateStr];
+    if (!day || !day.isOpen) { timesWrap.style.display = 'none'; return; }
+    timesWrap.style.display = '';
+
+    var dayNames = lang === 'en'
+      ? ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+      : ['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag'];
+    var date = new Date(dateStr + 'T00:00:00');
+    var dayName = dayNames[date.getDay()];
+    var dateLabel = date.getDate() + ' ' + (lang === 'en'
+      ? ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][date.getMonth()]
+      : ['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'][date.getMonth()]);
+    timesLabel.textContent = (lang === 'en' ? 'Pick a time on ' : 'Kies een tijd op ') + dayName + ' ' + dateLabel;
 
     var html = '';
-    var openCount = 0;
-    data.days.forEach(function (d) {
-      var dateLabel = d.date.slice(8,10) + '/' + d.date.slice(5,7);
-      var dayClass = d.isOpen ? '' : 'closed';
-      var statusClass, statusLabel;
-      if (!d.isOpen) {
-        statusClass = 'closed';
-        statusLabel = lang === 'en' ? 'Closed' : 'Gesloten';
-      } else {
-        openCount++;
-        var anyFree = d.slots.some(function (s) { return s.capacityRemaining > 0; });
-        if (anyFree) { statusClass = 'open'; statusLabel = lang === 'en' ? 'Available' : 'Beschikbaar'; }
-        else { statusClass = 'full'; statusLabel = lang === 'en' ? 'Full' : 'Volgeboekt'; }
-      }
-      html += '<div class="avail-day ' + dayClass + '">' +
-        '<div class="avail-day-head">' +
-          '<div class="avail-day-name">' + dowName(d.dow, lang) + '</div>' +
-          '<div class="avail-day-date">' + dateLabel + '</div>' +
-          '<div class="avail-day-status ' + statusClass + '">' + statusLabel + '</div>' +
-        '</div>';
-      if (d.isOpen) {
-        html += '<div class="avail-slots">';
-        d.slots.forEach(function (s) {
-          var slotClass;
-          if (s.capacityRemaining === 0) slotClass = 'full';
-          else if (s.capacityRemaining < s.capacityTotal) slotClass = 'partial';
-          else slotClass = '';
-          var disabled = s.capacityRemaining === 0 ? ' disabled' : '';
-          html += '<button type="button" class="avail-slot ' + slotClass + '" data-date="' + d.date + '" data-slot="' + s.start + '" data-time="' + s.time + '"' + disabled + '>' + s.time + '</button>';
-        });
-        html += '</div>';
-      }
-      html += '</div>';
+    day.slots.forEach(function (s) {
+      var cls = 'bk-time-btn';
+      var disabled = '';
+      if (s.capacityRemaining === 0) { cls += ' full'; disabled = ' aria-disabled="true"'; }
+      else if (s.capacityRemaining < s.capacityTotal) cls += ' partial';
+      html += '<button type="button" class="' + cls + '" data-slot="' + s.start + '" data-time="' + s.time + '"' + disabled + '>' + s.time + '</button>';
     });
+    timesGrid.innerHTML = html;
 
-    if (!openCount) {
-      availWeek.innerHTML = '<div class="empty-state">' + (lang === 'en' ? 'No availability in the next 14 days. Try WhatsApp instead.' : 'Geen beschikbaarheid in de komende 14 dagen. Probeer anders WhatsApp.') + '</div>';
-      return;
-    }
-    availWeek.innerHTML = html;
-
-    availWeek.querySelectorAll('.avail-slot:not([disabled])').forEach(function (btn) {
+    timesGrid.querySelectorAll('.bk-time-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        availWeek.querySelectorAll('.avail-slot.selected').forEach(function (b) { b.classList.remove('selected'); });
+        if (btn.getAttribute('aria-disabled') === 'true') return;
+        timesGrid.querySelectorAll('.bk-time-btn.selected').forEach(function (b) { b.classList.remove('selected'); });
         btn.classList.add('selected');
-        hiddenDate.value = btn.getAttribute('data-date');
         hiddenSlot.value = btn.getAttribute('data-slot');
         hiddenTime.value = btn.getAttribute('data-time');
       });
     });
+
+    // Smooth scroll into view on mobile
+    if (window.innerWidth < 700) {
+      setTimeout(function () { timesWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
+    }
   }
+
+  calPrev.addEventListener('click', function () {
+    cursor = new Date(cursor.getFullYear(), cursor.getMonth() - 1, 1);
+    renderCalendar();
+  });
+  calNext.addEventListener('click', function () {
+    cursor = new Date(cursor.getFullYear(), cursor.getMonth() + 1, 1);
+    renderCalendar();
+  });
 
   loadAvailability();
 
-  function setStatus(msg, type) {
-    status.textContent = msg;
-    status.className = 'form-status ' + (type || '');
-  }
+  // Form submission
+  function setStatus(msg, type) { status.textContent = msg; status.className = 'form-status ' + (type || ''); }
   function clearErrors() {
     form.querySelectorAll('.form-field.has-error').forEach(function (el) { el.classList.remove('has-error'); });
   }
@@ -274,7 +383,6 @@
     var input = document.getElementById(fieldId);
     if (input && input.closest('.form-field')) input.closest('.form-field').classList.add('has-error');
   }
-
   function validate(data) {
     clearErrors();
     var errors = [];
@@ -303,7 +411,7 @@
     };
     var errors = validate(data);
     if (errors.length) {
-      if (errors.indexOf('slot') !== -1) setStatus(html.lang === 'en' ? 'Please pick a time slot.' : 'Kies een tijdslot.', 'error');
+      if (errors.indexOf('slot') !== -1) setStatus(html.lang === 'en' ? 'Please pick a date and time.' : 'Kies een datum en tijd.', 'error');
       else setStatus(html.lang === 'en' ? 'Please fill in the required fields.' : 'Vul de verplichte velden in.', 'error');
       return;
     }
@@ -316,15 +424,15 @@
       body: JSON.stringify(data)
     })
       .then(function (res) {
-        if (!res.ok) {
-          return res.json().then(function (err) { throw new Error(err.error || ('Server ' + res.status)); });
-        }
+        if (!res.ok) return res.json().then(function (err) { throw new Error(err.error || ('Server ' + res.status)); });
         return res.json();
       })
       .then(function () {
         form.reset();
         hiddenDate.value = ''; hiddenSlot.value = ''; hiddenTime.value = '';
-        availWeek.querySelectorAll('.avail-slot.selected').forEach(function (b) { b.classList.remove('selected'); });
+        selectedDate = null;
+        timesWrap.style.display = 'none';
+        calGrid.querySelectorAll('.bk-cal-day.selected').forEach(function (b) { b.classList.remove('selected'); });
         setStatus(html.lang === 'en'
           ? 'Request sent! We\'ll be in touch soon, and you\'ll get a confirmation email.'
           : 'Aanvraag verstuurd! We nemen snel contact op, en je krijgt een bevestigingsmail.', 'success');
