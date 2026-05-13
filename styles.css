@@ -1757,3 +1757,99 @@ html[lang="en"] .product-visual::after { content: 'Photo coming'; }
 }
 .booking-choice-card h3 { font-size: 24px; margin-bottom: 12px; letter-spacing: -0.01em; }
 .booking-choice-card p { color: var(--neutral-700); font-size: 14px; margin-bottom: 24px; }
+
+/* ============================================================
+   AVAILABILITY PICKER (public booking page)
+   ============================================================ */
+.availability-help {
+  font-size: 12px;
+  color: var(--neutral-500);
+  margin-bottom: 8px;
+}
+.availability-loading {
+  padding: 20px;
+  text-align: center;
+  color: var(--neutral-500);
+  font-size: 14px;
+}
+.availability-week {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.avail-day {
+  background: var(--cream);
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+.avail-day.closed { opacity: 0.5; background: var(--cream-deep); }
+.avail-day-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.avail-day-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.avail-day-date {
+  font-size: 12px;
+  color: var(--neutral-500);
+  letter-spacing: 0.04em;
+}
+.avail-day-status {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+.avail-day-status.open { background: rgba(0, 107, 63, 0.12); color: var(--gh-green); }
+.avail-day-status.full { background: rgba(206, 17, 38, 0.1); color: var(--gh-red); }
+.avail-day-status.closed { background: var(--neutral-300); color: var(--neutral-700); }
+
+.avail-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 6px;
+}
+.avail-slot {
+  background: rgba(0, 107, 63, 0.06);
+  border: 1.5px solid rgba(0, 107, 63, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gh-green);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+.avail-slot:hover { background: rgba(0, 107, 63, 0.15); transform: translateY(-1px); }
+.avail-slot.partial {
+  background: rgba(252, 209, 22, 0.08);
+  border-color: var(--gh-gold-deep);
+  color: var(--gh-gold-deep);
+}
+.avail-slot.partial:hover { background: rgba(252, 209, 22, 0.18); }
+.avail-slot.full {
+  background: rgba(206, 17, 38, 0.05);
+  border-color: rgba(206, 17, 38, 0.3);
+  color: var(--gh-red);
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.avail-slot.full:hover { transform: none; }
+.avail-slot.selected {
+  background: var(--black);
+  border-color: var(--black);
+  color: var(--cream);
+}
+.avail-day.closed .avail-slots { opacity: 0.4; pointer-events: none; }

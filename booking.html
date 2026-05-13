@@ -116,10 +116,10 @@
             </div>
 
             <div class="form-field">
-              <label for="bk-email">E-mail</label>
-              <input type="email" id="bk-email" name="email" autocomplete="email" />
-              <span class="hint" data-lang="nl">Optioneel — voor bevestigingsmail</span>
-              <span class="hint" data-lang="en">Optional — for confirmation email</span>
+              <label for="bk-email"><span data-lang="nl">E-mail *</span><span data-lang="en">Email *</span></label>
+              <input type="email" id="bk-email" name="email" required autocomplete="email" />
+              <span class="hint" data-lang="nl">Voor bevestigingsmail</span>
+              <span class="hint" data-lang="en">For confirmation email</span>
             </div>
 
             <div class="form-field">
@@ -139,21 +139,18 @@
               </select>
             </div>
 
-            <div class="form-row">
-              <div class="form-field">
-                <label for="bk-date"><span data-lang="nl">Voorkeurs-datum *</span><span data-lang="en">Preferred date *</span></label>
-                <input type="date" id="bk-date" name="date" required />
+            <!-- AVAILABILITY PICKER -->
+            <div class="form-field">
+              <label><span data-lang="nl">Beschikbare tijden *</span><span data-lang="en">Available times *</span></label>
+              <div class="availability-help">
+                <span data-lang="nl">Kies een groen of geel slot. Rood = al vol.</span>
+                <span data-lang="en">Pick a green or yellow slot. Red = already full.</span>
               </div>
-              <div class="form-field">
-                <label for="bk-time"><span data-lang="nl">Voorkeurs-tijd *</span><span data-lang="en">Preferred time *</span></label>
-                <select id="bk-time" name="time" required>
-                  <option value="">—</option>
-                  <option value="ochtend">Ochtend / Morning (10:30 - 13:00)</option>
-                  <option value="middag">Middag / Afternoon (13:00 - 16:00)</option>
-                  <option value="laat">Laat / Late (16:00 - 19:00)</option>
-                  <option value="flexibel">Flexibel / Flexible</option>
-                </select>
-              </div>
+              <div class="availability-loading" id="availLoading"><span data-lang="nl">Tijden laden...</span><span data-lang="en">Loading times...</span></div>
+              <div class="availability-week" id="availWeek"></div>
+              <input type="hidden" name="date" id="bk-date" />
+              <input type="hidden" name="slot_start" id="bk-slot-start" />
+              <input type="hidden" name="time" id="bk-time" />
             </div>
 
             <div class="form-field">
