@@ -1,5 +1,5 @@
 /* ============================================================
-   GHANA HOUSE — SHARED JS
+   GHANA HOUSE v4 — Site script
    ============================================================ */
 (function () {
   'use strict';
@@ -7,19 +7,15 @@
   var WA_NUMBER = '31687030400';
   var html = document.documentElement;
 
-  /* -- Language toggle ------------------------------------------------ */
-  var saved = null;
-  try { saved = localStorage.getItem('gh-lang'); } catch (e) {}
-  var initial = saved
-    || (navigator.language && navigator.language.toLowerCase().indexOf('en') === 0 ? 'en' : 'nl');
-  setLang(initial);
-
+  /* -- LANGUAGE TOGGLE -------------------------------------------------- */
   function setLang(lang) {
     html.lang = lang;
     try { localStorage.setItem('gh-lang', lang); } catch (e) {}
-    updateLocalizedWALinks();
-    updateOpeningStatus();
   }
+  try {
+    var saved = localStorage.getItem('gh-lang');
+    if (saved === 'en' || saved === 'nl') setLang(saved);
+  } catch (e) {}
 
   var langToggle = document.getElementById('langToggle');
   if (langToggle) {
@@ -28,23 +24,17 @@
     });
   }
 
-  /* -- Mobile menu ---------------------------------------------------- */
+  /* -- HAMBURGER MENU — FIXED ------------------------------------------ */
   var menu = document.getElementById('mobileMenu');
   var menuToggle = document.getElementById('menuToggle');
   var menuClose = document.getElementById('menuClose');
-  if (menuToggle && menu) {
-    menuToggle.addEventListener('click', function () {
-      menu.classList.add('open');
-      menu.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    });
+
+  function openMenu() {
+    if (!menu) return;
+    menu.classList.add('open');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
   }
-  if (menuClose && menu) {
-    menuClose.addEventListener('click', closeMenu);
-  }
-  document.querySelectorAll('.mobile-menu .m-link').forEach(function (a) {
-    a.addEventListener('click', closeMenu);
-  });
   function closeMenu() {
     if (!menu) return;
     menu.classList.remove('open');
@@ -52,121 +42,130 @@
     document.body.style.overflow = '';
   }
 
-  /* -- Opening hours: today highlight + open/closed indicator -------- */
-  var schedule = {
-    0: null,                 // Sunday closed
-    1: null,                 // Monday closed
-    2: [10*60+30, 19*60],    // Tuesday  10:30-19:00
-    3: [10*60+30, 19*60],    // Wednesday
-    4: [10*60+30, 20*60],    // Thursday until 20:00
-    5: [10*60+30, 19*60],    // Friday
-    6: [10*60+30, 19*60]     // Saturday
-  };
-
-  var today = new Date().getDay();
-  var todayRow = document.querySelector('.hours-table tr[data-day="' + today + '"]');
-  if (todayRow) todayRow.classList.add('today');
-
-  function updateOpeningStatus() {
-    var now = new Date();
-    var dow = now.getDay();
-    var nowMin = now.getHours() * 60 + now.getMinutes();
-    var todayHours = schedule[dow];
-    var isOpen = todayHours && nowMin >= todayHours[0] && nowMin < todayHours[1];
-
-    var openNowEl = document.getElementById('openingNow');
-    if (openNowEl) {
-      if (isOpen) {
-        openNowEl.classList.remove('closed');
-        openNowEl.innerHTML = html.lang === 'en' ? 'Open now' : 'Nu open';
-      } else {
-        openNowEl.classList.add('closed');
-        openNowEl.innerHTML = html.lang === 'en' ? 'Closed now' : 'Nu gesloten';
-      }
-    }
-    var miniEl = document.getElementById('openingStatusMini');
-    if (miniEl) {
-      miniEl.textContent = isOpen
-        ? (html.lang === 'en' ? 'Open now' : 'Nu open')
-        : (html.lang === 'en' ? 'Closed now' : 'Nu gesloten');
-    }
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      openMenu();
+    });
   }
-  updateOpeningStatus();
+  if (menuClose) menuClose.addEventListener('click', closeMenu);
 
-  /* -- Year in footer ------------------------------------------------- */
-  document.querySelectorAll('[data-year]').forEach(function (el) {
-    el.textContent = new Date().getFullYear();
+  // Close menu when any link inside it is clicked
+  document.querySelectorAll('.mobile-menu .m-link').forEach(function (a) {
+    a.addEventListener('click', closeMenu);
   });
 
-  /* -- WhatsApp order buttons (per-product) -------------------------- */
-  document.querySelectorAll('.order-wa').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var product = btn.getAttribute('data-product') || '';
-      var price = btn.getAttribute('data-price') || '';
-      var msg;
-      if (html.lang === 'en') {
-        msg = 'Hi Ghana House, I\'d like to order the ' + product +
-              ' (' + price + '). My delivery address is: [your address]. ' +
-              'How can I pay?';
-      } else {
-        msg = 'Hallo Ghana House, ik wil graag de ' + product +
-              ' (' + price + ') bestellen. Mijn bezorgadres is: [jouw adres]. ' +
-              'Hoe kan ik betalen?';
-      }
-      var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
-      window.open(url, '_blank', 'noopener,noreferrer');
+  // Close on ESC
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu && menu.classList.contains('open')) closeMenu();
+  });
+
+  /* -- HEADER SHRINK ON SCROLL ----------------------------------------- */
+  var siteHeader = document.querySelector('.site-header');
+  if (siteHeader) {
+    var lastScroll = 0;
+    var ticking = false;
+    function onScroll() {
+      if (window.scrollY > 30) siteHeader.classList.add('scrolled');
+      else siteHeader.classList.remove('scrolled');
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
+    }, { passive: true });
+  }
+
+  /* -- SCROLL REVEALS via IntersectionObserver ------------------------- */
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    document.querySelectorAll('.reveal').forEach(function (el) { revealObserver.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* -- MARQUEE: duplicate content so the loop is seamless -------------- */
+  document.querySelectorAll('.marquee-track').forEach(function (track) {
+    var clone = track.innerHTML;
+    track.innerHTML = clone + clone;
+  });
+
+  /* -- FAQ ACCORDION --------------------------------------------------- */
+  document.querySelectorAll('.faq-question').forEach(function (q) {
+    q.addEventListener('click', function () {
+      var item = q.closest('.faq-item');
+      if (!item) return;
+      item.classList.toggle('open');
     });
   });
 
-  /* -- Localized WhatsApp links (booking, generic) ------------------- */
-  function updateLocalizedWALinks() {
-    var bookingMsg = html.lang === 'en'
-      ? 'Hi Ghana House, I\'d like to book an appointment. I\'m interested in:'
-      : 'Hallo Ghana House, ik wil graag een afspraak maken. Ik ben geïnteresseerd in:';
-    var genericMsg = html.lang === 'en'
-      ? 'Hi Ghana House!'
-      : 'Hallo Ghana House!';
-
+  /* -- WHATSAPP PREFILL LINKS ------------------------------------------ */
+  function bookingMsg() {
+    return html.lang === 'en'
+      ? "Hi! I'd like to book an appointment at Ghana House. Service: [SERVICE]. Date/time preference: [DATE/TIME]. Name: [NAME]"
+      : "Hoi! Ik wil graag een afspraak maken bij Ghana House. Dienst: [DIENST]. Datum/tijd voorkeur: [DATUM/TIJD]. Naam: [NAAM]";
+  }
+  function genericMsg() {
+    return html.lang === 'en'
+      ? "Hi Ghana House, I have a question."
+      : "Hoi Ghana House, ik heb een vraag.";
+  }
+  function updateWaLinks() {
     document.querySelectorAll('[data-wa="booking"]').forEach(function (a) {
-      a.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(bookingMsg);
+      a.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(bookingMsg());
     });
     document.querySelectorAll('[data-wa="generic"]').forEach(function (a) {
-      a.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(genericMsg);
+      a.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(genericMsg());
     });
   }
-  updateLocalizedWALinks();
+  updateWaLinks();
+  if (langToggle) langToggle.addEventListener('click', updateWaLinks);
 
-  /* -- Cookie banner -------------------------------------------------- */
-  var banner = document.getElementById('cookieBanner');
-  var seen = null;
-  try { seen = localStorage.getItem('gh-cookie-seen'); } catch (e) {}
-  if (!seen && banner) {
-    setTimeout(function () { banner.classList.add('visible'); }, 1500);
-  }
-  function dismissBanner() {
-    if (banner) banner.classList.remove('visible');
-    try { localStorage.setItem('gh-cookie-seen', '1'); } catch (e) {}
-  }
-  var ca = document.getElementById('cookieAccept');
-  var cd = document.getElementById('cookieDecline');
-  if (ca) ca.addEventListener('click', dismissBanner);
-  if (cd) cd.addEventListener('click', dismissBanner);
-
-  /* -- Active nav link ------------------------------------------------ */
-  var pathname = window.location.pathname.replace(/\/$/, '') || '/';
-  var basename = pathname.split('/').pop() || 'index';
-  if (basename === '' || basename === 'index.html') basename = 'index';
+  /* -- HIGHLIGHT CURRENT NAV LINK -------------------------------------- */
+  var current = window.location.pathname.replace(/\/$/, '') || '/';
   document.querySelectorAll('.main-nav a, .mobile-menu a').forEach(function (a) {
-    var href = a.getAttribute('href') || '';
-    var hrefBase = href.replace('.html', '').replace(/^\//, '') || 'index';
-    if (hrefBase === basename || (basename === 'index' && (href === '/' || href === 'index.html'))) {
+    var href = a.getAttribute('href');
+    if (!href) return;
+    var clean = href.replace(/\/$/, '');
+    if (clean === current || clean + '.html' === current || (clean === '' && current === '/')) {
       a.classList.add('active');
     }
   });
+
+  /* -- TODAY-IS-OPEN highlight in hours table -------------------------- */
+  var hoursTable = document.querySelector('.hours-table');
+  if (hoursTable) {
+    var dow = new Date().getDay(); // 0=Sun
+    var rows = hoursTable.querySelectorAll('tr');
+    if (rows[dow]) rows[dow].classList.add('today');
+  }
+
+  /* -- COOKIE BANNER (very lightweight, dismiss-only) ------------------ */
+  var cookieBanner = document.getElementById('cookieBanner');
+  if (cookieBanner) {
+    try {
+      if (localStorage.getItem('gh-cookies-acked')) cookieBanner.style.display = 'none';
+    } catch (e) {}
+    var accept = document.getElementById('cookieAccept');
+    var decline = document.getElementById('cookieDecline');
+    function dismissCookies() {
+      cookieBanner.style.display = 'none';
+      try { localStorage.setItem('gh-cookies-acked', '1'); } catch (e) {}
+    }
+    if (accept) accept.addEventListener('click', dismissCookies);
+    if (decline) decline.addEventListener('click', dismissCookies);
+  }
 })();
 
 /* ============================================================
-   ONLINE BOOKING FORM HANDLER v2 — with availability picker
+   ONLINE BOOKING FORM — Heren knipbeurt + Kids cut only
    ============================================================ */
 (function () {
   'use strict';
@@ -184,26 +183,20 @@
   var hiddenSlot = document.getElementById('bk-slot-start');
   var hiddenTime = document.getElementById('bk-time');
 
-  // Load availability for next 14 days
   function loadAvailability() {
     fetch(API_BASE + '/api/availability')
       .then(function (r) { return r.json(); })
-      .then(function (data) {
-        renderAvailability(data);
-      })
+      .then(renderAvailability)
       .catch(function (err) {
         console.error('Availability load failed:', err);
-        if (availLoading) availLoading.textContent =
-          document.documentElement.lang === 'en'
-            ? 'Could not load availability. Refresh the page.'
-            : 'Beschikbaarheid kon niet geladen worden. Ververs de pagina.';
+        if (availLoading) availLoading.textContent = document.documentElement.lang === 'en'
+          ? 'Could not load availability. Refresh the page.'
+          : 'Beschikbaarheid kon niet geladen worden. Ververs de pagina.';
       });
   }
 
   function dowName(dow, lang) {
-    if (lang === 'en') {
-      return ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][dow];
-    }
+    if (lang === 'en') return ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][dow];
     return ['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag'][dow];
   }
 
@@ -215,7 +208,6 @@
     var lang = document.documentElement.lang || 'nl';
     if (availLoading) availLoading.style.display = 'none';
 
-    // Only show open days, plus today even if closed (so they see what's happening)
     var html = '';
     var openCount = 0;
     data.days.forEach(function (d) {
@@ -258,7 +250,6 @@
     }
     availWeek.innerHTML = html;
 
-    // Wire up slot selection
     availWeek.querySelectorAll('.avail-slot:not([disabled])').forEach(function (btn) {
       btn.addEventListener('click', function () {
         availWeek.querySelectorAll('.avail-slot.selected').forEach(function (b) { b.classList.remove('selected'); });
@@ -276,11 +267,9 @@
     status.textContent = msg;
     status.className = 'form-status ' + (type || '');
   }
-
   function clearErrors() {
     form.querySelectorAll('.form-field.has-error').forEach(function (el) { el.classList.remove('has-error'); });
   }
-
   function markError(fieldId) {
     var input = document.getElementById(fieldId);
     if (input && input.closest('.form-field')) input.closest('.form-field').classList.add('has-error');
@@ -312,21 +301,15 @@
       message: form.message.value.trim(),
       lang: html.lang || 'nl'
     };
-
     var errors = validate(data);
     if (errors.length) {
-      if (errors.indexOf('slot') !== -1) {
-        setStatus(html.lang === 'en' ? 'Please pick a time slot.' : 'Kies een tijdslot.', 'error');
-      } else {
-        setStatus(html.lang === 'en' ? 'Please fill in the required fields.' : 'Vul de verplichte velden in.', 'error');
-      }
+      if (errors.indexOf('slot') !== -1) setStatus(html.lang === 'en' ? 'Please pick a time slot.' : 'Kies een tijdslot.', 'error');
+      else setStatus(html.lang === 'en' ? 'Please fill in the required fields.' : 'Vul de verplichte velden in.', 'error');
       return;
     }
-
     submitBtn.disabled = true;
     submitBtn.textContent = '...';
     setStatus(html.lang === 'en' ? 'Sending...' : 'Versturen...', '');
-
     fetch(API_BASE + '/api/booking', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -334,9 +317,7 @@
     })
       .then(function (res) {
         if (!res.ok) {
-          return res.json().then(function (err) {
-            throw new Error(err.error || ('Server ' + res.status));
-          });
+          return res.json().then(function (err) { throw new Error(err.error || ('Server ' + res.status)); });
         }
         return res.json();
       })
@@ -349,7 +330,6 @@
           : 'Aanvraag verstuurd! We nemen snel contact op, en je krijgt een bevestigingsmail.', 'success');
         submitBtn.disabled = false;
         submitBtn.textContent = html.lang === 'en' ? 'Send request' : 'Aanvraag versturen';
-        // Reload availability — the slot might now be partial/full
         setTimeout(loadAvailability, 500);
       })
       .catch(function (err) {
@@ -360,7 +340,6 @@
         setStatus(msg, 'error');
         submitBtn.disabled = false;
         submitBtn.textContent = html.lang === 'en' ? 'Send request' : 'Aanvraag versturen';
-        // Reload availability if slot filled
         if (err && err.message === 'Slot full') loadAvailability();
       });
   });

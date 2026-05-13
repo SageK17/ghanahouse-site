@@ -2,248 +2,307 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>Diensten — Ghana House Enschede</title>
-  <meta name="description" content="Alle diensten van Ghana House: extensions, lace frontals, braids, heren-knipbeurten, kinderknippen, twist outs en meer. Vakmanschap voor elk haartype." />
-  <link rel="canonical" href="https://ghanahouse.nl/services" />
-  <link rel="alternate" hreflang="nl" href="https://ghanahouse.nl/services" />
-  <link rel="alternate" hreflang="en" href="https://ghanahouse.nl/services?lang=en" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0F0B08" />
+  <title>Diensten — Ghana House</title>
+  <meta name="description" content="Alle diensten van Ghana House: sew-in extensions, lace frontals, closures, knipbeurten en meer." />
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Page-specific: service badges */
+    .service-method-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .service-method-badge.online { background: rgba(0, 99, 58, 0.18); color: var(--green-bright); border: 1px solid var(--green); }
+    .service-method-badge.wa { background: rgba(37, 211, 102, 0.15); color: #25D366; border: 1px solid #25D366; }
+    .section-cream .service-method-badge.online { background: rgba(0, 99, 58, 0.12); color: var(--green); }
+    .service-method-badge svg { width: 10px; height: 10px; }
+  </style>
 </head>
 <body>
 
   <header class="site-header">
-    <div class="container header-inner">
-      <a href="/" class="brand-logo" aria-label="Ghana House — home"><img src="/logo.png" alt="Ghana House" /></a>
-      <nav class="main-nav" aria-label="Main">
+    <div class="header-inner">
+      <a href="/" class="brand-logo">
+        <img src="logo.png" alt="Ghana House" />
+        <div class="brand-logo-text"><span>Ghana House</span><small>Extensions × Barber</small></div>
+      </a>
+      <nav class="main-nav">
         <a href="/services"><span data-lang="nl">Diensten</span><span data-lang="en">Services</span></a>
-        <a href="/shop">Shop</a>
         <a href="/booking"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
+        <a href="/social"><span data-lang="nl">Social</span><span data-lang="en">Social</span></a>
         <a href="/visit"><span data-lang="nl">Bezoek</span><span data-lang="en">Visit</span></a>
         <a href="/about"><span data-lang="nl">Over ons</span><span data-lang="en">About</span></a>
         <a href="/faq">FAQ</a>
       </nav>
       <div class="header-actions">
-        <button class="lang-toggle" type="button" id="langToggle"><span class="lang-nl">NL</span><span style="opacity:.4">/</span><span class="lang-en">EN</span></button>
+        <button class="lang-toggle" type="button" id="langToggle" aria-label="Switch language"><span class="lang-nl">NL</span><span style="opacity:.4">/</span><span class="lang-en">EN</span></button>
         <button class="menu-toggle" type="button" id="menuToggle" aria-label="Open menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </div>
     </div>
   </header>
+
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <button class="mobile-menu-close" type="button" id="menuClose" aria-label="Close menu">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <nav>
       <a href="/services" class="m-link"><span data-lang="nl">Diensten</span><span data-lang="en">Services</span></a>
-      <a href="/shop" class="m-link">Shop</a>
       <a href="/booking" class="m-link"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
+      <a href="/social" class="m-link"><span data-lang="nl">Social</span><span data-lang="en">Social</span></a>
       <a href="/visit" class="m-link"><span data-lang="nl">Bezoek</span><span data-lang="en">Visit</span></a>
       <a href="/about" class="m-link"><span data-lang="nl">Over ons</span><span data-lang="en">About</span></a>
       <a href="/faq" class="m-link">FAQ</a>
     </nav>
+    <div class="mobile-menu-foot">
+      <a href="https://instagram.com/extensions_barbershop" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://tiktok.com/@extensions_barbershop" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V9.05a8.16 8.16 0 0 0 4.77 1.52V7.5a4.85 4.85 0 0 1-1.84-.81z"/></svg></a>
+      <a href="https://facebook.com/vickyronny" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a>
+      <a href="https://wa.me/31687030400" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg></a>
+    </div>
   </div>
 
-  <main>
-    <section class="page-hero">
-      <div class="container">
-        <span class="eyebrow"><span data-lang="nl">Diensten</span><span data-lang="en">Services</span></span>
-        <h1>
-          <span data-lang="nl">Vakmanschap voor <em>elk</em> haartype.</span>
-          <span data-lang="en">Craftsmanship for <em>every</em> hair type.</span>
-        </h1>
-        <p data-lang="nl">Van precisie-extensions tot een scherpe fade. Onze stylisten werken met passie, techniek en de juiste producten voor jouw haar — of het nu gaat om Afrikaanse, Europese of gemengde texturen.</p>
-        <p data-lang="en">From precision extensions to a sharp fade. Our stylists work with passion, technique, and the right products for your hair — whether African, European or mixed textures.</p>
+  <main style="padding-top: 100px;">
+
+    <!-- HEADER + UITLEG -->
+    <section class="section-dark" style="padding-bottom: 60px;">
+      <div class="container-narrow" style="text-align: center;">
+        <span class="eyebrow reveal"><span data-lang="nl">Onze diensten</span><span data-lang="en">Our services</span></span>
+        <h1 class="section-title reveal reveal-delay-1" style="margin-top: 16px;"><span data-lang="nl">Alles wat we <em>doen</em>.</span><span data-lang="en">Everything we <em>do</em>.</span></h1>
+        <p class="section-intro reveal reveal-delay-2" style="margin: 18px auto 0;"><span data-lang="nl">Van premium extensions tot strakke knipbeurten. Het groene label betekent online te boeken; het groene WhatsApp-label betekent dat we eerst graag met je willen praten.</span><span data-lang="en">From premium extensions to crisp cuts. Green label means bookable online; green WhatsApp label means we'd like to talk to you first.</span></p>
       </div>
     </section>
 
-    <section class="section">
+    <!-- EXTENSIONS & HAIR — cream section -->
+    <section class="section-cream">
       <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow"><span data-lang="nl">Extensions &amp; hair</span><span data-lang="en">Extensions &amp; hair</span></span>
+          <h2 class="section-title"><span data-lang="nl">Volume, lengte, <em>vrijheid</em>.</span><span data-lang="en">Volume, length, <em>freedom</em>.</span></h2>
+        </div>
+
         <div class="services-grid">
-          <article class="service-card">
-            <div class="service-number">01</div>
-            <h3><span data-lang="nl">Sew-in <em>extensions</em></span><span data-lang="en">Sew-in <em>extensions</em></span></h3>
-            <p data-lang="nl">Onze meest gevraagde installatie. Volle, natuurlijke look die 6-8 weken meegaat met goede verzorging. Cornrow basis, ingenaaide bundles, en finale styling inbegrepen.</p>
-            <p data-lang="en">Our most-requested installation. Full, natural look lasting 6-8 weeks with proper care. Cornrow base, sewn-in bundles, and final styling included.</p>
+          <article class="service-card featured span-7 reveal">
+            <div class="service-method-badge wa">
+              <svg viewBox="0 0 32 32" fill="currentColor"><circle cx="16" cy="16" r="14"/></svg>
+              <span data-lang="nl">Via WhatsApp</span><span data-lang="en">Via WhatsApp</span>
+            </div>
+            <span class="service-number">01</span>
+            <h3>Sew-in extensions</h3>
+            <p><span data-lang="nl">Onze signature dienst. Gevlochten basis, naadloze inhechting van hoogwaardig haar. Volume of lengte, jouw keuze. Houdbaar 6-8 weken met goede verzorging.</span><span data-lang="en">Our signature service. Braided base, seamless install of high-quality hair. Volume or length, your choice. Lasts 6-8 weeks with proper care.</span></p>
             <div class="service-meta">
-              <div class="service-price"><small data-lang="nl">Vanaf</small><small data-lang="en">From</small>€120</div>
-              <a href="/booking" class="btn btn-outline btn-sm"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
+              <span class="service-price">vanaf €120</span>
+              <span class="service-duration" data-lang="nl">3-5 uur</span><span class="service-duration" data-lang="en">3-5 hours</span>
             </div>
           </article>
 
-          <article class="service-card">
-            <div class="service-number">02</div>
-            <h3><span data-lang="nl">Lace <em>frontals</em></span><span data-lang="en">Lace <em>frontals</em></span></h3>
-            <p data-lang="nl">Onzichtbare hairline met handmatig geknoopt HD lace. 13×4 of 13×6 frontals beschikbaar. Inclusief plucking, bleaching van de knots, en finale styling.</p>
-            <p data-lang="en">Invisible hairline with hand-tied HD lace. 13×4 or 13×6 frontals available. Includes plucking, knot bleaching, and final styling.</p>
+          <article class="service-card span-5 reveal reveal-delay-1">
+            <div class="service-method-badge wa">
+              <svg viewBox="0 0 32 32" fill="currentColor"><circle cx="16" cy="16" r="14"/></svg>
+              <span data-lang="nl">Via WhatsApp</span><span data-lang="en">Via WhatsApp</span>
+            </div>
+            <span class="service-number">02</span>
+            <h3>Lace frontals</h3>
+            <p><span data-lang="nl">HD lace frontals voor een natuurlijke haarlijn van oor tot oor. Custom kleur match.</span><span data-lang="en">HD lace frontals for a natural hairline from ear to ear. Custom color match.</span></p>
             <div class="service-meta">
-              <div class="service-price"><small data-lang="nl">Vanaf</small><small data-lang="en">From</small>€180</div>
-              <a href="/booking" class="btn btn-outline btn-sm"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
+              <span class="service-price">vanaf €180</span>
+              <span class="service-duration" data-lang="nl">4-6 uur</span><span class="service-duration" data-lang="en">4-6 hours</span>
             </div>
           </article>
 
-          <article class="service-card">
-            <div class="service-number">03</div>
-            <h3><span data-lang="nl">Closures <em>4×4</em></span><span data-lang="en">Closures <em>4×4</em></span></h3>
-            <p data-lang="nl">Een stuk natuurlijker en betaalbaarder dan frontals. 4×4 of 5×5 sizes voor een naadloze afwerking aan de top.</p>
-            <p data-lang="en">A more natural and affordable option than frontals. 4×4 or 5×5 sizes for a seamless finish at the top.</p>
+          <article class="service-card span-5 reveal">
+            <div class="service-method-badge wa">
+              <svg viewBox="0 0 32 32" fill="currentColor"><circle cx="16" cy="16" r="14"/></svg>
+              <span data-lang="nl">Via WhatsApp</span><span data-lang="en">Via WhatsApp</span>
+            </div>
+            <span class="service-number">03</span>
+            <h3><span data-lang="nl">Closures 4×4</span><span data-lang="en">Closures 4×4</span></h3>
+            <p><span data-lang="nl">Voor dekking aan de kruin met natuurlijke parting.</span><span data-lang="en">Crown coverage with natural parting.</span></p>
             <div class="service-meta">
-              <div class="service-price"><small data-lang="nl">Vanaf</small><small data-lang="en">From</small>€140</div>
-              <a href="/booking" class="btn btn-outline btn-sm"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
+              <span class="service-price">vanaf €140</span>
+              <span class="service-duration" data-lang="nl">3-5 uur</span><span class="service-duration" data-lang="en">3-5 hours</span>
             </div>
           </article>
 
-          <article class="service-card">
-            <div class="service-number">04</div>
-            <h3><span data-lang="nl">Box <em>braids</em></span><span data-lang="en">Box <em>braids</em></span></h3>
-            <p data-lang="nl">Klassiek, tijdloos en beschermend. Verschillende lengtes (medium, lang, extra lang) en diktes (small, medium, jumbo). Knotless beschikbaar.</p>
-            <p data-lang="en">Classic, timeless and protective. Various lengths (medium, long, extra long) and thicknesses (small, medium, jumbo). Knotless available.</p>
+          <article class="service-card span-7 reveal reveal-delay-1">
+            <div class="service-method-badge wa">
+              <svg viewBox="0 0 32 32" fill="currentColor"><circle cx="16" cy="16" r="14"/></svg>
+              <span data-lang="nl">Via WhatsApp</span><span data-lang="en">Via WhatsApp</span>
+            </div>
+            <span class="service-number">04</span>
+            <h3>Wig install</h3>
+            <p><span data-lang="nl">Hele wig install met custom fitting, plucking en styling. Bring your own of via ons.</span><span data-lang="en">Full wig install with custom fitting, plucking and styling. Bring your own or via us.</span></p>
             <div class="service-meta">
-              <div class="service-price"><small data-lang="nl">Vanaf</small><small data-lang="en">From</small>€100</div>
-              <a href="/booking" class="btn btn-outline btn-sm"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
+              <span class="service-price">vanaf €80</span>
+              <span class="service-duration" data-lang="nl">2-4 uur</span><span class="service-duration" data-lang="en">2-4 hours</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRAIDS & STYLING — dark section -->
+    <section class="section-dark">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow"><span data-lang="nl">Braids &amp; styling</span><span data-lang="en">Braids &amp; styling</span></span>
+          <h2 class="section-title"><span data-lang="nl">Protective <em>styles</em>.</span><span data-lang="en">Protective <em>styles</em>.</span></h2>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card span-6 reveal">
+            <div class="service-method-badge wa">
+              <svg viewBox="0 0 32 32" fill="currentColor"><circle cx="16" cy="16" r="14"/></svg>
+              <span data-lang="nl">Via WhatsApp</span><span data-lang="en">Via WhatsApp</span>
+            </div>
+            <span class="service-number">05</span>
+            <h3>Box braids</h3>
+            <p><span data-lang="nl">Klassieke box braids in elke lengte — van bob tot knee-length. Veel kleur opties.</span><span data-lang="en">Classic box braids in every length — from bob to knee-length. Many color options.</span></p>
+            <div class="service-meta">
+              <span class="service-price">vanaf €100</span>
+              <span class="service-duration" data-lang="nl">4-8 uur</span><span class="service-duration" data-lang="en">4-8 hours</span>
             </div>
           </article>
 
-          <article class="service-card">
-            <div class="service-number">05</div>
-            <h3><span data-lang="nl">Twist <em>outs</em></span><span data-lang="en">Twist <em>outs</em></span></h3>
-            <p data-lang="nl">Definitie en volume met een natuurlijke afwerking. Inclusief diepe verzorging, twist set en finishing voor een perfecte definitie.</p>
-            <p data-lang="en">Definition and volume with a natural finish. Includes deep conditioning, twist set, and finishing for perfect definition.</p>
+          <article class="service-card span-6 reveal reveal-delay-1">
+            <div class="service-method-badge wa">
+              <svg viewBox="0 0 32 32" fill="currentColor"><circle cx="16" cy="16" r="14"/></svg>
+              <span data-lang="nl">Via WhatsApp</span><span data-lang="en">Via WhatsApp</span>
+            </div>
+            <span class="service-number">06</span>
+            <h3>Twist outs</h3>
+            <p><span data-lang="nl">Definitie en spring zonder warmte. Voor natural hair en transitioning.</span><span data-lang="en">Definition and spring without heat. For natural hair and transitioning.</span></p>
             <div class="service-meta">
-              <div class="service-price"><small data-lang="nl">Vanaf</small><small data-lang="en">From</small>€60</div>
-              <a href="/booking" class="btn btn-outline btn-sm"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
+              <span class="service-price">vanaf €60</span>
+              <span class="service-duration" data-lang="nl">1-2 uur</span><span class="service-duration" data-lang="en">1-2 hours</span>
             </div>
           </article>
 
-          <article class="service-card">
-            <div class="service-number">06</div>
-            <h3><span data-lang="nl">Cornrows <em>&amp; styling</em></span><span data-lang="en">Cornrows <em>&amp; styling</em></span></h3>
-            <p data-lang="nl">Strak gevlochten cornrows in elk patroon dat je wilt — recht, design, of gestileerd. Ideaal als basis voor wig install of standalone.</p>
-            <p data-lang="en">Tight cornrows in any pattern you want — straight, design, or stylized. Ideal as a wig install base or standalone.</p>
+          <article class="service-card span-12 reveal">
+            <div class="service-method-badge wa">
+              <svg viewBox="0 0 32 32" fill="currentColor"><circle cx="16" cy="16" r="14"/></svg>
+              <span data-lang="nl">Via WhatsApp</span><span data-lang="en">Via WhatsApp</span>
+            </div>
+            <span class="service-number">07</span>
+            <h3>Cornrows &amp; freestyle</h3>
+            <p style="max-width: 700px;"><span data-lang="nl">Cornrows, dutch braids, freestyle patterns. Voor sport, een evenement, of gewoon omdat het goed staat.</span><span data-lang="en">Cornrows, dutch braids, freestyle patterns. For sports, an event, or just because it looks good.</span></p>
             <div class="service-meta">
-              <div class="service-price"><small data-lang="nl">Vanaf</small><small data-lang="en">From</small>€45</div>
-              <a href="/booking" class="btn btn-outline btn-sm"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
+              <span class="service-price">vanaf €45</span>
+              <span class="service-duration" data-lang="nl">1-3 uur</span><span class="service-duration" data-lang="en">1-3 hours</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BARBER — cream section -->
+    <section class="section-cream">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow"><span data-lang="nl">Barber</span><span data-lang="en">Barber</span></span>
+          <h2 class="section-title"><span data-lang="nl">Knipbeurten <em>online</em>.</span><span data-lang="en">Cuts <em>online</em>.</span></h2>
+          <p class="section-intro"><span data-lang="nl">De enige diensten die je direct online kunt plannen. Geen wachten, kies een tijd.</span><span data-lang="en">The only services you can book online directly. No waiting, pick a time.</span></p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card featured span-6 reveal">
+            <div class="service-method-badge online">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              <span data-lang="nl">Online te boeken</span><span data-lang="en">Bookable online</span>
+            </div>
+            <span class="service-number">08</span>
+            <h3><span data-lang="nl">Heren knipbeurt</span><span data-lang="en">Men's cut</span></h3>
+            <p><span data-lang="nl">Fade, taper, line-up, scissor cut. Strakke afwerking, snel maar nooit gehaast.</span><span data-lang="en">Fade, taper, line-up, scissor cut. Crisp finish, fast but never rushed.</span></p>
+            <div class="service-meta">
+              <span class="service-price">vanaf €25</span>
+              <span class="service-duration">15-20 min</span>
             </div>
           </article>
 
-          <article class="service-card">
-            <div class="service-number">07</div>
-            <h3><span data-lang="nl">Heren <em>knipbeurt</em></span><span data-lang="en">Men's <em>cut</em></span></h3>
-            <p data-lang="nl">Fade (low, mid, high), lineup, klassieke knipbeurt of complete restyle. Baardtrim op verzoek (+€10). Voor elk haartype, elke stijl.</p>
-            <p data-lang="en">Fade (low, mid, high), lineup, classic cut or complete restyle. Beard trim on request (+€10). For every hair type, every style.</p>
-            <div class="service-meta">
-              <div class="service-price"><small data-lang="nl">Vanaf</small><small data-lang="en">From</small>€25</div>
-              <a href="/booking" class="btn btn-outline btn-sm"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
+          <article class="service-card featured span-6 reveal reveal-delay-1">
+            <div class="service-method-badge online">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              <span data-lang="nl">Online te boeken</span><span data-lang="en">Bookable online</span>
             </div>
-          </article>
-
-          <article class="service-card">
-            <div class="service-number">08</div>
-            <h3><span data-lang="nl">Kinder<em>knip</em></span><span data-lang="en">Kids <em>cut</em></span></h3>
-            <p data-lang="nl">Geduld en zorgvuldigheid voor onze jongste klanten. Tot 12 jaar. Voor zowel knipbeurten als simpele braids/twists.</p>
-            <p data-lang="en">Patience and care for our youngest customers. Up to age 12. For both cuts and simple braids/twists.</p>
+            <span class="service-number">09</span>
+            <h3><span data-lang="nl">Kinderknip</span><span data-lang="en">Kids cut</span></h3>
+            <p><span data-lang="nl">Geduldig, speels, met aandacht. Voor jongens t/m 12 jaar.</span><span data-lang="en">Patient, playful, attentive. For boys up to 12.</span></p>
             <div class="service-meta">
-              <div class="service-price"><small data-lang="nl">Vanaf</small><small data-lang="en">From</small>€15</div>
-              <a href="/booking" class="btn btn-outline btn-sm"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <div class="service-number">09</div>
-            <h3><span data-lang="nl">Wig <em>install</em></span><span data-lang="en">Wig <em>install</em></span></h3>
-            <p data-lang="nl">Glueless installation, lijm-installatie of clip-in. Inclusief customization (plucking, parting), styling en eventuele hairline blending.</p>
-            <p data-lang="en">Glueless install, glue install, or clip-in. Includes customization (plucking, parting), styling and hairline blending if needed.</p>
-            <div class="service-meta">
-              <div class="service-price"><small data-lang="nl">Vanaf</small><small data-lang="en">From</small>€80</div>
-              <a href="/booking" class="btn btn-outline btn-sm"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
+              <span class="service-price">vanaf €15</span>
+              <span class="service-duration">15-20 min</span>
             </div>
           </article>
         </div>
 
-        <div style="background:var(--cream-deep); border-radius:var(--radius-md); padding:48px; margin-top:80px; text-align:center;">
-          <h3 style="font-size:clamp(24px, 3vw, 36px); margin-bottom:16px;">
-            <span data-lang="nl">Niet zeker welke <em>service</em> je nodig hebt?</span>
-            <span data-lang="en">Not sure which <em>service</em> you need?</span>
-          </h3>
-          <p style="color:var(--neutral-700); margin-bottom:32px; max-width:520px; margin-left:auto; margin-right:auto;" data-lang="nl">Stuur ons een WhatsApp met een foto van je haar of wat je wilt bereiken. We adviseren je vrijblijvend.</p>
-          <p style="color:var(--neutral-700); margin-bottom:32px; max-width:520px; margin-left:auto; margin-right:auto;" data-lang="en">Send us a WhatsApp with a photo of your hair or what you want to achieve. Free, no-obligation advice.</p>
-          <a href="#" data-wa="generic" target="_blank" rel="noopener noreferrer" class="btn btn-wa">
-            <svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
-            <span data-lang="nl">Vraag advies via WhatsApp</span>
-            <span data-lang="en">Ask via WhatsApp</span>
+        <div style="margin-top: 56px; text-align: center;" class="reveal">
+          <a href="/booking" class="btn btn-dark"><span data-lang="nl">Direct online boeken →</span><span data-lang="en">Book online now →</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-noir" style="text-align: center;">
+      <div class="container-narrow">
+        <div class="reveal">
+          <h2 class="section-title"><span data-lang="nl">Andere wens? <em>Vraag het ons.</em></span><span data-lang="en">Other wish? <em>Ask us.</em></span></h2>
+          <p class="section-intro" style="margin: 18px auto 32px;"><span data-lang="nl">Niet zeker welke dienst je nodig hebt? Stuur een berichtje — we adviseren graag.</span><span data-lang="en">Not sure which service you need? Send a message — we'd love to advise.</span></p>
+          <a href="#" data-wa="generic" target="_blank" rel="noopener" class="btn btn-wa">
+            <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
+            <span data-lang="nl">WhatsApp ons</span><span data-lang="en">WhatsApp us</span>
           </a>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
-    <div class="container">
+    <div class="footer-inner">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="/" aria-label="Ghana House — home"><img src="/logo-light.png" alt="Ghana House" /></a>
-          <p data-lang="nl">Enschede's premium beauty &amp; barber bestemming sinds 2014.</p>
-          <p data-lang="en">Enschede's premium beauty &amp; barber destination since 2014.</p>
+          <img src="logo-light.png" alt="Ghana House" />
+          <p><span data-lang="nl">Premium extensions, lace frontals en knipbeurten in Enschede.</span><span data-lang="en">Premium extensions, lace frontals and cuts in Enschede.</span></p>
         </div>
         <div class="footer-col">
-          <h4><span data-lang="nl">Navigatie</span><span data-lang="en">Navigate</span></h4>
-          <ul>
-            <li><a href="/services"><span data-lang="nl">Diensten</span><span data-lang="en">Services</span></a></li>
-            <li><a href="/shop">Shop</a></li>
-            <li><a href="/booking"><span data-lang="nl">Boeken</span><span data-lang="en">Booking</span></a></li>
-            <li><a href="/visit"><span data-lang="nl">Bezoek</span><span data-lang="en">Visit</span></a></li>
-            <li><a href="/about"><span data-lang="nl">Over ons</span><span data-lang="en">About</span></a></li>
-            <li><a href="/faq">FAQ</a></li>
-          </ul>
+          <h4 data-lang="nl">Diensten</h4><h4 data-lang="en">Services</h4>
+          <ul><li><a href="/services">Extensions</a></li><li><a href="/services">Lace frontals</a></li><li><a href="/services"><span data-lang="nl">Knipbeurten</span><span data-lang="en">Cuts</span></a></li><li><a href="/services">Braids &amp; styling</a></li></ul>
         </div>
         <div class="footer-col">
-          <h4><span data-lang="nl">Contact</span><span data-lang="en">Contact</span></h4>
-          <ul>
-            <li><a href="#" data-wa="generic" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-            <li><a href="tel:+31687030400">+31 6 8703 0400</a></li>
-            <li>Korte Haaksbergerstraat 19</li>
-            <li>7511 JV Enschede</li>
-          </ul>
+          <h4>Info</h4>
+          <ul><li><a href="/about"><span data-lang="nl">Over ons</span><span data-lang="en">About</span></a></li><li><a href="/visit"><span data-lang="nl">Bezoek</span><span data-lang="en">Visit</span></a></li><li><a href="/social">Social</a></li><li><a href="/faq">FAQ</a></li></ul>
         </div>
         <div class="footer-col">
-          <h4><span data-lang="nl">Volgen</span><span data-lang="en">Follow</span></h4>
-          <ul>
-            <li><a href="https://www.instagram.com/ghanahouseenschede" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/@ghanahouseenschede" target="_blank" rel="noopener noreferrer">TikTok</a></li>
-          </ul>
+          <h4>Contact</h4>
+          <ul><li><a href="tel:+31687030400">+31 6 8703 0400</a></li><li><a href="mailto:info@ghanahouse.nl">info@ghanahouse.nl</a></li><li>Korte Haaksbergerstraat 19<br />7511 JV Enschede</li></ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <div>© <span data-year></span> Ghana House. <span data-lang="nl">Alle rechten voorbehouden.</span><span data-lang="en">All rights reserved.</span></div>
-        <div class="legal">
-          <a href="#"><span data-lang="nl">Privacy</span><span data-lang="en">Privacy</span></a>
-          <a href="#"><span data-lang="nl">Voorwaarden</span><span data-lang="en">Terms</span></a>
-          <a href="#">Cookies</a>
+        <div>© <span id="year"></span> Ghana House</div>
+        <div class="footer-socials">
+          <a href="https://instagram.com/extensions_barbershop" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://tiktok.com/@extensions_barbershop" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V9.05a8.16 8.16 0 0 0 4.77 1.52V7.5a4.85 4.85 0 0 1-1.84-.81z"/></svg></a>
+          <a href="https://facebook.com/vickyronny" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a>
         </div>
       </div>
     </div>
   </footer>
 
-  <a class="float-wa" href="#" data-wa="generic" target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp chat">
-    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3zm6.973 17.27c-.293.823-1.708 1.574-2.388 1.674-.61.092-1.39.13-2.247-.142-.518-.165-1.182-.385-2.034-.755-3.581-1.547-5.92-5.169-6.099-5.41-.179-.24-1.456-1.937-1.456-3.694 0-1.756.92-2.62 1.247-2.978.327-.358.713-.448.951-.448h.685c.218 0 .511-.083.798.61.293.71.996 2.466 1.083 2.644.087.179.146.388.029.628-.118.24-.176.388-.347.598-.171.21-.36.469-.514.63-.171.179-.349.373-.15.732.2.358.886 1.46 1.903 2.366 1.305 1.165 2.408 1.527 2.766 1.706.358.179.566.149.776-.09.21-.24.892-1.045 1.131-1.404.24-.358.479-.298.806-.179.327.119 2.084.984 2.441 1.163.358.179.596.268.685.418.089.149.089.866-.205 1.69z"/></svg>
+  <a href="#" data-wa="generic" target="_blank" rel="noopener" class="float-wa" aria-label="WhatsApp ons">
+    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
   </a>
 
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
-    <h5>Cookies</h5>
-    <p data-lang="nl">We gebruiken alleen functionele cookies om je taalvoorkeur te onthouden. Geen tracking, geen advertenties.</p>
-    <p data-lang="en">We only use functional cookies to remember your language preference. No tracking, no ads.</p>
-    <div class="cookie-actions">
-      <button class="cookie-accept" id="cookieAccept"><span data-lang="nl">Akkoord</span><span data-lang="en">OK</span></button>
-      <button class="cookie-decline" id="cookieDecline"><span data-lang="nl">Weigeren</span><span data-lang="en">Decline</span></button>
-    </div>
-  </div>
-
-  <script src="/script.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="script.js"></script>
 </body>
 </html>

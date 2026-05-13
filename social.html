@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0F0B08" />
+  <title>Social — Ghana House</title>
+  <meta name="description" content="Volg Ghana House op Instagram, TikTok en Facebook. Recente styles, behind-the-scenes en client transformaties." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Page-specific styles */
+    .social-platform-card .btn { width: 100%; }
+    .social-platform-stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 16px 0;
+      font-size: 12px;
+      color: rgba(245, 237, 217, 0.55);
+    }
+    .social-platform-stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    /* Static fallback tile when no embed URL given */
+    .social-fallback-tile {
+      background: linear-gradient(135deg, var(--noir-soft) 0%, var(--noir-deep) 100%);
+      border-radius: var(--radius-md);
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      padding: 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(212, 165, 22, 0.25);
+      transition: all 0.3s;
+    }
+    .social-fallback-tile::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(212, 165, 22, 0.12), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .social-fallback-tile:hover { transform: translateY(-4px); border-color: var(--gold); }
+    .social-fallback-tile:hover::before { opacity: 1; }
+    .social-fallback-tile .tile-icon {
+      width: 56px; height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 16px;
+      position: relative; z-index: 1;
+    }
+    .social-fallback-tile.instagram .tile-icon { background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #FCB045 100%); }
+    .social-fallback-tile.tiktok .tile-icon { background: var(--noir); border: 1px solid rgba(255,255,255,0.2); }
+    .social-fallback-tile.facebook .tile-icon { background: #1877F2; }
+    .social-fallback-tile .tile-icon svg { width: 28px; height: 28px; color: white; }
+    .social-fallback-tile h4 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 500;
+      margin: 0;
+      color: var(--cream);
+      position: relative; z-index: 1;
+    }
+    .social-fallback-tile p {
+      font-size: 13px;
+      color: rgba(245, 237, 217, 0.6);
+      margin: 0;
+      position: relative; z-index: 1;
+    }
+
+    /* Real embed wrapper — keeps things consistent height */
+    .social-embed-wrap {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--noir-soft);
+      border: 1px solid rgba(212, 165, 22, 0.2);
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+    }
+    .social-embed-wrap iframe {
+      border: 0;
+      width: 100%;
+      flex: 1;
+    }
+    .social-embed-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 18px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(212, 165, 22, 0.15);
+    }
+    .social-embed-label svg { width: 14px; height: 14px; }
+
+    /* "How to get the most from social" callout */
+    .social-callout {
+      background: linear-gradient(135deg, rgba(212, 165, 22, 0.08) 0%, rgba(184, 19, 31, 0.05) 100%);
+      border: 1px solid rgba(212, 165, 22, 0.25);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .social-callout h3 {
+      font-family: var(--font-display);
+      font-size: 26px;
+      margin: 0 0 12px;
+      font-weight: 500;
+    }
+    .social-callout p {
+      color: rgba(245, 237, 217, 0.7);
+      margin: 0 0 20px;
+    }
+
+    @media (max-width: 600px) {
+      .social-embed-wrap { min-height: 360px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="brand-logo">
+        <img src="logo.png" alt="Ghana House" />
+        <div class="brand-logo-text"><span>Ghana House</span><small>Extensions × Barber</small></div>
+      </a>
+      <nav class="main-nav">
+        <a href="/services"><span data-lang="nl">Diensten</span><span data-lang="en">Services</span></a>
+        <a href="/booking"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
+        <a href="/social"><span data-lang="nl">Social</span><span data-lang="en">Social</span></a>
+        <a href="/visit"><span data-lang="nl">Bezoek</span><span data-lang="en">Visit</span></a>
+        <a href="/about"><span data-lang="nl">Over ons</span><span data-lang="en">About</span></a>
+        <a href="/faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-toggle" type="button" id="langToggle" aria-label="Switch language"><span class="lang-nl">NL</span><span style="opacity:.4">/</span><span class="lang-en">EN</span></button>
+        <button class="menu-toggle" type="button" id="menuToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <button class="mobile-menu-close" type="button" id="menuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav>
+      <a href="/services" class="m-link"><span data-lang="nl">Diensten</span><span data-lang="en">Services</span></a>
+      <a href="/booking" class="m-link"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
+      <a href="/social" class="m-link"><span data-lang="nl">Social</span><span data-lang="en">Social</span></a>
+      <a href="/visit" class="m-link"><span data-lang="nl">Bezoek</span><span data-lang="en">Visit</span></a>
+      <a href="/about" class="m-link"><span data-lang="nl">Over ons</span><span data-lang="en">About</span></a>
+      <a href="/faq" class="m-link">FAQ</a>
+    </nav>
+    <div class="mobile-menu-foot">
+      <a href="https://instagram.com/extensions_barbershop" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://tiktok.com/@extensions_barbershop" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V9.05a8.16 8.16 0 0 0 4.77 1.52V7.5a4.85 4.85 0 0 1-1.84-.81z"/></svg></a>
+      <a href="https://facebook.com/vickyronny" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a>
+      <a href="https://wa.me/31687030400" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg></a>
+    </div>
+  </div>
+
+  <main style="padding-top: 100px;">
+
+    <!-- HERO -->
+    <section class="section-dark" style="padding-bottom: 60px;">
+      <div class="container-narrow" style="text-align: center;">
+        <span class="eyebrow reveal">Social</span>
+        <h1 class="section-title reveal reveal-delay-1" style="margin-top: 16px;"><span data-lang="nl">Volg ons <em>online</em>.</span><span data-lang="en">Follow us <em>online</em>.</span></h1>
+        <p class="section-intro reveal reveal-delay-2" style="margin: 18px auto 0;"><span data-lang="nl">Recente styles, transformaties, behind-the-scenes en tips. Voor inspiratie en updates.</span><span data-lang="en">Recent styles, transformations, behind-the-scenes and tips. For inspiration and updates.</span></p>
+      </div>
+    </section>
+
+    <!-- 3 PLATFORM CARDS -->
+    <section class="section-cream">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow"><span data-lang="nl">Waar je ons vindt</span><span data-lang="en">Where to find us</span></span>
+          <h2 class="section-title"><span data-lang="nl">Drie <em>kanalen</em>.</span><span data-lang="en">Three <em>channels</em>.</span></h2>
+        </div>
+
+        <div class="social-platforms">
+          <!-- Instagram -->
+          <div class="social-platform-card instagram reveal" style="background: var(--cream-soft); border-color: rgba(155, 123, 11, 0.2);">
+            <div class="social-platform-icon instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+            <h3 style="color: var(--noir);">Instagram</h3>
+            <div class="social-platform-handle" style="color: var(--gold-deep);">@extensions_barbershop</div>
+            <p style="color: var(--neutral-700);"><span data-lang="nl">Foto's van recente installs, hair transformations en stories met behind-the-scenes.</span><span data-lang="en">Photos of recent installs, hair transformations and stories with behind-the-scenes.</span></p>
+            <a href="https://instagram.com/extensions_barbershop" target="_blank" rel="noopener" class="btn btn-dark">
+              <span data-lang="nl">Volg op Instagram</span><span data-lang="en">Follow on Instagram</span>
+            </a>
+          </div>
+
+          <!-- TikTok -->
+          <div class="social-platform-card tiktok reveal reveal-delay-1" style="background: var(--cream-soft); border-color: rgba(155, 123, 11, 0.2);">
+            <div class="social-platform-icon tiktok">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V9.05a8.16 8.16 0 0 0 4.77 1.52V7.5a4.85 4.85 0 0 1-1.84-.81z"/></svg>
+            </div>
+            <h3 style="color: var(--noir);">TikTok</h3>
+            <div class="social-platform-handle" style="color: var(--gold-deep);">@extensions_barbershop</div>
+            <p style="color: var(--neutral-700);"><span data-lang="nl">Korte videos: install processes, voor/na, en haar tips in 60 seconden.</span><span data-lang="en">Short videos: install processes, before/after, and hair tips in 60 seconds.</span></p>
+            <a href="https://tiktok.com/@extensions_barbershop" target="_blank" rel="noopener" class="btn btn-dark">
+              <span data-lang="nl">Volg op TikTok</span><span data-lang="en">Follow on TikTok</span>
+            </a>
+          </div>
+
+          <!-- Facebook -->
+          <div class="social-platform-card facebook reveal reveal-delay-2" style="background: var(--cream-soft); border-color: rgba(155, 123, 11, 0.2);">
+            <div class="social-platform-icon facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+            </div>
+            <h3 style="color: var(--noir);">Facebook</h3>
+            <div class="social-platform-handle" style="color: var(--gold-deep);">@vickyronny</div>
+            <p style="color: var(--neutral-700);"><span data-lang="nl">Updates, openingstijden en aankondigingen. Voor wie graag op Facebook actief is.</span><span data-lang="en">Updates, opening hours and announcements. For those active on Facebook.</span></p>
+            <a href="https://facebook.com/vickyronny" target="_blank" rel="noopener" class="btn btn-dark">
+              <span data-lang="nl">Volg op Facebook</span><span data-lang="en">Follow on Facebook</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECENT POSTS — fallback tiles for now -->
+    <section class="section-dark">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow"><span data-lang="nl">Recente posts</span><span data-lang="en">Recent posts</span></span>
+          <h2 class="section-title"><span data-lang="nl">Latest <em>styles</em>.</span><span data-lang="en">Latest <em>styles</em>.</span></h2>
+          <p class="section-intro"><span data-lang="nl">Klik op een tegel om naar het profiel te gaan voor meer.</span><span data-lang="en">Click a tile to visit the profile for more.</span></p>
+        </div>
+
+        <!-- NOTE: replace these fallback tiles with real embeds when post URLs are known -->
+        <div class="social-platforms reveal" style="margin-bottom: 0;">
+          <a href="https://instagram.com/extensions_barbershop" target="_blank" rel="noopener" class="social-fallback-tile instagram">
+            <div class="tile-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+            <h4><span data-lang="nl">Bekijk recente posts</span><span data-lang="en">See recent posts</span></h4>
+            <p>@extensions_barbershop</p>
+          </a>
+
+          <a href="https://tiktok.com/@extensions_barbershop" target="_blank" rel="noopener" class="social-fallback-tile tiktok">
+            <div class="tile-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V9.05a8.16 8.16 0 0 0 4.77 1.52V7.5a4.85 4.85 0 0 1-1.84-.81z"/></svg>
+            </div>
+            <h4><span data-lang="nl">Bekijk recente videos</span><span data-lang="en">See recent videos</span></h4>
+            <p>@extensions_barbershop</p>
+          </a>
+
+          <a href="https://facebook.com/vickyronny" target="_blank" rel="noopener" class="social-fallback-tile facebook">
+            <div class="tile-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+            </div>
+            <h4><span data-lang="nl">Bekijk pagina</span><span data-lang="en">See page</span></h4>
+            <p>@vickyronny</p>
+          </a>
+        </div>
+
+        <!--
+        ===========================================================
+        EMBED INSTRUCTIES voor Sage:
+        Wil je echte Instagram of TikTok posts inbedden? Vervang dan
+        de drie social-fallback-tile blokken hierboven met dit patroon:
+
+        <div class="social-embed-wrap">
+          <div class="social-embed-label">
+            <svg ...>...</svg> Instagram · @extensions_barbershop
+          </div>
+          <iframe
+            src="https://www.instagram.com/p/POST_ID/embed/"
+            scrolling="no" allowtransparency="true"
+            loading="lazy"></iframe>
+        </div>
+
+        Voor TikTok: src="https://www.tiktok.com/embed/v2/VIDEO_ID"
+        Voor Facebook: gebruik Facebook's plugin code (te genereren via developers.facebook.com/docs/plugins/post/)
+
+        Krijg je de Post ID door op Instagram naar een post te gaan
+        en de URL te kopieren: instagram.com/p/Cxxxxxxxxxx/
+        De Cxxxxxxxxxx is de Post ID.
+        ===========================================================
+        -->
+      </div>
+    </section>
+
+    <!-- CALLOUT — share met us -->
+    <section class="section-cream">
+      <div class="container">
+        <div class="reveal" style="background: linear-gradient(135deg, var(--cream) 0%, var(--cream-deep) 100%); border: 1px solid rgba(155, 123, 11, 0.25); border-radius: var(--radius-md); padding: 48px 40px; text-align: center; max-width: 720px; margin: 0 auto;">
+          <span class="eyebrow"><span data-lang="nl">Tag ons</span><span data-lang="en">Tag us</span></span>
+          <h2 class="section-title" style="margin-top: 16px;"><span data-lang="nl">Show je nieuwe <em>look</em>.</span><span data-lang="en">Show your new <em>look</em>.</span></h2>
+          <p style="color: var(--neutral-700); margin: 18px auto 24px; max-width: 480px;"><span data-lang="nl">Klaar bij Ghana House? Tag ons in je foto's — we delen graag jouw transformatie op onze stories.</span><span data-lang="en">Done at Ghana House? Tag us in your photos — we love to share your transformation in our stories.</span></p>
+          <p style="color: var(--gold-deep); font-family: var(--font-display); font-style: italic; font-size: 24px; margin: 0;">#GhanaHouseEnschede</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-noir" style="text-align: center;">
+      <div class="container-narrow">
+        <div class="reveal">
+          <h2 class="section-title"><span data-lang="nl">Klaar voor je eigen <em>look</em>?</span><span data-lang="en">Ready for your own <em>look</em>?</span></h2>
+          <p class="section-intro" style="margin: 18px auto 32px;"><span data-lang="nl">Boek nu een afspraak of stuur ons een DM voor advies.</span><span data-lang="en">Book an appointment or send us a DM for advice.</span></p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+            <a href="/booking" class="btn btn-gold"><span data-lang="nl">Online boeken</span><span data-lang="en">Book online</span></a>
+            <a href="#" data-wa="generic" target="_blank" rel="noopener" class="btn btn-wa">
+              <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="logo-light.png" alt="Ghana House" />
+          <p><span data-lang="nl">Premium extensions, lace frontals en knipbeurten in Enschede.</span><span data-lang="en">Premium extensions, lace frontals and cuts in Enschede.</span></p>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang="nl">Diensten</h4><h4 data-lang="en">Services</h4>
+          <ul><li><a href="/services">Extensions</a></li><li><a href="/services">Lace frontals</a></li><li><a href="/services"><span data-lang="nl">Knipbeurten</span><span data-lang="en">Cuts</span></a></li><li><a href="/services">Braids &amp; styling</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <h4>Info</h4>
+          <ul><li><a href="/about"><span data-lang="nl">Over ons</span><span data-lang="en">About</span></a></li><li><a href="/visit"><span data-lang="nl">Bezoek</span><span data-lang="en">Visit</span></a></li><li><a href="/social">Social</a></li><li><a href="/faq">FAQ</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul><li><a href="tel:+31687030400">+31 6 8703 0400</a></li><li><a href="mailto:info@ghanahouse.nl">info@ghanahouse.nl</a></li><li>Korte Haaksbergerstraat 19<br />7511 JV Enschede</li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© <span id="year"></span> Ghana House</div>
+        <div class="footer-socials">
+          <a href="https://instagram.com/extensions_barbershop" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://tiktok.com/@extensions_barbershop" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V9.05a8.16 8.16 0 0 0 4.77 1.52V7.5a4.85 4.85 0 0 1-1.84-.81z"/></svg></a>
+          <a href="https://facebook.com/vickyronny" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" data-wa="generic" target="_blank" rel="noopener" class="float-wa" aria-label="WhatsApp ons">
+    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
+  </a>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="script.js"></script>
+</body>
+</html>
