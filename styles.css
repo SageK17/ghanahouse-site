@@ -272,13 +272,23 @@ html[lang="en"] .lang-toggle .lang-nl { opacity: 0.4; }
 .service-card.featured::before { width: 80px; height: 80px; opacity: 0.6; }
 @media (max-width: 900px) {
   .services-grid { grid-template-columns: repeat(6, 1fr); }
-  .service-card.span-7, .service-card.span-5, .service-card.span-6, .service-card.span-4, .service-card.span-3 { grid-column: span 6; }
+  .service-card.span-7, .service-card.span-5, .service-card.span-6, .service-card.span-4, .service-card.span-3, .service-card.span-12 { grid-column: span 6; }
 }
 @media (max-width: 600px) {
-  .service-card { padding: 28px 24px 24px; }
-  .service-card.featured { padding: 32px 26px; }
+  .services-grid { grid-template-columns: 1fr; gap: 14px; }
+  .service-card.span-7, .service-card.span-5, .service-card.span-6, .service-card.span-4, .service-card.span-3, .service-card.span-12 { grid-column: span 1; }
+  .service-card { padding: 26px 22px 22px; }
+  .service-card.featured { padding: 30px 24px; }
   .service-card h3 { font-size: 22px; }
-  .service-card.featured h3 { font-size: 28px; }
+  .service-card.featured h3 { font-size: 26px; }
+  .service-card p { font-size: 13.5px; margin-bottom: 18px; }
+  .service-card .service-method-badge { font-size: 9px; padding: 4px 9px; margin-bottom: 12px; }
+  .service-card .service-number { font-size: 11px; }
+  .service-meta { gap: 6px; }
+  .service-price { font-size: 18px; }
+  .service-duration { font-size: 12px; }
+  /* Disable hover effects on mobile */
+  .service-card:hover { transform: none; }
 }
 
 /* FEATURES */
@@ -295,7 +305,8 @@ html[lang="en"] .lang-toggle .lang-nl { opacity: 0.4; }
 
 /* STORY */
 .story-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: center; }
-@media (max-width: 900px) { .story-grid { grid-template-columns: 1fr; gap: 40px; } }
+.story-grid-reversed { grid-template-columns: 1.2fr 1fr; }
+@media (max-width: 900px) { .story-grid, .story-grid-reversed { grid-template-columns: 1fr; gap: 40px; } }
 .story-visual { position: relative; aspect-ratio: 4/5; background: linear-gradient(155deg, var(--gold-deep) 0%, var(--noir-soft) 40%, var(--green) 70%, var(--red) 100%); border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .story-visual-text { font-family: var(--font-display); font-size: clamp(72px, 9vw, 130px); font-weight: 500; font-style: italic; color: rgba(245, 237, 217, 0.95); letter-spacing: -0.04em; position: relative; z-index: 2; }
 .story-visual::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(244, 196, 48, 0.4) 0%, transparent 50%); }
