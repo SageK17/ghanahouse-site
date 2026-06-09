@@ -805,3 +805,88 @@ h1, h2, h3, h4, p, a, span, div { overflow-wrap: break-word; word-wrap: break-wo
   .bk-times-grid { grid-template-columns: repeat(auto-fill, minmax(68px, 1fr)); gap: 5px; }
   .bk-time-btn { padding: 9px 4px; font-size: 13px; }
 }
+
+/* ============================================================
+   v4.3 — A11y focus states · photo-ready media slots · polish
+   ============================================================ */
+
+/* Visible keyboard focus (was missing site-wide — accessibility) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.section-cream a:focus-visible,
+.section-cream button:focus-visible { outline-color: var(--gold-deep); }
+/* No outline on plain mouse clicks, only keyboard nav */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) { outline: none; }
+
+/* Skip-to-content link for keyboard / screenreader users */
+.skip-link {
+  position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%) translateY(-120%);
+  background: var(--gold); color: var(--noir);
+  padding: 12px 22px; border-radius: 0 0 var(--radius-md) var(--radius-md);
+  font-size: 13px; font-weight: 700; letter-spacing: 0.04em;
+  z-index: 500; transition: transform 0.2s ease;
+}
+.skip-link:focus { transform: translateX(-50%) translateY(0); }
+
+/* PHOTO-READY MEDIA SLOTS
+   Drop a correctly-named file into the /photos folder and it shows
+   automatically over the designed gradient + monogram fallback.
+   No HTML editing needed — see photos/LEES-MIJ.txt. */
+.visual-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  z-index: 4;
+  background: transparent;
+}
+/* Subtle readability gradient so any future overlaid text stays legible */
+.hero-visual .visual-photo,
+.story-visual .visual-photo { border-radius: inherit; }
+
+/* Refined monogram fallback (shown until a real photo is added) */
+.hero-visual-logo,
+.story-visual-text {
+  user-select: none;
+}
+.hero-visual-inner::before,
+.story-visual::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 22% 18%, rgba(245,237,217,0.10) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 70% 60%, rgba(245,237,217,0.08) 0 1.5px, transparent 2px);
+  background-size: 26px 26px, 34px 34px;
+  opacity: 0.6; z-index: 1; pointer-events: none;
+}
+/* Tiny "foto volgt" hint on the fallback, hidden once a photo loads */
+.visual-caption {
+  position: absolute; left: 14px; bottom: 12px; z-index: 3;
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 700; color: rgba(245,237,217,0.55);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.visual-caption::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+
+/* Smoother service-card lift + accessible card links */
+.service-card, .feature-item, .social-platform-card, .booking-choice-card {
+  transition: transform 0.3s cubic-bezier(0.25,0.1,0.25,1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover { box-shadow: 0 22px 50px -28px rgba(0,0,0,0.65); }
+.section-cream .service-card:hover { box-shadow: 0 22px 50px -28px rgba(155,123,11,0.4); }
+
+/* Marquee fade edges so words don't hard-cut at the viewport edge */
+.marquee::before, .marquee::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none;
+}
+.marquee::before { left: 0; background: linear-gradient(90deg, var(--gold), transparent); }
+.marquee::after { right: 0; background: linear-gradient(270deg, var(--gold), transparent); }

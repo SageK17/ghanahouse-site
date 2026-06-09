@@ -10,6 +10,19 @@
   /* -- LANGUAGE TOGGLE -------------------------------------------------- */
   function setLang(lang) {
     html.lang = lang;
+    // Swap the document <title> and meta description to match the language.
+    // Elements opt in with data-nl / data-en attributes (NL stays the static
+    // default for SEO; EN applies when the visitor toggles).
+    var titleEl = document.querySelector('title[data-nl]');
+    if (titleEl) {
+      var t = titleEl.getAttribute('data-' + lang);
+      if (t) document.title = t;
+    }
+    var descEl = document.querySelector('meta[name="description"][data-nl]');
+    if (descEl) {
+      var d = descEl.getAttribute('data-' + lang);
+      if (d) descEl.setAttribute('content', d);
+    }
     try { localStorage.setItem('gh-lang', lang); } catch (e) {}
   }
   try {
@@ -217,6 +230,7 @@
     return arr[d.getMonth()] + ' ' + d.getFullYear();
   }
 
+  var availRetried = false;
   function loadAvailability() {
     // Load 60 days ahead (covers ~2 months of viewable calendar)
     var today = new Date(); today.setHours(0,0,0,0);
@@ -225,8 +239,12 @@
     var end = ymd(endDate);
 
     fetch(API_BASE + '/api/availability?start=' + start + '&end=' + end)
-      .then(function (r) { return r.json(); })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
       .then(function (data) {
+        availRetried = false;
         availabilityData = data;
         dayMap = {};
         (data.days || []).forEach(function (d) { dayMap[d.date] = d; });
@@ -235,11 +253,42 @@
       })
       .catch(function (err) {
         console.error('Availability load failed:', err);
-        var lang = document.documentElement.lang;
-        if (availLoading) availLoading.textContent = lang === 'en'
-          ? 'Could not load calendar. Refresh the page.'
-          : 'Kalender kon niet geladen worden. Ververs de pagina.';
+        // One silent retry for transient network blips, then show a usable fallback.
+        if (!availRetried) {
+          availRetried = true;
+          setTimeout(loadAvailability, 1800);
+          return;
+        }
+        showAvailabilityFallback();
       });
+  }
+
+  // When the booking backend is unreachable, the customer should never hit a
+  // dead end — offer WhatsApp + phone so they can still book.
+  function showAvailabilityFallback() {
+    if (!availLoading) return;
+    var lang = document.documentElement.lang === 'en' ? 'en' : 'nl';
+    var waMsg = lang === 'en'
+      ? 'Hi Ghana House! The online calendar is down — I would like to book an appointment.'
+      : 'Hoi Ghana House! De online agenda doet het even niet — ik wil graag een afspraak maken.';
+    var waLink = 'https://wa.me/31687030400?text=' + encodeURIComponent(waMsg);
+    var title = lang === 'en' ? 'Calendar temporarily unavailable' : 'Agenda even niet bereikbaar';
+    var body = lang === 'en'
+      ? "We can't load live availability right now. No problem — book directly via WhatsApp or call us and we'll sort it out."
+      : 'We kunnen de live beschikbaarheid nu niet laden. Geen probleem — boek direct via WhatsApp of bel ons, dan regelen we het.';
+    var waBtn = lang === 'en' ? 'Book via WhatsApp' : 'Boek via WhatsApp';
+    var callBtn = lang === 'en' ? 'Call us' : 'Bel ons';
+    availLoading.style.display = 'block';
+    availLoading.innerHTML =
+      '<div style="text-align:center;padding:8px 0;">' +
+        '<div style="font-family:var(--font-display);font-size:20px;margin-bottom:8px;">' + title + '</div>' +
+        '<p style="font-size:14px;opacity:.75;margin:0 auto 18px;max-width:380px;line-height:1.55;">' + body + '</p>' +
+        '<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">' +
+          '<a href="' + waLink + '" target="_blank" rel="noopener" class="btn btn-wa">' +
+            '<svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>' + waBtn + '</a>' +
+          '<a href="tel:+31687030400" class="btn btn-outline">' + callBtn + '</a>' +
+        '</div>' +
+      '</div>';
   }
 
   function renderCalendar() {

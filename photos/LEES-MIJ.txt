@@ -1,0 +1,43 @@
+GHANA HOUSE — FOTO'S TOEVOEGEN
+================================
+
+De site is al klaar voor echte foto's. Je hoeft NIETS in de code te
+veranderen. Zet gewoon de juiste bestanden in DEZE map (files/photos/)
+met exact de juiste naam, push naar GitHub, en ze verschijnen vanzelf.
+
+Zolang een foto er nog niet is, toont de site een nette gouden
+placeholder met "Foto volgt" — niks breekt.
+
+BESTANDEN DIE DE SITE VERWACHT
+------------------------------
+1. hero.jpg      → Grote foto op de homepage (rechtsboven in de hero).
+                   Het liefst STAAND (portret), mooi resultaat of sfeerbeeld.
+                   Richtlijn: ~1000 x 1300 pixels.
+
+2. victoria.jpg  → Portretfoto van Victoria. Gebruikt op de homepage
+                   én op de "Over ons"-pagina.
+                   Richtlijn: ~1000 x 1250 pixels (staand).
+
+3. salon.jpg     → Foto van de ruimte / het interieur van de salon.
+                   Staat op de "Over ons"-pagina.
+                   Richtlijn: ~1000 x 1250 pixels (staand).
+
+BELANGRIJK
+----------
+- Namen moeten EXACT kloppen: hero.jpg, victoria.jpg, salon.jpg
+  (kleine letters, eindigt op .jpg). Geen hoofdletters, geen spaties.
+- .jpg of .jpeg werkt; gebruik .jpg in de naam. Wil je .png gebruiken,
+  laat het me weten dan pas ik de code aan.
+- Houd bestanden onder ~500 KB per foto zodat de site snel blijft.
+  (Tip: comprimeer op https://squoosh.app — gratis.)
+
+FOTO TOEGEVOEGD? ZO ZET JE 'M LIVE
+----------------------------------
+  cd ~/Ghanahouse/files
+  git add photos/
+  git commit -m "Echte foto's toegevoegd"
+  git push
+  # Netlify zet 'm binnen ~1 min live op ghanahouse.nl
+
+Meer plekken voor foto's nodig (diensten, before/after, team)?
+Geef het door, dan bouw ik er extra slots bij.
