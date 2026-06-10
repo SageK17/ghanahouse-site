@@ -112,10 +112,12 @@
 
   /* -- FAQ ACCORDION --------------------------------------------------- */
   document.querySelectorAll('.faq-question').forEach(function (q) {
+    q.setAttribute('aria-expanded', 'false');
     q.addEventListener('click', function () {
       var item = q.closest('.faq-item');
       if (!item) return;
-      item.classList.toggle('open');
+      var open = item.classList.toggle('open');
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   });
 
@@ -212,6 +214,7 @@
   cursor.setDate(1);
   cursor.setHours(0,0,0,0);
   var selectedDate = null;       // 'YYYY-MM-DD'
+  var autoSelected = false;      // auto-pick the soonest open day once, so times show immediately
 
   function ymd(d) {
     return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
@@ -339,7 +342,7 @@
       if (selectedDate === dateStr) classes.push('selected');
 
       var attrs = 'data-date="' + dateStr + '"';
-      if (disabled) attrs += ' aria-disabled="true"';
+      if (disabled) attrs += ' aria-disabled="true" disabled';
 
       html += '<button type="button" class="' + classes.join(' ') + '" ' + attrs + '>' + d.getDate() + '</button>';
     }
@@ -353,9 +356,16 @@
         selectDate(btn.getAttribute('data-date'));
       });
     });
+
+    // Auto-select the soonest available day once, so the visitor sees times
+    // immediately (one less click). Only on first render, not on month navigation.
+    if (!autoSelected && !selectedDate) {
+      var firstOpen = calGrid.querySelector('.bk-cal-day.open:not([disabled]), .bk-cal-day.partial:not([disabled])');
+      if (firstOpen) { autoSelected = true; selectDate(firstOpen.getAttribute('data-date'), true); }
+    }
   }
 
-  function selectDate(dateStr) {
+  function selectDate(dateStr, noScroll) {
     selectedDate = dateStr;
     hiddenDate.value = dateStr;
     // Reset time selection — user must pick a time after picking a date
@@ -367,10 +377,10 @@
     var picked = calGrid.querySelector('[data-date="' + dateStr + '"]');
     if (picked) picked.classList.add('selected');
 
-    renderTimes(dateStr);
+    renderTimes(dateStr, noScroll);
   }
 
-  function renderTimes(dateStr) {
+  function renderTimes(dateStr, noScroll) {
     var lang = document.documentElement.lang || 'nl';
     var day = dayMap[dateStr];
     if (!day || !day.isOpen) { timesWrap.style.display = 'none'; return; }
@@ -390,9 +400,10 @@
     day.slots.forEach(function (s) {
       var cls = 'bk-time-btn';
       var disabled = '';
-      if (s.capacityRemaining === 0) { cls += ' full'; disabled = ' aria-disabled="true"'; }
+      var label = s.time;
+      if (s.capacityRemaining === 0) { cls += ' full'; disabled = ' aria-disabled="true" disabled'; }
       else if (s.capacityRemaining < s.capacityTotal) cls += ' partial';
-      html += '<button type="button" class="' + cls + '" data-slot="' + s.start + '" data-time="' + s.time + '"' + disabled + '>' + s.time + '</button>';
+      html += '<button type="button" class="' + cls + '" data-slot="' + s.start + '" data-time="' + s.time + '"' + disabled + '>' + label + '</button>';
     });
     timesGrid.innerHTML = html;
 
@@ -406,8 +417,8 @@
       });
     });
 
-    // Smooth scroll into view on mobile
-    if (window.innerWidth < 700) {
+    // Smooth scroll into view on mobile (not on the auto-select at page load)
+    if (!noScroll && window.innerWidth < 700) {
       setTimeout(function () { timesWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
     }
   }
@@ -460,8 +471,18 @@
     };
     var errors = validate(data);
     if (errors.length) {
-      if (errors.indexOf('slot') !== -1) setStatus(html.lang === 'en' ? 'Please pick a date and time.' : 'Kies een datum en tijd.', 'error');
-      else setStatus(html.lang === 'en' ? 'Please fill in the required fields.' : 'Vul de verplichte velden in.', 'error');
+      if (errors.indexOf('slot') !== -1) {
+        var needTime = !!hiddenDate.value && !hiddenTime.value;
+        setStatus(needTime
+          ? (html.lang === 'en' ? 'Almost there — pick a time.' : 'Bijna klaar — kies nog een tijd.')
+          : (html.lang === 'en' ? 'Please pick a date and time.' : 'Kies een datum en tijd.'), 'error');
+        var calEl = document.getElementById('bkCalendar');
+        if (calEl) calEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        setStatus(html.lang === 'en' ? 'Please fill in the required fields.' : 'Vul de verplichte velden in.', 'error');
+        var firstErr = form.querySelector('.form-field.has-error');
+        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
       return;
     }
     submitBtn.disabled = true;
@@ -500,4 +521,113 @@
         if (err && err.message === 'Slot full') loadAvailability();
       });
   });
+})();
+
+/* -- Clickable service cards on the homepage -------------------------- */
+(function () {
+  var cards = document.querySelectorAll('.services-grid .service-card');
+  cards.forEach(function (card) {
+    card.style.cursor = 'pointer';
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'link');
+    var go = function () { window.location.href = '/services'; };
+    card.addEventListener('click', function (e) { if (e.target.closest('a')) return; go(); });
+    card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+  });
+})();
+
+/* ============================================================
+   v5 — "ALL OUT" visual effects (site-wide, progressive)
+   Scroll progress, film grain, count-up stats, soft parallax,
+   card sheen, staggered scroll reveals. Each piece is guarded
+   so a failure never blocks the others.
+   ============================================================ */
+(function () {
+  'use strict';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Inject grain + scroll-progress nodes once */
+  try {
+    if (!reduce && !document.querySelector('.gh-grain')) {
+      var grain = document.createElement('div'); grain.className = 'gh-grain'; document.body.appendChild(grain);
+    }
+    var prog = document.createElement('div'); prog.className = 'gh-progress'; document.body.appendChild(prog);
+    var progTick = false;
+    function updateProgress() {
+      var h = document.documentElement;
+      var max = (h.scrollHeight - h.clientHeight) || 1;
+      prog.style.width = Math.min(100, (h.scrollTop / max) * 100) + '%';
+      progTick = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!progTick) { requestAnimationFrame(updateProgress); progTick = true; }
+    }, { passive: true });
+    updateProgress();
+  } catch (e) {}
+
+  /* Count-up numbers when they scroll into view */
+  function animateCount(el) {
+    var raw = el.getAttribute('data-count-raw') || el.textContent.trim();
+    var m = raw.match(/^(\d+(?:[.,]\d+)?)(.*)$/);
+    if (!m) return;                                   // skip non-numeric (e.g. ★★★★★)
+    el.setAttribute('data-count-raw', raw);
+    var target = parseFloat(m[1].replace(',', '.'));
+    var decimals = (m[1].split(/[.,]/)[1] || '').length;
+    var suffix = m[2];
+    var usesComma = m[1].indexOf(',') > -1;
+    if (reduce) { el.textContent = raw; return; }
+    var start = null, dur = 1100;
+    el.classList.add('fx-countup');
+    function frame(ts) {
+      if (start === null) start = ts;
+      var p = Math.min(1, (ts - start) / dur);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var val = (target * eased).toFixed(decimals);
+      if (usesComma) val = val.replace('.', ',');
+      el.textContent = val + suffix;
+      if (p < 1) requestAnimationFrame(frame);
+      else el.textContent = raw;
+    }
+    requestAnimationFrame(frame);
+  }
+  if ('IntersectionObserver' in window) {
+    var countObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { animateCount(en.target); countObs.unobserve(en.target); }
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.hero-stat-num, .stat-n').forEach(function (el) { countObs.observe(el); });
+  }
+
+  /* Card sheen — wrap eligible static cards with a sweep overlay */
+  try {
+    document.querySelectorAll('.service-card, .review-card, .step-card, .gallery-item').forEach(function (card) {
+      if (card.querySelector(':scope > .fx-sheen')) return;
+      card.classList.add('fx-sheen-host');
+      var i = document.createElement('i'); i.className = 'fx-sheen'; i.setAttribute('aria-hidden', 'true');
+      card.appendChild(i);
+    });
+  } catch (e) {}
+
+  /* Staggered scroll-reveal for grid children that weren't already tagged */
+  if ('IntersectionObserver' in window) {
+    var grids = ['.services-grid', '.gallery-grid', '.reviews-grid', '.steps-grid', '.values-grid'];
+    var extraObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); extraObs.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
+    grids.forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (grid) {
+        var kids = grid.children;
+        for (var i = 0; i < kids.length; i++) {
+          var k = kids[i];
+          if (k.classList.contains('reveal')) continue;
+          k.classList.add('reveal');
+          k.style.transitionDelay = Math.min(i * 0.07, 0.5) + 's';
+          extraObs.observe(k);
+        }
+      });
+    });
+  }
 })();

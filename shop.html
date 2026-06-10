@@ -1,295 +1,251 @@
 <!DOCTYPE html>
-<!--
-  ⚠️ GEPARKEERDE DRAFT — NIET LIVE / NIET IN MENU
-  Deze shop-pagina komt uit een oudere designrichting (andere fonts +
-  CSS-classes die niet in styles.css zitten) en is nog niet afgebouwd.
-  Hij staat op noindex en is nergens in de navigatie gelinkt.
-  Voor lancering moet 'ie opnieuw in de huidige huisstijl gebouwd worden.
-  Prijzen staan bewust op "Op aanvraag" (huisregel).
--->
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>Shop — Ghana House Enschede</title>
-  <meta name="description" content="Premium hair extensions, frontals, closures, verzorgingsproducten en accessoires. Bestel via WhatsApp, verzonden binnen 1-2 werkdagen in NL en BE." />
-  <link rel="canonical" href="https://ghanahouse.nl/shop" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0F0B08" />
+  <title data-nl="Shop — Ghana House" data-en="Shop — Ghana House">Shop — Ghana House</title>
+  <meta name="description" data-nl="De Ghana House shop: premium bundles, frontals, verzorging en accessoires. Ophalen in de salon of versturen in NL en BE." data-en="The Ghana House shop: premium bundles, frontals, hair care and accessories. Pick up in the salon or shipped in NL and BE." content="De Ghana House shop: premium bundles, frontals, verzorging en accessoires. Ophalen in de salon of versturen." />
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="canonical" href="https://ghanahouse.nl/shop" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Ghana House" />
+  <meta property="og:title" content="Shop — Ghana House" />
+  <meta property="og:url" content="https://ghanahouse.nl/shop" />
+  <meta property="og:image" content="https://ghanahouse.nl/logo.png" />
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
+  <a class="skip-link" href="#main"><span data-lang="nl">Naar inhoud</span><span data-lang="en">Skip to content</span></a>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="/" class="brand-logo" aria-label="Ghana House — home"><img src="/logo.png" alt="Ghana House" /></a>
-      <nav class="main-nav" aria-label="Main">
+  <header class="site-header has-bar">
+    <div class="utility-bar">
+      <div class="utility-bar-inner">
+        <a class="u-rating" href="https://share.google/lDGjUx62SWGhLpPBK" target="_blank" rel="noopener">
+          <span class="u-stars">★★★★★</span>
+          <span data-lang="nl">4,7 · 39 reviews op Google</span><span data-lang="en">4.7 · 39 reviews on Google</span>
+        </a>
+        <div class="u-right">
+          <span class="u-hide"><span class="u-dot"></span><span data-lang="nl">Di–Za · vanaf 10:30</span><span data-lang="en">Tue–Sat · from 10:30</span></span>
+          <a href="https://wa.me/31687030400" target="_blank" rel="noopener"><span data-lang="nl">WhatsApp ons</span><span data-lang="en">WhatsApp us</span></a>
+          <a href="tel:+31687030400">+31 6 8703 0400</a>
+        </div>
+      </div>
+    </div>
+    <div class="header-inner">
+      <a href="/" class="brand-logo">
+        <img src="logo.png" alt="Ghana House" />
+        <div class="brand-logo-text"><span>Ghana House</span><small>Extensions × Barber</small></div>
+      </a>
+      <nav class="main-nav">
         <a href="/services"><span data-lang="nl">Diensten</span><span data-lang="en">Services</span></a>
-        <a href="/shop">Shop</a>
         <a href="/booking"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
+        <a href="/social"><span data-lang="nl">Social</span><span data-lang="en">Social</span></a>
+        <a href="/shop">Shop</a>
         <a href="/visit"><span data-lang="nl">Bezoek</span><span data-lang="en">Visit</span></a>
         <a href="/about"><span data-lang="nl">Over ons</span><span data-lang="en">About</span></a>
         <a href="/faq">FAQ</a>
       </nav>
       <div class="header-actions">
-        <button class="lang-toggle" type="button" id="langToggle"><span class="lang-nl">NL</span><span style="opacity:.4">/</span><span class="lang-en">EN</span></button>
+        <button class="lang-toggle" type="button" id="langToggle" aria-label="Switch language"><span class="lang-nl">NL</span><span style="opacity:.4">/</span><span class="lang-en">EN</span></button>
         <button class="menu-toggle" type="button" id="menuToggle" aria-label="Open menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </div>
     </div>
   </header>
+
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <button class="mobile-menu-close" type="button" id="menuClose" aria-label="Close menu">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <nav>
       <a href="/services" class="m-link"><span data-lang="nl">Diensten</span><span data-lang="en">Services</span></a>
-      <a href="/shop" class="m-link">Shop</a>
       <a href="/booking" class="m-link"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
+      <a href="/social" class="m-link"><span data-lang="nl">Social</span><span data-lang="en">Social</span></a>
+      <a href="/shop" class="m-link">Shop</a>
       <a href="/visit" class="m-link"><span data-lang="nl">Bezoek</span><span data-lang="en">Visit</span></a>
       <a href="/about" class="m-link"><span data-lang="nl">Over ons</span><span data-lang="en">About</span></a>
       <a href="/faq" class="m-link">FAQ</a>
     </nav>
   </div>
 
-  <main>
-    <section class="page-hero">
-      <div class="container">
-        <span class="eyebrow">Shop</span>
-        <h1>
-          <span data-lang="nl">Producten met <em>karakter</em>.</span>
-          <span data-lang="en">Products with <em>character</em>.</span>
-        </h1>
-        <p data-lang="nl">Van premium bundles tot dagelijkse verzorging — handgekozen voor de fijnste resultaten. Bestellen gaat via WhatsApp; we sturen je een betaallink en verzenden binnen 1-2 werkdagen binnen Nederland en België.</p>
-        <p data-lang="en">From premium bundles to daily care — handpicked for the finest results. Ordering goes via WhatsApp; we send you a payment link and ship within 1-2 business days in the Netherlands and Belgium.</p>
+  <main id="main" tabindex="-1" style="padding-top: 140px;">
+    <section class="section-dark" style="padding-bottom: 50px;">
+      <div class="container-narrow" style="text-align: center;">
+        <span class="eyebrow reveal">Shop</span>
+        <h1 class="section-title reveal reveal-delay-1" style="margin-top: 16px;"><span data-lang="nl">Producten met <em>karakter</em>.</span><span data-lang="en">Products with <em>character</em>.</span></h1>
+        <p class="section-intro reveal reveal-delay-2" style="margin: 18px auto 0;"><span data-lang="nl">Van premium bundles tot dagelijkse verzorging. Reken veilig online af met iDEAL — ophalen in de salon of versturen binnen NL en BE.</span><span data-lang="en">From premium bundles to daily care. Pay securely online — pick up in the salon or have it shipped within NL and BE.</span></p>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section-noir">
       <div class="container">
-        <div class="shop-toolbar">
-          <button class="shop-filter active" data-filter="all"><span data-lang="nl">Alles</span><span data-lang="en">All</span></button>
-          <button class="shop-filter" data-filter="bundles">Bundles</button>
-          <button class="shop-filter" data-filter="frontals">Frontals &amp; Closures</button>
-          <button class="shop-filter" data-filter="care"><span data-lang="nl">Verzorging</span><span data-lang="en">Hair Care</span></button>
-          <button class="shop-filter" data-filter="styling">Styling</button>
-          <button class="shop-filter" data-filter="accessories"><span data-lang="nl">Accessoires</span><span data-lang="en">Accessories</span></button>
+        <div id="shopLoading" class="availability-loading"><span data-lang="nl">Producten laden…</span><span data-lang="en">Loading products…</span></div>
+
+        <div id="shopComing" class="shop-coming" hidden>
+          <h2><span data-lang="nl">De shop opent binnenkort</span><span data-lang="en">The shop opens soon</span></h2>
+          <p><span data-lang="nl">We zetten de laatste puntjes op de i. Wil je nu al iets bestellen? Stuur ons een WhatsApp, dan helpen we je direct.</span><span data-lang="en">We're putting the finishing touches in place. Want to order now? Send us a WhatsApp and we'll help you right away.</span></p>
+          <div style="margin-top: 24px;">
+            <a href="#" data-wa="generic" target="_blank" rel="noopener" class="btn btn-wa">
+              <svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
+              <span data-lang="nl">Bestel via WhatsApp</span><span data-lang="en">Order via WhatsApp</span>
+            </a>
+          </div>
         </div>
 
-        <div class="shop-grid" id="shopGrid">
-          <article class="product-card" data-cat="bundles">
-            <div class="product-visual bg-1"><div class="product-visual-text">Brazilian<br />Body Wave</div></div>
-            <div class="product-info">
-              <div class="product-category">Bundles</div>
-              <h3 class="product-name">Brazilian Body Wave 18"</h3>
-              <div class="product-bottom">
-                <div class="product-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></div>
-                <button class="btn btn-dark order-wa" data-product="Brazilian Body Wave 18&quot;">
-                  <span data-lang="nl">Bestel</span><span data-lang="en">Order</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-cat="bundles">
-            <div class="product-visual bg-5"><div class="product-visual-text">Deep<br />Wave</div></div>
-            <div class="product-info">
-              <div class="product-category">Bundles</div>
-              <h3 class="product-name">Deep Wave Bundle 22"</h3>
-              <div class="product-bottom">
-                <div class="product-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></div>
-                <button class="btn btn-dark order-wa" data-product="Deep Wave Bundle 22&quot;">
-                  <span data-lang="nl">Bestel</span><span data-lang="en">Order</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-cat="frontals">
-            <div class="product-visual bg-2"><div class="product-visual-text">HD Lace<br />Frontal</div></div>
-            <div class="product-info">
-              <div class="product-category">Frontals</div>
-              <h3 class="product-name">HD Lace Frontal 13×4</h3>
-              <div class="product-bottom">
-                <div class="product-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></div>
-                <button class="btn btn-dark order-wa" data-product="HD Lace Frontal 13x4">
-                  <span data-lang="nl">Bestel</span><span data-lang="en">Order</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-cat="frontals">
-            <div class="product-visual bg-7"><div class="product-visual-text">Closure<br />4×4</div></div>
-            <div class="product-info">
-              <div class="product-category">Closures</div>
-              <h3 class="product-name">HD Lace Closure 4×4</h3>
-              <div class="product-bottom">
-                <div class="product-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></div>
-                <button class="btn btn-dark order-wa" data-product="HD Lace Closure 4x4">
-                  <span data-lang="nl">Bestel</span><span data-lang="en">Order</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-cat="care">
-            <div class="product-visual bg-3"><div class="product-visual-text">Argan<br />Hair Oil</div></div>
-            <div class="product-info">
-              <div class="product-category" data-lang="nl">Verzorging</div>
-              <div class="product-category" data-lang="en">Care</div>
-              <h3 class="product-name">Argan Hair Oil 100ml</h3>
-              <div class="product-bottom">
-                <div class="product-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></div>
-                <button class="btn btn-dark order-wa" data-product="Argan Hair Oil 100ml">
-                  <span data-lang="nl">Bestel</span><span data-lang="en">Order</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-cat="care">
-            <div class="product-visual bg-4"><div class="product-visual-text">Hydrating<br />Shampoo</div></div>
-            <div class="product-info">
-              <div class="product-category" data-lang="nl">Verzorging</div>
-              <div class="product-category" data-lang="en">Care</div>
-              <h3 class="product-name">Hydrating Shampoo 300ml</h3>
-              <div class="product-bottom">
-                <div class="product-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></div>
-                <button class="btn btn-dark order-wa" data-product="Hydrating Shampoo 300ml">
-                  <span data-lang="nl">Bestel</span><span data-lang="en">Order</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-cat="styling">
-            <div class="product-visual bg-6"><div class="product-visual-text">Edge<br />Control</div></div>
-            <div class="product-info">
-              <div class="product-category">Styling</div>
-              <h3 class="product-name">Premium Edge Control 100ml</h3>
-              <div class="product-bottom">
-                <div class="product-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></div>
-                <button class="btn btn-dark order-wa" data-product="Premium Edge Control 100ml">
-                  <span data-lang="nl">Bestel</span><span data-lang="en">Order</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-cat="accessories">
-            <div class="product-visual bg-8"><div class="product-visual-text">Silk<br />Bonnet</div></div>
-            <div class="product-info">
-              <div class="product-category" data-lang="nl">Accessoires</div>
-              <div class="product-category" data-lang="en">Accessories</div>
-              <h3 class="product-name">Pure Silk Bonnet</h3>
-              <div class="product-bottom">
-                <div class="product-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></div>
-                <button class="btn btn-dark order-wa" data-product="Pure Silk Bonnet">
-                  <span data-lang="nl">Bestel</span><span data-lang="en">Order</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <div class="shop-note">
-            <strong data-lang="nl">Niet wat je zoekt?</strong>
-            <strong data-lang="en">Not finding what you need?</strong>
-            <span data-lang="nl"> Stuur ons een WhatsApp — we hebben veel meer in voorraad dan online getoond. Inclusief verschillende lengtes, kleuren en texturen.</span>
-            <span data-lang="en"> Send us a WhatsApp — we stock more than what's shown online. Including various lengths, colors and textures.</span>
-            <div style="margin-top:20px;">
-              <a href="#" data-wa="generic" target="_blank" rel="noopener noreferrer" class="btn btn-wa btn-sm">
-                <span data-lang="nl">Vraag via WhatsApp</span><span data-lang="en">Ask via WhatsApp</span>
-              </a>
-            </div>
-          </div>
+        <div id="shopMain" hidden>
+          <div class="shop-filters" id="shopFilters"></div>
+          <div class="shop-grid" id="shopGrid"></div>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- ===== Winkelmand: zwevende knop + slide-in drawer ===== -->
+  <button class="cart-fab" id="cartFab" type="button" hidden aria-label="Open winkelmand">
+    <span class="cart-fab-bag">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="cart-fab-count" id="cartFabCount">0</span>
+    </span>
+    <span class="cart-fab-meta">
+      <small data-lang="nl">Winkelmand</small><small data-lang="en">Cart</small>
+      <strong id="cartFabTotal">€ 0,00</strong>
+    </span>
+  </button>
+
+  <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-drawer-scrim" id="cartDrawerScrim"></div>
+    <aside class="cart-drawer-panel" role="dialog" aria-modal="true" aria-label="Winkelmand">
+      <div class="cart-drawer-head">
+        <h3><span data-lang="nl">Jouw winkelmand</span><span data-lang="en">Your cart</span></h3>
+        <button class="cart-drawer-close" id="cartDrawerClose" type="button" aria-label="Sluiten">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="cart-drawer-body">
+        <div id="cartLines"><div class="cart-empty"><span data-lang="nl">Je mand is nog leeg.</span><span data-lang="en">Your cart is empty.</span></div></div>
+        <div class="cart-totals" id="cartTotals" hidden></div>
+
+        <form id="checkoutForm" class="form-grid" hidden>
+          <div class="checkout-step-label"><span data-lang="nl">Jouw gegevens</span><span data-lang="en">Your details</span></div>
+          <div class="form-field">
+            <label data-lang="nl">Naam *</label><label data-lang="en">Name *</label>
+            <input type="text" name="name" autocomplete="name" required />
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>E-mail *</label>
+              <input type="email" name="email" autocomplete="email" required />
+            </div>
+            <div class="form-field">
+              <label data-lang="nl">Telefoon</label><label data-lang="en">Phone</label>
+              <input type="tel" name="phone" autocomplete="tel" placeholder="+31 6 ..." />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label data-lang="nl">Levering</label><label data-lang="en">Delivery</label>
+            <div class="checkout-deliv">
+              <label class="deliv-opt active" id="optPickup">
+                <input type="radio" name="delivery" value="pickup" checked />
+                <b><span data-lang="nl">Ophalen</span><span data-lang="en">Pick up</span></b>
+                <small><span data-lang="nl">Gratis · in de salon</span><span data-lang="en">Free · in the salon</span></small>
+              </label>
+              <label class="deliv-opt" id="optShip">
+                <input type="radio" name="delivery" value="ship" />
+                <b><span data-lang="nl">Versturen</span><span data-lang="en">Ship</span></b>
+                <small data-ship-cost>NL &amp; BE</small>
+              </label>
+            </div>
+          </div>
+
+          <div id="shipFields">
+            <div class="form-field">
+              <label data-lang="nl">Straat + huisnummer *</label><label data-lang="en">Street + number *</label>
+              <input type="text" name="street" autocomplete="street-address" />
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label data-lang="nl">Postcode *</label><label data-lang="en">Postcode *</label>
+                <input type="text" name="postal" autocomplete="postal-code" />
+              </div>
+              <div class="form-field">
+                <label data-lang="nl">Plaats *</label><label data-lang="en">City *</label>
+                <input type="text" name="city" autocomplete="address-level2" />
+              </div>
+            </div>
+            <div class="form-field">
+              <label data-lang="nl">Land</label><label data-lang="en">Country</label>
+              <select name="country">
+                <option value="Nederland">Nederland</option>
+                <option value="België">België</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-gold" id="payBtn">
+            <span data-lang="nl">Veilig betalen met iDEAL</span><span data-lang="en">Pay securely</span>
+          </button>
+          <div class="form-status" id="checkoutStatus"></div>
+          <p class="checkout-fineprint"><span data-lang="nl">Betaling via Mollie · iDEAL, creditcard, Apple Pay</span><span data-lang="en">Payment via Mollie · iDEAL, card, Apple Pay</span></p>
+        </form>
+      </div>
+
+      <div class="cart-drawer-foot">
+        <button class="btn btn-gold cart-checkout-btn" id="toCheckout" hidden><span data-lang="nl">Afrekenen</span><span data-lang="en">Checkout</span></button>
+        <button class="cart-keep-shopping" id="cartKeepShopping" type="button"><span data-lang="nl">Verder winkelen</span><span data-lang="en">Keep shopping</span></button>
+      </div>
+    </aside>
+  </div>
+
   <footer class="site-footer">
-    <div class="container">
+    <div class="footer-inner">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="/" aria-label="Ghana House — home"><img src="/logo-light.png" alt="Ghana House" /></a>
-          <p data-lang="nl">Enschede's premium beauty &amp; barber bestemming sinds 2014.</p>
-          <p data-lang="en">Enschede's premium beauty &amp; barber destination since 2014.</p>
+          <img src="logo-light.png" alt="Ghana House" />
+          <p><span data-lang="nl">Premium extensions, lace frontals en knipbeurten in Enschede.</span><span data-lang="en">Premium extensions, lace frontals and cuts in Enschede.</span></p>
         </div>
         <div class="footer-col">
-          <h4><span data-lang="nl">Navigatie</span><span data-lang="en">Navigate</span></h4>
-          <ul>
-            <li><a href="/services"><span data-lang="nl">Diensten</span><span data-lang="en">Services</span></a></li>
-            <li><a href="/shop">Shop</a></li>
-            <li><a href="/booking"><span data-lang="nl">Boeken</span><span data-lang="en">Booking</span></a></li>
-            <li><a href="/visit"><span data-lang="nl">Bezoek</span><span data-lang="en">Visit</span></a></li>
-            <li><a href="/about"><span data-lang="nl">Over ons</span><span data-lang="en">About</span></a></li>
-            <li><a href="/faq">FAQ</a></li>
-          </ul>
+          <h4 data-lang="nl">Diensten</h4><h4 data-lang="en">Services</h4>
+          <ul><li><a href="/services">Extensions</a></li><li><a href="/services">Lace frontals</a></li><li><a href="/services"><span data-lang="nl">Knipbeurten</span><span data-lang="en">Cuts</span></a></li><li><a href="/shop">Shop</a></li></ul>
         </div>
         <div class="footer-col">
-          <h4><span data-lang="nl">Contact</span><span data-lang="en">Contact</span></h4>
-          <ul>
-            <li><a href="#" data-wa="generic" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-            <li><a href="tel:+31687030400">+31 6 8703 0400</a></li>
-            <li>Korte Haaksbergerstraat 19</li>
-            <li>7511 JV Enschede</li>
-          </ul>
+          <h4>Info</h4>
+          <ul><li><a href="/about"><span data-lang="nl">Over ons</span><span data-lang="en">About</span></a></li><li><a href="/visit"><span data-lang="nl">Bezoek</span><span data-lang="en">Visit</span></a></li><li><a href="/social">Social</a></li><li><a href="/faq">FAQ</a></li><li><a href="/privacy">Privacy</a></li></ul>
         </div>
         <div class="footer-col">
-          <h4><span data-lang="nl">Volgen</span><span data-lang="en">Follow</span></h4>
-          <ul>
-            <li><a href="https://www.instagram.com/ghanahouseenschede" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/@ghanahouseenschede" target="_blank" rel="noopener noreferrer">TikTok</a></li>
-          </ul>
+          <h4>Contact</h4>
+          <ul><li><a href="tel:+31687030400">+31 6 8703 0400</a></li><li><a href="mailto:info@ghanahouse.nl">info@ghanahouse.nl</a></li><li>Korte Haaksbergerstraat 19<br />7511 JV Enschede</li></ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <div>© <span data-year></span> Ghana House. <span data-lang="nl">Alle rechten voorbehouden.</span><span data-lang="en">All rights reserved.</span></div>
-        <div class="legal">
-          <a href="#"><span data-lang="nl">Privacy</span><span data-lang="en">Privacy</span></a>
-          <a href="#"><span data-lang="nl">Voorwaarden</span><span data-lang="en">Terms</span></a>
-          <a href="#">Cookies</a>
+        <div>© <span id="year"></span> Ghana House</div>
+        <div class="footer-socials">
+          <a href="https://instagram.com/extensions_barbershop" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://tiktok.com/@extensions_barbershop" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V9.05a8.16 8.16 0 0 0 4.77 1.52V7.5a4.85 4.85 0 0 1-1.84-.81z"/></svg></a>
+          <a href="https://facebook.com/vickyronny" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a>
+          <a href="https://wa.me/31687030400" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg></a>
         </div>
       </div>
     </div>
   </footer>
 
-  <a class="float-wa" href="#" data-wa="generic" target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp chat">
-    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3zm6.973 17.27c-.293.823-1.708 1.574-2.388 1.674-.61.092-1.39.13-2.247-.142-.518-.165-1.182-.385-2.034-.755-3.581-1.547-5.92-5.169-6.099-5.41-.179-.24-1.456-1.937-1.456-3.694 0-1.756.92-2.62 1.247-2.978.327-.358.713-.448.951-.448h.685c.218 0 .511-.083.798.61.293.71.996 2.466 1.083 2.644.087.179.146.388.029.628-.118.24-.176.388-.347.598-.171.21-.36.469-.514.63-.171.179-.349.373-.15.732.2.358.886 1.46 1.903 2.366 1.305 1.165 2.408 1.527 2.766 1.706.358.179.566.149.776-.09.21-.24.892-1.045 1.131-1.404.24-.358.479-.298.806-.179.327.119 2.084.984 2.441 1.163.358.179.596.268.685.418.089.149.089.866-.205 1.69z"/></svg>
+  <a href="#" data-wa="generic" target="_blank" rel="noopener" class="float-wa" aria-label="WhatsApp ons">
+    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
   </a>
-
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
-    <h5>Cookies</h5>
-    <p data-lang="nl">We gebruiken alleen functionele cookies om je taalvoorkeur te onthouden. Geen tracking, geen advertenties.</p>
-    <p data-lang="en">We only use functional cookies to remember your language preference. No tracking, no ads.</p>
-    <div class="cookie-actions">
-      <button class="cookie-accept" id="cookieAccept"><span data-lang="nl">Akkoord</span><span data-lang="en">OK</span></button>
-      <button class="cookie-decline" id="cookieDecline"><span data-lang="nl">Weigeren</span><span data-lang="en">Decline</span></button>
-    </div>
+  <div class="action-bar">
+    <a href="/booking" class="btn btn-gold"><span data-lang="nl">Online boeken</span><span data-lang="en">Book online</span></a>
+    <a href="#" data-wa="generic" target="_blank" rel="noopener" class="btn btn-wa">
+      <svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
+      WhatsApp
+    </a>
   </div>
 
-  <script src="/script.js"></script>
-  <script>
-    // Filter functionality
-    document.querySelectorAll('.shop-filter').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.shop-filter').forEach(function(b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        var filter = btn.getAttribute('data-filter');
-        document.querySelectorAll('#shopGrid .product-card').forEach(function(card) {
-          if (filter === 'all' || card.getAttribute('data-cat') === filter) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-  </script>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="script.js?v=5"></script>
+  <script src="shop.js?v=5"></script>
 </body>
 </html>
