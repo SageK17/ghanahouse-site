@@ -631,3 +631,13 @@
     });
   }
 })();
+
+/* v6 — markeer de huidige pagina in de navigatie (desktop + mobiel menu) */
+(function () {
+  'use strict';
+  var path = location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+  document.querySelectorAll('.main-nav a, .mobile-menu .m-link').forEach(function (a) {
+    var href = (a.getAttribute('href') || '').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+    if (href === path) a.classList.add('is-current');
+  });
+})();

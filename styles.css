@@ -1329,3 +1329,112 @@ main[style*="padding-top"] > section:first-child { padding-top: 32px; }
   .fx-sheen-host:hover .fx-sheen::before { animation: none; }
   .gh-grain { display: none; }
 }
+
+/* ============================================================
+   v6 — "Alsof Apple & Google het bouwden" voor de hele site.
+   Zelfde kwaliteitslaag als de admin: spring-interacties,
+   elevation, hairlines, verfijnde formulieren en pickers.
+   Huisstijl (noir/cream/goud + vlag) blijft onaangetast.
+   ============================================================ */
+:root {
+  --elev-1: 0 1px 2px rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.22);
+  --elev-2: 0 4px 14px rgba(0,0,0,.30), 0 12px 36px rgba(0,0,0,.28);
+  --hairline-gold: rgba(212,165,22,.18);
+  --ease-spring: cubic-bezier(.2,.8,.2,1);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* ---- Globaal: knoppen met spring-feedback (Apple) ---- */
+button, .btn { transition: transform .14s var(--ease-spring), box-shadow .2s var(--ease-spring), background .2s, color .2s, border-color .2s; }
+button:active, .btn:active { transform: scale(.97); }
+.btn { border-radius: var(--radius-pill); }
+a, button { -webkit-tap-highlight-color: transparent; }
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 4px;
+}
+
+/* ---- Navigatie: huidige pagina gemarkeerd (Google) ---- */
+.main-nav a.is-current { color: var(--gold-bright); }
+.main-nav a.is-current::after { transform: scaleX(1); }
+.mobile-menu .m-link.is-current { color: var(--gold-bright); }
+
+/* ---- Kaarten: consistente elevation + zachte lift ---- */
+.service-card, .shop-card, .review-card, .step-card, .info-tile {
+  box-shadow: var(--elev-1);
+  transition: transform .22s var(--ease-spring), box-shadow .22s var(--ease-spring), border-color .22s;
+}
+.service-card:hover, .shop-card:hover, .review-card:hover, .step-card:hover, .info-tile:hover {
+  box-shadow: var(--elev-2);
+}
+
+/* ---- FAQ: Apple-disclosure-kaarten i.p.v. kale lijst ---- */
+.faq-list { gap: 10px; }
+.faq-item {
+  border: 1px solid var(--hairline-gold);
+  border-bottom: 1px solid var(--hairline-gold);
+  border-radius: 14px;
+  padding: 0;
+  background: rgba(245,237,217,.025);
+  overflow: hidden;
+  transition: border-color .25s, background .25s, box-shadow .25s var(--ease-spring);
+}
+.faq-item:hover { border-color: rgba(212,165,22,.4); }
+.faq-item.open { background: rgba(245,237,217,.045); border-color: rgba(212,165,22,.45); box-shadow: var(--elev-1); }
+.faq-question { padding: 18px 20px; font-size: 18px; }
+.faq-question::after {
+  content: '';
+  width: 28px; height: 28px; flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(212,165,22,.12) url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4A516' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center/14px no-repeat;
+  transition: transform .3s var(--ease-spring), background-color .25s;
+}
+.faq-item.open .faq-question::after { transform: rotate(180deg); background-color: rgba(212,165,22,.22); }
+.faq-answer { padding: 0 20px; transition: max-height .38s var(--ease-spring), padding .3s; }
+.faq-item.open .faq-answer { padding: 0 20px 18px; }
+
+/* ---- Boeken: kalender als Apple date-picker (ronde dagen) ---- */
+.bk-calendar { border-radius: 18px; box-shadow: var(--elev-1); }
+.bk-cal-day {
+  border-radius: 50%;
+  font-variant-numeric: tabular-nums;
+  transition: background .18s, color .18s, border-color .18s, transform .15s var(--ease-spring), box-shadow .18s;
+}
+.bk-cal-day:hover:not(.disabled):not(.other-month):not(.full) { transform: scale(1.08); }
+.bk-cal-day.selected {
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px -4px rgba(212,165,22,.65);
+}
+.bk-cal-day.today { box-shadow: inset 0 0 0 1.5px var(--gold); }
+.bk-cal-day.today::after { display: none; }
+.bk-cal-nav { border-radius: 50%; }
+.bk-cal-nav:active { transform: scale(.92); }
+
+/* Tijden als pills met spring-feedback */
+.bk-time-btn {
+  border-radius: 999px !important;
+  font-variant-numeric: tabular-nums;
+  transition: transform .15s var(--ease-spring), background .18s, border-color .18s, color .18s, box-shadow .18s;
+}
+.bk-time-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: var(--elev-1); }
+.bk-time-btn:active:not(:disabled) { transform: scale(.95); }
+.bk-time-btn.selected { box-shadow: 0 4px 14px -4px rgba(212,165,22,.6); font-weight: 800; }
+
+/* ---- Formulieren: rustiger velden, duidelijke focus ---- */
+.form-field input, .form-field select, .form-field textarea { border-radius: 12px; }
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  box-shadow: 0 0 0 3px rgba(212,165,22,.18);
+}
+
+/* ---- Shop: filter-chips actief duidelijker, drawer-events ---- */
+.shop-filter { transition: transform .15s var(--ease-spring), background .2s, color .2s, border-color .2s; }
+.shop-filter:active { transform: scale(.95); }
+.shop-card-add:active { transform: scale(.94); }
+
+/* ---- Mobiel: grotere tap-targets op interactieve site-delen ---- */
+@media (max-width: 700px) {
+  .faq-question { min-height: 56px; }
+  .avail-slot { min-height: 44px; }
+  .main-nav a, .footer-col a { min-height: 32px; }
+}
