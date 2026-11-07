@@ -1544,7 +1544,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 .review-who small { color: var(--neutral-700); }                   /* 7:1 op cream */
 /* WhatsApp-knoppen: donkere tekst op WhatsApp-groen (10:1 i.p.v. 2:1) */
 .btn-wa, .btn-wa:hover, .float-wa,
-.action-bar a[href*="wa.me"], .mobile-menu-foot a[href*="wa.me"] { color: var(--noir-deep); }
+.action-bar a[href*="wa.me"] { color: var(--noir-deep); }
 @media (max-width: 480px) {
   .eyebrow { letter-spacing: 0.12em; padding: 6px 12px; white-space: nowrap; }
 }
@@ -1638,3 +1638,38 @@ main section[id] { scroll-margin-top: 110px; }
 .bk-summary[hidden] { display: none; }
 .bk-summary strong { color: var(--gold-bright); font-weight: 600; }
 .bk-summary svg { flex: none; width: 18px; height: 18px; color: var(--gold-bright); }
+
+/* ============================================================
+   v8.2 — koppen recht, kalender compact, mobiel menu duidelijk
+   ============================================================ */
+/* Koppen met link ernaast: altijd links uitgelijnd, volle breedte */
+.section-head.row { flex-direction: row; max-width: none; text-align: left; align-items: flex-end; }
+.section-head.row .link-arrow { margin-bottom: 6px; }
+@media (max-width: 680px) {
+  .section-head.row { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 26px; }
+  .section-head.row .link-arrow { margin-bottom: 0; }
+}
+
+/* Kalender: compact blok, cellen max 52px, netjes gecentreerd */
+.bk-calendar { max-width: 520px; margin-left: auto; margin-right: auto; padding: 18px 16px 14px; }
+.bk-cal-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px 2px; justify-items: center; }
+.bk-cal-day { aspect-ratio: auto; width: 100%; max-width: 48px; height: 48px; font-size: 15px; }
+.bk-cal-weekdays { max-width: 100%; }
+.bk-cal-weekdays > div { text-align: center; }
+.bk-cal-month { font-size: 20px; }
+.bk-times { max-width: 520px; margin-left: auto; margin-right: auto; }
+.bk-times-grid { grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); }
+@media (max-width: 480px) { .bk-cal-day { max-width: 42px; height: 42px; font-size: 14px; } .bk-calendar { padding: 14px 10px 10px; } }
+/* Agenda onbereikbaar → leeg kalenderblok verbergen, alleen de uitleg + knoppen */
+.bk-calendar.is-unavailable { display: none; }
+
+/* Mobiel menu: egale achtergrond, duidelijke knop bovenaan, label bij de iconen */
+.mobile-menu { background: var(--noir-deep); }
+.mobile-menu::before { opacity: .35; }
+.mm-cta { display: flex; justify-content: center; gap: 10px; width: 100%; max-width: 480px; margin: 56px auto 28px; padding: 16px 20px; font-size: 14px; position: relative; z-index: 1; }
+.mm-cta svg { width: 18px; height: 18px; }
+.mobile-menu nav a.m-link { font-size: clamp(26px, 7vw, 34px); padding: 14px 0; }
+.mobile-menu-foot { border-top: 0; margin-top: 28px; padding-top: 0; flex-direction: column; align-items: center; gap: 14px; }
+.mm-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,237,217,0.55); font-weight: 700; }
+.mm-icons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.mobile-menu-foot a { color: var(--cream); }

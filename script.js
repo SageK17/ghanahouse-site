@@ -297,6 +297,8 @@ var GH_CF_ANALYTICS_TOKEN = '';
       : 'We kunnen de live beschikbaarheid nu niet laden. Geen probleem — boek direct via WhatsApp of bel ons, dan regelen we het.';
     var waBtn = lang === 'en' ? 'Book via WhatsApp' : 'Boek via WhatsApp';
     var callBtn = lang === 'en' ? 'Call us' : 'Bel ons';
+    var calBox = document.getElementById('bkCalendar'); if (calBox) calBox.classList.add('is-unavailable');
+    var help = document.querySelector('.availability-help'); if (help) help.style.display = 'none';
     availLoading.style.display = 'block';
     availLoading.innerHTML =
       '<div style="text-align:center;padding:8px 0;">' +
