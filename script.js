@@ -656,3 +656,32 @@ var GH_CF_ANALYTICS_TOKEN = '';
     setTimeout(function () { form.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 250);
   } catch (e) {}
 })();
+
+/* v8 — boekformulier: live samenvatting "Je boekt: dienst · dag · tijd" boven de verstuurknop */
+(function () {
+  var sel = document.getElementById('bk-service'), box = document.getElementById('bkSummary'), txt = document.getElementById('bkSummaryText');
+  var dateIn = document.getElementById('bk-date'), timeIn = document.getElementById('bk-time'), grid = document.getElementById('bkTimesGrid');
+  if (!sel || !box || !txt) return;
+  function fmt(dateStr, en) {
+    if (!dateStr) return '';
+    var d = new Date(dateStr + 'T00:00:00');
+    return d.toLocaleDateString(en ? 'en-GB' : 'nl-NL', { weekday: 'long', day: 'numeric', month: 'long' });
+  }
+  function update() {
+    var en = document.documentElement.lang === 'en';
+    var svc = sel.options[sel.selectedIndex] ? sel.options[sel.selectedIndex].value : '';
+    var parts = [];
+    if (svc) parts.push('<strong>' + svc + '</strong>');
+    if (dateIn.value) parts.push(fmt(dateIn.value, en));
+    if (timeIn.value) parts.push('<strong>' + timeIn.value + '</strong>');
+    if (!parts.length) { box.hidden = true; return; }
+    var missing = !svc ? (en ? 'pick a service' : 'kies nog een dienst') : !dateIn.value ? (en ? 'pick a day' : 'kies nog een dag') : !timeIn.value ? (en ? 'pick a time' : 'kies nog een tijd') : '';
+    txt.innerHTML = (en ? 'You are booking: ' : 'Je boekt: ') + parts.join(' · ') + (missing ? ' <span style="opacity:.7">(' + missing + ')</span>' : '');
+    box.hidden = false;
+  }
+  sel.addEventListener('change', update);
+  if (grid) grid.addEventListener('click', function () { setTimeout(update, 0); });
+  document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('.bk-cal-day')) setTimeout(update, 0); });
+  var lt = document.getElementById('langToggle'); if (lt) lt.addEventListener('click', function () { setTimeout(update, 0); });
+  update();
+})();
