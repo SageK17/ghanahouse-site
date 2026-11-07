@@ -415,7 +415,11 @@ var GH_CF_ANALYTICS_TOKEN = '';
     timesLabel.textContent = (lang === 'en' ? 'Pick a time on ' : 'Kies een tijd op ') + dayName + ' ' + dateLabel;
 
     var html = '';
+    var lastGroup = null;
+    var groupNames = lang === 'en' ? ['Morning', 'Afternoon', 'Evening'] : ['Ochtend', 'Middag', 'Avond'];
     day.slots.forEach(function (s) {
+      var g = s.start < 12 * 60 ? 0 : (s.start < 17 * 60 ? 1 : 2);
+      if (g !== lastGroup) { html += '<div class="bk-time-group">' + groupNames[g] + '</div>'; lastGroup = g; }
       var cls = 'bk-time-btn';
       var disabled = '';
       var label = s.time;
