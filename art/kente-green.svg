@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240">
+<defs>
+  <pattern id="weave" width="48" height="48" patternUnits="userSpaceOnUse">
+    <rect width="48" height="48" fill="none"/>
+    <rect x="0" y="0" width="48" height="6" fill="#006B3F" opacity=".55"/>
+    <rect x="0" y="12" width="48" height="2" fill="#F5EDD9" opacity=".18"/>
+    <rect x="0" y="22" width="48" height="6" fill="#00633A" opacity=".5"/>
+    <rect x="0" y="34" width="48" height="2" fill="#F5EDD9" opacity=".18"/>
+    <rect x="0" y="42" width="48" height="6" fill="#D4A516" opacity=".5"/>
+    <rect x="8" y="0" width="2" height="48" fill="#F5EDD9" opacity=".10"/>
+    <rect x="30" y="0" width="2" height="48" fill="#F5EDD9" opacity=".10"/>
+    <path d="M24 16l6 8-6 8-6-8z" fill="#F5EDD9" opacity=".22"/>
+    <path d="M0 40l4 4-4 4zM48 40l-4 4 4 4z" fill="#F5EDD9" opacity=".16"/>
+  </pattern>
+</defs>
+<rect width="240" height="240" fill="url(#weave)"/>
+<g opacity=".35" fill="none" stroke="#F5EDD9" stroke-width="1">
+  <path d="M0 120h240M120 0v240"/>
+  <path d="M60 60l120 120M180 60L60 180" stroke-dasharray="3 9"/>
+</g>
+</svg>

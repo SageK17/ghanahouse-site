@@ -1,4 +1,10 @@
 /* ============================================================
+   GHANA HOUSE — site script
+   Analytics: Cloudflare Web Analytics (gratis, cookieloos).
+   Zet hieronder de token uit het Cloudflare-dashboard; leeg = uit.
+   ============================================================ */
+var GH_CF_ANALYTICS_TOKEN = '';
+/* ============================================================
    GHANA HOUSE v4 — Site script
    ============================================================ */
 (function () {
@@ -99,7 +105,14 @@
         }
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    html.classList.add('js-reveal');
     document.querySelectorAll('.reveal').forEach(function (el) { revealObserver.observe(el); });
+    /* Vangnet (v7): als de observer op een toestel niet vuurt, toon na 1,8s alles wat in beeld is. */
+    setTimeout(function () {
+      document.querySelectorAll('.reveal:not(.in)').forEach(function (el) {
+        if (el.getBoundingClientRect().top < window.innerHeight * 1.1) el.classList.add('in');
+      });
+    }, 1800);
   } else {
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
   }
@@ -640,4 +653,14 @@
     var href = (a.getAttribute('href') || '').replace(/\.html$/, '').replace(/\/$/, '') || '/';
     if (href === path) a.classList.add('is-current');
   });
+})();
+
+/* -- CLOUDFLARE WEB ANALYTICS (alleen op het echte domein, alleen met token) -- */
+(function () {
+  if (!GH_CF_ANALYTICS_TOKEN) return;
+  if (!/(^|\.)ghanahouse\.nl$/.test(location.hostname)) return;
+  var s = document.createElement('script');
+  s.defer = true; s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  s.setAttribute('data-cf-beacon', JSON.stringify({ token: GH_CF_ANALYTICS_TOKEN }));
+  document.body.appendChild(s);
 })();

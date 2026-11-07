@@ -1,7 +1,62 @@
 /* ============================================================
    GHANA HOUSE v4 — Luxe / Editorial / Diagonal
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap');
+/* Fonts zelf gehost (v7): geen requests naar Google, sneller + AVG-vriendelijk.
+   Bestanden in fonts/ — gedownload van Google Fonts (OFL-licentie). */
+/* Fraunces italic latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url(fonts/fraunces-italic-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Fraunces italic latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url(fonts/fraunces-italic-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Fraunces normal latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url(fonts/fraunces-normal-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Fraunces normal latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url(fonts/fraunces-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Inter Tight normal latin-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url(fonts/intertight-normal-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Inter Tight normal latin */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url(fonts/intertight-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 :root {
   --noir: #0F0B08; --noir-soft: #1A1410; --noir-deep: #050302;
@@ -182,8 +237,8 @@ html[lang="en"] .lang-toggle .lang-nl { opacity: 0.4; }
 .hero-content { display: flex; flex-direction: column; gap: 28px; }
 .hero-content h1 { font-family: var(--font-display); font-size: clamp(48px, 9vw, 120px); line-height: 0.95; letter-spacing: -0.03em; font-weight: 400; margin: 0; color: var(--cream); }
 .hero-content h1 em { font-style: italic; font-weight: 300; color: var(--gold-bright); font-variation-settings: "opsz" 144; }
-.hero-content h1 .underline-flag { position: relative; display: inline-block; }
-.hero-content h1 .underline-flag::after { content: ''; position: absolute; left: 0; right: 0; bottom: 8px; height: 4px; background: linear-gradient(90deg, var(--red) 0%, var(--red) 33%, var(--gold) 33%, var(--gold) 66%, var(--green) 66%, var(--green) 100%); z-index: -1; opacity: 0.85; }
+.hero-content h1 .underline-flag { position: relative; display: inline-block; z-index: 0; }
+.hero-content h1 .underline-flag::after { content: ''; position: absolute; left: 0.02em; right: 0.02em; bottom: -0.06em; height: 0.07em; border-radius: 2px; background: linear-gradient(90deg, var(--red) 0%, var(--red) 33%, var(--gold) 33%, var(--gold) 66%, var(--green) 66%, var(--green) 100%); z-index: -1; opacity: 0.85; }
 .hero-lead { font-size: clamp(16px, 1.6vw, 19px); color: rgba(245, 237, 217, 0.78); max-width: 540px; line-height: 1.55; }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
 .hero-stats { display: flex; gap: 36px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(212, 165, 22, 0.2); }
@@ -313,8 +368,8 @@ html[lang="en"] .lang-toggle .lang-nl { opacity: 0.4; }
 .story-content > * + * { margin-top: 22px; }
 .story-content p { color: rgba(245, 237, 217, 0.75); line-height: 1.7; font-size: 16px; }
 .section-cream .story-content p { color: var(--neutral-700); }
-.story-quote { border-left: 3px solid var(--gold); padding-left: 24px; font-family: var(--font-display); font-style: italic; font-size: 22px; font-weight: 400; line-height: 1.4; color: var(--cream); }
-.section-cream .story-quote { color: var(--noir); }
+.story-quote { position: relative; border-left: 1px solid rgba(212,165,22,0.45); padding-left: 24px; font-family: var(--font-display); font-style: italic; font-size: 22px; font-weight: 400; line-height: 1.4; color: var(--cream); }
+.section-cream .story-quote { color: var(--noir); border-left-color: rgba(155,123,11,0.4); }
 
 /* FOOTER */
 .site-footer { background: var(--noir-deep); color: var(--cream); padding: 80px var(--gutter) 32px; position: relative; }
@@ -353,8 +408,10 @@ html[lang="en"] .lang-toggle .lang-nl { opacity: 0.4; }
 .cookie-banner .cookie-decline { background: transparent; color: var(--cream); border: 1px solid rgba(245, 237, 217, 0.3); }
 
 /* SCROLL REVEALS */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1); will-change: opacity, transform; }
+.reveal { transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1); will-change: opacity, transform; }
 .reveal.in { opacity: 1; transform: translateY(0); }
+/* v7: inhoud is standaard zichtbaar; alleen verborgen als JS de observer echt heeft gestart (html.js-reveal). */
+html.js-reveal .reveal:not(.in) { opacity: 0; transform: translateY(28px); }
 .reveal-delay-1 { transition-delay: 0.08s; }
 .reveal-delay-2 { transition-delay: 0.16s; }
 .reveal-delay-3 { transition-delay: 0.24s; }
@@ -1041,7 +1098,7 @@ button:focus:not(:focus-visible) { outline: none; }
 .review-stars { color: var(--gold-deep); letter-spacing: 2px; font-size: 16px; }
 .review-card p { color: var(--noir); font-size: 15.5px; line-height: 1.6; margin: 0; font-style: italic; }
 .review-who { display: flex; align-items: center; gap: 12px; margin-top: auto; }
-.review-av { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: var(--cream); font-family: var(--font-display); font-weight: 600; background: linear-gradient(140deg, var(--gold-deep), var(--red)); }
+.review-av { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: var(--noir-deep); font-family: var(--font-display); font-weight: 600; background: linear-gradient(140deg, var(--gold), var(--gold-bright)); box-shadow: 0 4px 14px -6px rgba(0,0,0,.6); }
 .review-who strong { display: block; font-family: var(--font-display); font-weight: 500; color: var(--noir); font-size: 15px; }
 .review-who small { color: var(--neutral-500); font-size: 12.5px; }
 
@@ -1271,16 +1328,14 @@ main[style*="padding-top"] > section:first-child { padding-top: 32px; }
 }
 .section-noir > * { position: relative; z-index: 1; }
 
-/* Shimmer the gold emphasis words in section headings */
+/* Goud-accent in koppen (v7): massief, geen gradient-tekst; zachte gloed op donker */
 .section-title em {
-  background: linear-gradient(100deg, var(--gold-deep) 0%, var(--gold-bright) 40%, #fff3c9 50%, var(--gold-bright) 60%, var(--gold-deep) 100%);
-  background-size: 220% 100%;
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: transparent;
-  animation: goldSweep 7s ease-in-out infinite;
+  color: var(--gold-bright);
+  -webkit-text-fill-color: currentColor;
+  background: none;
+  text-shadow: 0 0 28px rgba(244, 196, 48, 0.28);
 }
-.section-cream .section-title em { filter: saturate(1.1) brightness(0.92); }
-@keyframes goldSweep { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+.section-cream .section-title em { color: var(--gold-deep); text-shadow: none; }
 
 /* Richer hover on the main card families */
 .service-card, .shop-card, .review-card, .step-card, .gallery-item, .stat-cell {
@@ -1437,4 +1492,62 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
   .faq-question { min-height: 56px; }
   .avail-slot { min-height: 44px; }
   .main-nav a, .footer-col a { min-height: 32px; }
+}
+
+/* ============================================================
+   v7 — BRAND-ART FOTO-SLOTS · UTILITY-BAR MOBIEL · FONTS LOKAAL
+   Tot Victoria's foto's er zijn: kente-geïnspireerd geweven patroon
+   (art/kente-*.svg) over de bestaande gradients, monogram blijft.
+   ============================================================ */
+.hero-visual-inner::before,
+.story-visual::before,
+.g-tile-fallback::before {
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background-image: url(art/kente-gold.svg);
+  background-size: 240px 240px;
+  opacity: .55;
+  -webkit-mask-image: linear-gradient(160deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.85) 100%);
+          mask-image: linear-gradient(160deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.85) 100%);
+}
+.hero-visual-inner::before { background-image: url(art/kente-flag.svg); background-size: 300px 300px; opacity: .42; }
+.story-visual::before { background-image: url(art/kente-gold.svg); opacity: .5; }
+.g-tile-fallback { position: absolute; inset: 0; }
+.g-tile:nth-child(1) .g-tile-fallback::before { background-image: url(art/kente-gold.svg); }
+.g-tile:nth-child(2) .g-tile-fallback::before { background-image: url(art/kente-noir.svg); opacity: .7; }
+.g-tile:nth-child(3) .g-tile-fallback::before { background-image: url(art/kente-flag.svg); opacity: .45; }
+.g-tile:nth-child(4) .g-tile-fallback::before { background-image: url(art/kente-green.svg); }
+.g-tile-fallback svg { position: relative; z-index: 2; width: 44px; height: 44px; color: rgba(245,237,217,0.78); filter: drop-shadow(0 2px 10px rgba(0,0,0,.5)); }
+.g-tile-fallback::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, transparent 45%, rgba(5,3,2,.72) 100%); pointer-events: none; }
+/* fijne gouden rand zodat de tegels als bewuste 'studio-kaarten' lezen, niet als lege boxen */
+.hero-visual, .story-visual, .g-tile { outline: 1px solid rgba(212,165,22,.22); outline-offset: -1px; }
+
+/* Utility-bar op mobiel: één regel, geen wrap */
+@media (max-width: 680px) {
+  .utility-bar-inner { gap: 12px; font-size: 12px; white-space: nowrap; justify-content: space-between; }
+  .u-rating { gap: 6px; }
+  .u-rating .u-stars { font-size: 11px; letter-spacing: .5px; }
+  .u-right { gap: 12px; }
+  .u-right a[href^="tel"] { display: none; }
+}
+@media (max-width: 380px) {
+  .u-rating .u-stars { display: none; }
+}
+
+/* Browser-oppervlakken in de huisstijl */
+::selection { background: rgba(212,165,22,.45); color: #fff; }
+.section-cream ::selection { background: rgba(155,123,11,.35); color: var(--noir); }
+
+/* v7 — toegankelijkheid: leesbare minimumgroottes en contrast (WCAG AA) */
+.eyebrow, .hero-stat-label, .hero-side-strip-label, .visual-caption,
+.service-card .service-method-badge, .workwith .ww-eyebrow, .shop-card-cat { font-size: 11px; }
+.brand-logo-text small { font-size: 10.5px; letter-spacing: 0.18em; }
+.section-cream .eyebrow { color: #7D620B; }                       /* 5.0:1 op cream */
+.section-cream .service-duration, .section-cream .form-field .hint,
+.section-cream .availability-help, .section-cream .bk-cal-weekdays > div,
+.review-who small { color: var(--neutral-700); }                   /* 7:1 op cream */
+/* WhatsApp-knoppen: donkere tekst op WhatsApp-groen (10:1 i.p.v. 2:1) */
+.btn-wa, .btn-wa:hover, .float-wa,
+.action-bar a[href*="wa.me"], .mobile-menu-foot a[href*="wa.me"] { color: var(--noir-deep); }
+@media (max-width: 480px) {
+  .eyebrow { letter-spacing: 0.12em; padding: 6px 12px; white-space: nowrap; }
 }

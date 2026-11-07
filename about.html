@@ -13,14 +13,18 @@
   <meta property="og:title" content="Over ons — Ghana House" />
   <meta property="og:description" content="Het verhaal van Ghana House — Victoria's reis van Accra naar Enschede. Ghanees vakmanschap in Twente." />
   <meta property="og:url" content="https://ghanahouse.nl/about" />
-  <meta property="og:image" content="https://ghanahouse.nl/logo.png" />
+  <meta property="og:image" content="https://ghanahouse.nl/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="nl_NL" />
   <meta property="og:locale:alternate" content="en_GB" />
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Over ons — Ghana House" />
   <meta name="twitter:description" content="Het verhaal van Ghana House — Victoria's reis van Accra naar Enschede. Ghanees vakmanschap in Twente." />
-  <meta name="twitter:image" content="https://ghanahouse.nl/logo.png" />
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <meta name="twitter:image" content="https://ghanahouse.nl/og.png" />
+  <link rel="preload" href="fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/intertight-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body>
   <a class="skip-link" href="#main"><span data-lang="nl">Naar inhoud</span><span data-lang="en">Skip to content</span></a>
@@ -100,7 +104,8 @@
         <div class="story-grid">
           <div class="story-visual reveal">
             <!-- FOTO: photos/victoria.jpg verschijnt hier automatisch zodra toegevoegd. -->
-            <img class="visual-photo" src="photos/victoria.jpg" alt="Victoria — founder Ghana House" onerror="this.remove()" />
+            <!-- FOTO-SLOT: zodra photos/victoria.jpg bestaat, haal dit commentaar weg zodat de img-regel actief wordt:
+                 <img class="visual-photo" src="photos/victoria.jpg" alt="Victoria — founder Ghana House" loading="lazy" /> -->
             <div class="story-visual-text">V</div>
             <span class="visual-caption"><span data-lang="nl">Foto volgt</span><span data-lang="en">Photo coming</span></span>
           </div>
@@ -164,7 +169,8 @@
           </div>
           <div class="story-visual reveal reveal-delay-1">
             <!-- FOTO: photos/salon.jpg (de ruimte / interieur) verschijnt hier automatisch. -->
-            <img class="visual-photo" src="photos/salon.jpg" alt="Ghana House salon in Enschede" onerror="this.remove()" />
+            <!-- FOTO-SLOT: zodra photos/salon.jpg bestaat, haal dit commentaar weg zodat de img-regel actief wordt:
+                 <img class="visual-photo" src="photos/salon.jpg" alt="Ghana House salon in Enschede" loading="lazy" /> -->
             <div class="story-visual-text">E</div>
             <span class="visual-caption"><span data-lang="nl">Foto volgt</span><span data-lang="en">Photo coming</span></span>
           </div>
@@ -232,6 +238,6 @@
 
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>

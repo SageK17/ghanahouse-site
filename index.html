@@ -13,14 +13,18 @@
   <meta property="og:title" content="Ghana House — Premium Extensions &amp; Barber in Enschede" />
   <meta property="og:description" content="Ghana House — Enschede's premium beauty & barber. Extensions, lace frontals, knipbeurten, kids cuts. Korte Haaksbergerstraat 19. Boek via WhatsApp of online." />
   <meta property="og:url" content="https://ghanahouse.nl/" />
-  <meta property="og:image" content="https://ghanahouse.nl/logo.png" />
+  <meta property="og:image" content="https://ghanahouse.nl/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="nl_NL" />
   <meta property="og:locale:alternate" content="en_GB" />
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Ghana House — Premium Extensions &amp; Barber in Enschede" />
   <meta name="twitter:description" content="Ghana House — Enschede's premium beauty & barber. Extensions, lace frontals, knipbeurten, kids cuts. Korte Haaksbergerstraat 19. Boek via WhatsApp of online." />
-  <meta name="twitter:image" content="https://ghanahouse.nl/logo.png" />
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <meta name="twitter:image" content="https://ghanahouse.nl/og.png" />
+  <link rel="preload" href="fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/intertight-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body>
   <a class="skip-link" href="#main"><span data-lang="nl">Naar inhoud</span><span data-lang="en">Skip to content</span></a>
@@ -147,7 +151,8 @@
         <div class="hero-visual reveal reveal-delay-2">
           <div class="hero-visual-inner">
             <!-- FOTO: zet een staande foto (bv. een mooi resultaat) als photos/hero.jpg — verschijnt dan automatisch. -->
-            <img class="visual-photo" src="photos/hero.jpg" alt="Ghana House werk" onerror="this.remove()" />
+            <!-- FOTO-SLOT: zodra photos/hero.jpg bestaat, haal dit commentaar weg zodat de img-regel actief wordt:
+                 <img class="visual-photo" src="photos/hero.jpg" alt="Ghana House werk" loading="lazy" /> -->
             <span class="hero-visual-logo">GH</span>
             <span class="visual-caption"><span data-lang="nl">Foto volgt</span><span data-lang="en">Photo coming</span></span>
           </div>
@@ -401,22 +406,26 @@
         </div>
         <div class="gallery-grid">
           <figure class="g-tile reveal">
-            <img class="visual-photo" src="photos/gallery1.jpg" alt="Sew-in extensions" onerror="this.remove()" />
+            <!-- FOTO-SLOT: zodra photos/gallery1.jpg bestaat, haal dit commentaar weg zodat de img-regel actief wordt:
+                 <img class="visual-photo" src="photos/gallery1.jpg" alt="Sew-in extensions" loading="lazy" /> -->
             <div class="g-tile-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V11"/><path d="M12 11C12 7 9 5 4 5c0 4 3 6 8 6Z"/><path d="M12 11c0-3.5 2.5-5.5 7-5.5 0 3.5-2.5 5.5-7 5.5Z"/></svg></div>
             <span class="g-tile-label">Sew-in extensions</span>
           </figure>
           <figure class="g-tile reveal reveal-delay-1">
-            <img class="visual-photo" src="photos/gallery2.jpg" alt="Lace frontal" onerror="this.remove()" />
+            <!-- FOTO-SLOT: zodra photos/gallery2.jpg bestaat, haal dit commentaar weg zodat de img-regel actief wordt:
+                 <img class="visual-photo" src="photos/gallery2.jpg" alt="Lace frontal" loading="lazy" /> -->
             <div class="g-tile-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="9" r="5"/><path d="M5 21c1.5-4 4-6 7-6s5.5 2 7 6"/></svg></div>
             <span class="g-tile-label">Lace frontal</span>
           </figure>
           <figure class="g-tile reveal reveal-delay-2">
-            <img class="visual-photo" src="photos/gallery3.jpg" alt="Box braids" onerror="this.remove()" />
+            <!-- FOTO-SLOT: zodra photos/gallery3.jpg bestaat, haal dit commentaar weg zodat de img-regel actief wordt:
+                 <img class="visual-photo" src="photos/gallery3.jpg" alt="Box braids" loading="lazy" /> -->
             <div class="g-tile-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v18M12 3v18M16 3v18"/></svg></div>
             <span class="g-tile-label">Box braids</span>
           </figure>
           <figure class="g-tile reveal reveal-delay-3">
-            <img class="visual-photo" src="photos/gallery4.jpg" alt="Fresh cut" onerror="this.remove()" />
+            <!-- FOTO-SLOT: zodra photos/gallery4.jpg bestaat, haal dit commentaar weg zodat de img-regel actief wordt:
+                 <img class="visual-photo" src="photos/gallery4.jpg" alt="Fresh cut" loading="lazy" /> -->
             <div class="g-tile-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5 20 18M8.5 15.5 20 6"/></svg></div>
             <span class="g-tile-label"><span data-lang="nl">Knippen</span><span data-lang="en">Fresh cut</span></span>
           </figure>
@@ -430,7 +439,8 @@
         <div class="story-grid">
           <div class="story-visual reveal">
             <!-- FOTO: zet een portretfoto van Victoria als photos/victoria.jpg — verschijnt dan automatisch. -->
-            <img class="visual-photo" src="photos/victoria.jpg" alt="Victoria — Ghana House" onerror="this.remove()" />
+            <!-- FOTO-SLOT: zodra photos/victoria.jpg bestaat, haal dit commentaar weg zodat de img-regel actief wordt:
+                 <img class="visual-photo" src="photos/victoria.jpg" alt="Victoria — Ghana House" loading="lazy" /> -->
             <div class="story-visual-text">V</div>
             <span class="visual-caption"><span data-lang="nl">Foto volgt</span><span data-lang="en">Photo coming</span></span>
           </div>
@@ -617,6 +627,6 @@
   </div>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>

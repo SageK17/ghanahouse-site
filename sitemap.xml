@@ -8,4 +8,5 @@
   <url><loc>https://ghanahouse.nl/faq</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ghanahouse.nl/social</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://ghanahouse.nl/shop</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ghanahouse.nl/privacy</loc><lastmod>2026-11-07</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
 </urlset>
