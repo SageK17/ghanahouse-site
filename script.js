@@ -135,10 +135,13 @@ var GH_CF_ANALYTICS_TOKEN = '';
   });
 
   /* -- WHATSAPP PREFILL LINKS ------------------------------------------ */
-  function bookingMsg() {
-    return html.lang === 'en'
-      ? "Hi! I'd like to book an appointment at Ghana House. Service: [SERVICE]. Date/time preference: [DATE/TIME]. Name: [NAME]"
-      : "Hoi! Ik wil graag een afspraak maken bij Ghana House. Dienst: [DIENST]. Datum/tijd voorkeur: [DATUM/TIJD]. Naam: [NAAM]";
+  function bookingMsg(service) {
+    /* v8: als de link een data-service heeft, staat de dienst al ingevuld (minder typen = lagere drempel) */
+    var en = html.lang === 'en';
+    var svc = service || (en ? '[SERVICE]' : '[DIENST]');
+    return en
+      ? "Hi! I'd like to book an appointment at Ghana House. Service: " + svc + ". Date/time preference: [DATE/TIME]. Name: [NAME]"
+      : "Hoi! Ik wil graag een afspraak maken bij Ghana House. Dienst: " + svc + ". Datum/tijd voorkeur: [DATUM/TIJD]. Naam: [NAAM]";
   }
   function genericMsg() {
     return html.lang === 'en'
@@ -147,7 +150,7 @@ var GH_CF_ANALYTICS_TOKEN = '';
   }
   function updateWaLinks() {
     document.querySelectorAll('[data-wa="booking"]').forEach(function (a) {
-      a.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(bookingMsg());
+      a.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(bookingMsg(a.getAttribute('data-service')));
     });
     document.querySelectorAll('[data-wa="generic"]').forEach(function (a) {
       a.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(genericMsg());
@@ -559,24 +562,7 @@ var GH_CF_ANALYTICS_TOKEN = '';
   'use strict';
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Inject grain + scroll-progress nodes once */
-  try {
-    if (!reduce && !document.querySelector('.gh-grain')) {
-      var grain = document.createElement('div'); grain.className = 'gh-grain'; document.body.appendChild(grain);
-    }
-    var prog = document.createElement('div'); prog.className = 'gh-progress'; document.body.appendChild(prog);
-    var progTick = false;
-    function updateProgress() {
-      var h = document.documentElement;
-      var max = (h.scrollHeight - h.clientHeight) || 1;
-      prog.style.width = Math.min(100, (h.scrollTop / max) * 100) + '%';
-      progTick = false;
-    }
-    window.addEventListener('scroll', function () {
-      if (!progTick) { requestAnimationFrame(updateProgress); progTick = true; }
-    }, { passive: true });
-    updateProgress();
-  } catch (e) {}
+  /* v8: filmkorrel en scroll-progressbalk verwijderd (rust) */
 
   /* Count-up numbers when they scroll into view */
   function animateCount(el) {
@@ -612,15 +598,7 @@ var GH_CF_ANALYTICS_TOKEN = '';
     document.querySelectorAll('.hero-stat-num, .stat-n').forEach(function (el) { countObs.observe(el); });
   }
 
-  /* Card sheen — wrap eligible static cards with a sweep overlay */
-  try {
-    document.querySelectorAll('.service-card, .review-card, .step-card, .gallery-item').forEach(function (card) {
-      if (card.querySelector(':scope > .fx-sheen')) return;
-      card.classList.add('fx-sheen-host');
-      var i = document.createElement('i'); i.className = 'fx-sheen'; i.setAttribute('aria-hidden', 'true');
-      card.appendChild(i);
-    });
-  } catch (e) {}
+  /* v8: kaart-sheen verwijderd */
 
   /* Staggered scroll-reveal for grid children that weren't already tagged */
   if ('IntersectionObserver' in window) {
@@ -663,4 +641,18 @@ var GH_CF_ANALYTICS_TOKEN = '';
   s.defer = true; s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
   s.setAttribute('data-cf-beacon', JSON.stringify({ token: GH_CF_ANALYTICS_TOKEN }));
   document.body.appendChild(s);
+})();
+
+/* v8 — /booking?service=Knippen zet de dienst alvast klaar en scrolt naar het formulier */
+(function () {
+  try {
+    var svc = new URLSearchParams(location.search).get('service');
+    var sel = document.getElementById('bk-service');
+    if (!svc || !sel) return;
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value.toLowerCase() === svc.toLowerCase()) { sel.selectedIndex = i; sel.dispatchEvent(new Event('change', { bubbles: true })); break; }
+    }
+    var form = sel.closest('form') || sel;
+    setTimeout(function () { form.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 250);
+  } catch (e) {}
 })();

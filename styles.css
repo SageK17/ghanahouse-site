@@ -408,10 +408,10 @@ html[lang="en"] .lang-toggle .lang-nl { opacity: 0.4; }
 .cookie-banner .cookie-decline { background: transparent; color: var(--cream); border: 1px solid rgba(245, 237, 217, 0.3); }
 
 /* SCROLL REVEALS */
-.reveal { transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1); will-change: opacity, transform; }
+.hero .reveal { transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1); }
 .reveal.in { opacity: 1; transform: translateY(0); }
 /* v7: inhoud is standaard zichtbaar; alleen verborgen als JS de observer echt heeft gestart (html.js-reveal). */
-html.js-reveal .reveal:not(.in) { opacity: 0; transform: translateY(28px); }
+html.js-reveal .hero .reveal:not(.in) { opacity: 0; transform: translateY(28px); }
 .reveal-delay-1 { transition-delay: 0.08s; }
 .reveal-delay-2 { transition-delay: 0.16s; }
 .reveal-delay-3 { transition-delay: 0.24s; }
@@ -1310,8 +1310,6 @@ main[style*="padding-top"] > section:first-child { padding-top: 32px; }
 }
 
 /* Living hero glows — drift the existing radial blobs */
-.hero::before { animation: auroraDriftA 16s ease-in-out infinite alternate; }
-.hero::after  { animation: auroraDriftB 22s ease-in-out infinite alternate; }
 @keyframes auroraDriftA { from { transform: translate(0,0) scale(1); } to { transform: translate(8%, 6%) scale(1.18); } }
 @keyframes auroraDriftB { from { transform: translate(0,0) scale(1); } to { transform: translate(-7%, -5%) scale(1.22); } }
 
@@ -1324,7 +1322,6 @@ main[style*="padding-top"] > section:first-child { padding-top: 32px; }
     radial-gradient(45% 60% at 85% 80%, rgba(184,19,31,0.14) 0%, transparent 60%),
     radial-gradient(35% 45% at 70% 15%, rgba(0,99,58,0.10) 0%, transparent 60%);
   filter: blur(40px);
-  animation: auroraDriftA 20s ease-in-out infinite alternate;
 }
 .section-noir > * { position: relative; z-index: 1; }
 
@@ -1551,3 +1548,81 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 @media (max-width: 480px) {
   .eyebrow { letter-spacing: 0.12em; padding: 6px 12px; white-space: nowrap; }
 }
+
+/* ============================================================
+   v8 — RUSTIGE HOMEPAGE LANGS DE KLANTREIS
+   Oriënteren → werk zien → vergelijken → vertrouwen → kopen → terugkomen.
+   Eén bewuste entree-animatie (hero), verder statisch.
+   ============================================================ */
+.hero-calm .hero-inner { padding-right: var(--gutter); }
+.hero-calm { min-height: auto; padding-top: clamp(140px, 18vh, 200px); padding-bottom: clamp(56px, 8vw, 96px); }
+.hero-calm .hero-content { gap: 24px; }
+.hero-calm .hero-lead { max-width: 520px; }
+.hero-rating { display: inline-flex; align-items: center; gap: 10px; margin-top: 4px; font-size: 14px; color: rgba(245,237,217,0.78); font-weight: 500; width: fit-content; }
+.hero-rating .hr-stars { color: var(--gold-bright); letter-spacing: 1px; font-size: 13px; }
+.hero-rating:hover { color: var(--gold-bright); }
+.hero-calm .hero-visual { max-width: 440px; justify-self: end; }
+@media (max-width: 980px) { .hero-calm .hero-visual { max-width: 100%; justify-self: stretch; aspect-ratio: 4/3; } }
+
+.section-tight { padding-top: clamp(40px, 6vw, 80px); }
+.section-head.row { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 36px; }
+.section-head.row .section-title { margin: 0; }
+.link-arrow { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--gold); padding-bottom: 6px; border-bottom: 1px solid rgba(212,165,22,0.35); transition: color .2s, border-color .2s; }
+.link-arrow:hover { color: var(--gold-bright); border-color: var(--gold-bright); }
+.section-cream .link-arrow { color: var(--gold-deep); border-color: rgba(155,123,11,0.4); }
+.gallery-grid .g-tile-label { font-size: 13px; }
+
+/* Dienstenlijst */
+.svc-list { display: flex; flex-direction: column; border-top: 1px solid rgba(15,11,8,0.14); margin-top: 8px; }
+.svc-row { display: grid; grid-template-columns: 1.6fr 0.8fr 0.9fr auto; align-items: center; gap: 18px; padding: 18px 10px; border-bottom: 1px solid rgba(15,11,8,0.12); color: var(--noir); transition: background .2s, padding-left .25s var(--ease); border-radius: 6px; }
+.svc-row:hover { background: rgba(212,165,22,0.09); padding-left: 16px; }
+.svc-name { font-family: var(--font-display); font-size: 20px; font-weight: 500; letter-spacing: -0.01em; }
+.svc-dur, .svc-price { font-size: 14px; color: var(--neutral-700); }
+.svc-price { font-weight: 600; color: var(--noir); }
+.svc-route { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; padding: 6px 10px; border-radius: var(--radius-pill); white-space: nowrap; }
+.svc-route.wa { background: rgba(0,99,58,0.10); color: var(--green); }
+.svc-route.online { background: rgba(155,123,11,0.12); color: #7D620B; }
+.svc-note { margin: 28px 0 0; font-size: 15px; color: var(--neutral-700); line-height: 1.6; }
+.svc-note a { color: var(--gold-deep); font-weight: 600; border-bottom: 1px solid rgba(155,123,11,0.4); }
+@media (max-width: 680px) {
+  .svc-row { grid-template-columns: 1fr auto; grid-template-areas: "name route" "meta route"; gap: 6px 14px; padding: 16px 6px; }
+  .svc-name { grid-area: name; font-size: 18px; }
+  .svc-dur { grid-area: meta; }
+  .svc-price { grid-area: meta; justify-self: end; display: none; }
+  .svc-route { grid-area: route; align-self: center; }
+}
+
+/* Boekroutes */
+.route-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 18px; margin-top: 8px; }
+.route-card { display: flex; flex-direction: column; gap: 14px; padding: 32px 30px; border-radius: var(--radius-lg); background: var(--cream-soft); border: 1px solid rgba(15,11,8,0.10); color: var(--noir); box-shadow: 0 18px 40px -28px rgba(15,11,8,0.35); transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .2s; }
+.route-card:hover { transform: translateY(-3px); box-shadow: 0 26px 50px -28px rgba(15,11,8,0.45); border-color: rgba(212,165,22,0.5); }
+.route-card.primary { background: var(--noir); color: var(--cream); border-color: rgba(212,165,22,0.3); }
+.route-card.primary p { color: rgba(245,237,217,0.78); }
+.route-card h3 { font-family: var(--font-display); font-size: 28px; font-weight: 500; letter-spacing: -0.02em; margin: 0; }
+.route-card p { margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--neutral-700); flex: 1; }
+.route-tag { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: #7D620B; }
+.route-card.primary .route-tag { color: var(--gold); }
+.route-card .btn { align-self: flex-start; margin-top: 6px; pointer-events: none; }
+@media (max-width: 760px) { .route-grid { grid-template-columns: 1fr; } .route-card { padding: 26px 22px; } .route-card h3 { font-size: 24px; } }
+
+/* Bezoek */
+.visit-band { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+.visit-band .section-title { margin: 0 0 14px; }
+.visit-facts { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 26px 32px; padding-top: 10px; }
+.visit-facts dt { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+.visit-facts dd { margin: 0; font-size: 16px; line-height: 1.5; color: var(--cream); }
+.visit-facts dd a { border-bottom: 1px solid rgba(212,165,22,0.35); transition: color .2s, border-color .2s; }
+.visit-facts dd a:hover { color: var(--gold-bright); border-color: var(--gold-bright); }
+.visit-more { margin: 44px 0 0; padding-top: 24px; border-top: 1px solid rgba(212,165,22,0.18); font-size: 14.5px; color: rgba(245,237,217,0.7); }
+.visit-more a { color: var(--gold); font-weight: 600; }
+.visit-more a:hover { color: var(--gold-bright); }
+@media (max-width: 860px) { .visit-band { grid-template-columns: 1fr; gap: 28px; } }
+@media (max-width: 480px) { .visit-facts { grid-template-columns: 1fr; gap: 20px; } }
+
+.hero-trust { list-style: none; margin: 2px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: rgba(245,237,217,0.6); }
+.hero-trust li { display: inline-flex; align-items: center; gap: 8px; }
+.hero-trust li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: .8; }
+
+/* Vaste afspraak-knop in de header (desktop); mobiel heeft de sticky actiebalk */
+.header-cta { padding: 10px 18px; font-size: 12.5px; letter-spacing: 0.04em; margin-right: 4px; }
+@media (max-width: 980px) { .header-cta { display: none; } }

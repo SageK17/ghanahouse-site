@@ -24,7 +24,7 @@
   <meta name="twitter:image" content="https://ghanahouse.nl/og.png" />
   <link rel="preload" href="fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/intertight-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
   <a class="skip-link" href="#main"><span data-lang="nl">Naar inhoud</span><span data-lang="en">Skip to content</span></a>
@@ -56,12 +56,12 @@
         <a href="/services"><span data-lang="nl">Diensten</span><span data-lang="en">Services</span></a>
         <a href="/booking"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
         <a href="/social"><span data-lang="nl">Social</span><span data-lang="en">Social</span></a>
-        <a href="/shop">Shop</a>
         <a href="/visit"><span data-lang="nl">Bezoek</span><span data-lang="en">Visit</span></a>
         <a href="/about"><span data-lang="nl">Over ons</span><span data-lang="en">About</span></a>
         <a href="/faq">FAQ</a>
       </nav>
       <div class="header-actions">
+        <a href="#" data-wa="booking" target="_blank" rel="noopener" class="btn btn-gold header-cta"><span data-lang="nl">Afspraak maken</span><span data-lang="en">Book now</span></a>
         <button class="lang-toggle" type="button" id="langToggle" aria-label="Switch language">
           <span class="lang-nl">NL</span><span style="opacity:.4">/</span><span class="lang-en">EN</span>
         </button>
@@ -81,7 +81,6 @@
       <a href="/services" class="m-link"><span data-lang="nl">Diensten</span><span data-lang="en">Services</span></a>
       <a href="/booking" class="m-link"><span data-lang="nl">Boeken</span><span data-lang="en">Book</span></a>
       <a href="/social" class="m-link"><span data-lang="nl">Social</span><span data-lang="en">Social</span></a>
-      <a href="/shop" class="m-link">Shop</a>
       <a href="/visit" class="m-link"><span data-lang="nl">Bezoek</span><span data-lang="en">Visit</span></a>
       <a href="/about" class="m-link"><span data-lang="nl">Over ons</span><span data-lang="en">About</span></a>
       <a href="/faq" class="m-link">FAQ</a>
@@ -104,453 +103,203 @@
 
   <main id="main" tabindex="-1">
 
-    <!-- HERO -->
-    <section class="hero">
+    <!-- 1 · ORIËNTEREN — hero: één boodschap, één beeld, één primaire route -->
+    <section class="hero hero-calm">
       <div class="hero-inner">
         <div class="hero-content">
-          <span class="eyebrow reveal">
-            <span data-lang="nl">Enschede · Premium beauty &amp; barber</span>
-            <span data-lang="en">Enschede · Premium beauty &amp; barber</span>
-          </span>
-          <h1 class="reveal reveal-delay-1">
+          <h1 class="reveal">
             <span data-lang="nl"><span class="underline-flag">Jouw haar</span>,<br />jouw <em>identiteit</em>.</span>
             <span data-lang="en"><span class="underline-flag">Your hair</span>,<br />your <em>identity</em>.</span>
           </h1>
-          <p class="hero-lead reveal reveal-delay-2">
-            <span data-lang="nl">Extensions, lace frontals, knipbeurten en kinderknip — uitgevoerd met Ghanese vakmanschap, midden in Enschede.</span>
-            <span data-lang="en">Extensions, lace frontals, men's cuts and kids cuts — Ghanaian craftsmanship in the heart of Enschede.</span>
+          <p class="hero-lead reveal reveal-delay-1">
+            <span data-lang="nl">Extensions, lace frontals, braids en knipbeurten in Enschede. Ghanees vakmanschap voor zwart en mixed haar.</span><span data-lang="en">Extensions, lace frontals, braids and cuts in Enschede. Ghanaian craftsmanship for black and mixed hair.</span>
           </p>
-          <div class="hero-actions reveal reveal-delay-3">
-            <a href="/booking" class="btn btn-gold">
-              <span data-lang="nl">Online boeken</span>
-              <span data-lang="en">Book online</span>
+          <div class="hero-actions reveal reveal-delay-2">
+            <a href="#" data-wa="booking" target="_blank" rel="noopener" class="btn btn-gold">
+              <svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
+              <span data-lang="nl">Afspraak via WhatsApp</span><span data-lang="en">Book via WhatsApp</span>
             </a>
-            <a href="#" data-wa="booking" target="_blank" rel="noopener" class="btn btn-outline">
-              <svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
-              WhatsApp
-            </a>
-          </div>
-          <div class="hero-stats reveal reveal-delay-4">
-            <div class="hero-stat">
-              <div class="hero-stat-num">10+</div>
-              <div class="hero-stat-label" data-lang="nl">Jaar ervaring</div>
-              <div class="hero-stat-label" data-lang="en">Years experience</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-num">2</div>
-              <div class="hero-stat-label" data-lang="nl">Stylisten</div>
-              <div class="hero-stat-label" data-lang="en">Stylists</div>
-            </div>
-            <a class="hero-stat" href="https://share.google/lDGjUx62SWGhLpPBK" target="_blank" rel="noopener" aria-label="Ghana House op Google">
-              <div class="hero-stat-num">★★★★★</div>
-              <div class="hero-stat-label" data-lang="nl">Op Google</div>
-              <div class="hero-stat-label" data-lang="en">On Google</div>
+            <a href="/booking" class="btn btn-outline">
+              <span data-lang="nl">Knippen online boeken</span><span data-lang="en">Book a cut online</span>
             </a>
           </div>
+          <a class="hero-rating reveal reveal-delay-3" href="https://share.google/lDGjUx62SWGhLpPBK" target="_blank" rel="noopener">
+            <span class="hr-stars" aria-hidden="true">★★★★★</span>
+            <span data-lang="nl">4,7 op Google · 39 reviews</span><span data-lang="en">4.7 on Google · 39 reviews</span>
+          </a>
+          <ul class="hero-trust reveal reveal-delay-3">
+            <li><span data-lang="nl">10+ jaar ervaring</span><span data-lang="en">10+ years experience</span></li>
+            <li><span data-lang="nl">Alleen virgin &amp; Remy haar</span><span data-lang="en">Only virgin &amp; Remy hair</span></li>
+            <li><span data-lang="nl">Twee stoelen, alleen op afspraak</span><span data-lang="en">Two chairs, by appointment only</span></li>
+          </ul>
         </div>
-        <div class="hero-visual reveal reveal-delay-2">
+        <div class="hero-visual reveal reveal-delay-1">
           <div class="hero-visual-inner">
-            <!-- FOTO: zet een staande foto (bv. een mooi resultaat) als photos/hero.jpg — verschijnt dan automatisch. -->
             <!-- FOTO-SLOT: zodra photos/hero.jpg bestaat, haal dit commentaar weg zodat de img-regel actief wordt:
-                 <img class="visual-photo" src="photos/hero.jpg" alt="Ghana House werk" loading="lazy" /> -->
+                 <img class="visual-photo" src="photos/hero.jpg" alt="Ghana House werk" /> -->
             <span class="hero-visual-logo">GH</span>
-            <span class="visual-caption"><span data-lang="nl">Foto volgt</span><span data-lang="en">Photo coming</span></span>
-          </div>
-          <a class="proof-card proof-rating" href="https://share.google/lDGjUx62SWGhLpPBK" target="_blank" rel="noopener">
-            <div>
-              <div class="pr-num">4,7</div>
-              <div class="pr-stars">★★★★★</div>
-              <div class="pr-sub"><span data-lang="nl">39 Google reviews</span><span data-lang="en">39 Google reviews</span></div>
-            </div>
-          </a>
-          <div class="proof-card proof-book">
-            <strong><span class="pb-dot"></span><span data-lang="nl">Vandaag nog plek</span><span data-lang="en">Spots today</span></strong>
-            <small><span data-lang="nl">Knippen direct online te boeken</span><span data-lang="en">Cuts bookable online now</span></small>
-          </div>
-        </div>
-      </div>
-
-      <!-- Diagonal social strip -->
-      <div class="hero-side-strip">
-        <div class="hero-side-strip-inner">
-          <span class="hero-side-strip-label">Follow</span>
-          <a href="https://instagram.com/extensions_barbershop" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-          <a href="https://tiktok.com/@extensions_barbershop" target="_blank" rel="noopener" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V9.05a8.16 8.16 0 0 0 4.77 1.52V7.5a4.85 4.85 0 0 1-1.84-.81z"/></svg>
-          </a>
-          <a href="https://facebook.com/vickyronny" target="_blank" rel="noopener" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- TRUST STRIP -->
-    <div class="trust-strip">
-      <div class="trust-strip-inner">
-        <div class="trust-item reveal">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V11"/><path d="M12 11C12 7 9 5 4 5c0 4 3 6 8 6Z"/><path d="M12 11c0-3.5 2.5-5.5 7-5.5 0 3.5-2.5 5.5-7 5.5Z"/></svg>
-          <div><strong><span data-lang="nl">Ghanees vakmanschap</span><span data-lang="en">Ghanaian craft</span></strong><span data-lang="nl">10+ jaar ervaring</span><span data-lang="en">10+ years experience</span></div>
-        </div>
-        <div class="trust-item reveal reveal-delay-1">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 5-9 13L3 8Z"/><path d="M3 8h18"/></svg>
-          <div><strong><span data-lang="nl">Virgin &amp; Remy haar</span><span data-lang="en">Virgin &amp; Remy hair</span></strong><span data-lang="nl">Geen synthetisch</span><span data-lang="en">No synthetic</span></div>
-        </div>
-        <div class="trust-item reveal reveal-delay-2">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.8 2.4 4.2 5.5 4.2 9s-1.4 6.6-4.2 9c-2.8-2.4-4.2-5.5-4.2-9S9.2 5.4 12 3Z"/></svg>
-          <div><strong><span data-lang="nl">Zwart &amp; mixed haar</span><span data-lang="en">Black &amp; mixed hair</span></strong><span data-lang="nl">Elke textuur welkom</span><span data-lang="en">Every texture welcome</span></div>
-        </div>
-        <div class="trust-item reveal reveal-delay-3">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.3 6.8 19l1-5.75-4.2-4.1 5.8-.85Z"/></svg>
-          <div><strong><span data-lang="nl">Persoonlijk &amp; op afspraak</span><span data-lang="en">Personal &amp; by appointment</span></strong><span data-lang="nl">Twee stoelen, alle aandacht</span><span data-lang="en">Two chairs, full attention</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MARQUEE -->
-    <div class="marquee">
-      <div class="marquee-track">
-        <span data-lang="nl">Extensions</span><span data-lang="en">Extensions</span>
-        <span data-lang="nl">Lace frontals</span><span data-lang="en">Lace frontals</span>
-        <span data-lang="nl">Knippen</span><span data-lang="en">Cuts</span>
-        <span data-lang="nl">Kids cut</span><span data-lang="en">Kids cut</span>
-        <span data-lang="nl">Box braids</span><span data-lang="en">Box braids</span>
-        <span data-lang="nl">Twist outs</span><span data-lang="en">Twist outs</span>
-        <span data-lang="nl">Cornrows</span><span data-lang="en">Cornrows</span>
-        <span data-lang="nl">Wig install</span><span data-lang="en">Wig install</span>
-      </div>
-    </div>
-
-    <!-- SERVICES — asymmetric grid on cream -->
-    <section class="section-cream">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow"><span data-lang="nl">Onze diensten</span><span data-lang="en">Our services</span></span>
-          <h2 class="section-title"><span data-lang="nl">Vakmanschap, <em>in detail</em>.</span><span data-lang="en">Craftsmanship, <em>in detail</em>.</span></h2>
-          <p class="section-intro"><span data-lang="nl">Van premium extensions tot strakke knipbeurten — alles met dezelfde aandacht voor wie jij bent.</span><span data-lang="en">From premium extensions to crisp cuts — everything with the same attention to who you are.</span></p>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card featured span-7 reveal">
-            <span class="service-number">01</span>
-            <h3><span data-lang="nl">Sew-in extensions</span><span data-lang="en">Sew-in extensions</span></h3>
-            <p><span data-lang="nl">Onze signature dienst — gevlochten basis, naadloze inhechting. Houdbaar 6-8 weken.</span><span data-lang="en">Our signature service — braided base, seamless install. Lasts 6-8 weeks.</span></p>
-            <div class="service-meta">
-              <span class="service-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></span>
-              <span class="service-duration" data-lang="nl">3-5 uur · Op afspraak</span>
-              <span class="service-duration" data-lang="en">3-5 hours · By appointment</span>
-            </div>
-          </article>
-
-          <article class="service-card span-5 reveal reveal-delay-1">
-            <span class="service-number">02</span>
-            <h3>Lace frontals</h3>
-            <p><span data-lang="nl">HD lace, custom kleur match. Natuurlijke haarlijn.</span><span data-lang="en">HD lace, custom color match. Natural hairline.</span></p>
-            <div class="service-meta">
-              <span class="service-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></span>
-              <span class="service-duration" data-lang="nl">4-6 uur</span>
-              <span class="service-duration" data-lang="en">4-6 hours</span>
-            </div>
-          </article>
-
-          <article class="service-card span-4 reveal">
-            <span class="service-number">03</span>
-            <h3><span data-lang="nl">Knippen</span><span data-lang="en">Cut</span></h3>
-            <p><span data-lang="nl">Fade, taper, line-up. Strakke afwerking.</span><span data-lang="en">Fade, taper, line-up. Crisp finish.</span></p>
-            <div class="service-meta">
-              <span class="service-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></span>
-              <span class="service-duration">15-20 min</span>
-            </div>
-          </article>
-
-          <article class="service-card span-4 reveal reveal-delay-1">
-            <span class="service-number">04</span>
-            <h3><span data-lang="nl">Kinderknip</span><span data-lang="en">Kids cut</span></h3>
-            <p><span data-lang="nl">Geduldig en speels. Voor jongens t/m 12.</span><span data-lang="en">Patient and playful. For boys up to 12.</span></p>
-            <div class="service-meta">
-              <span class="service-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></span>
-              <span class="service-duration">15-20 min</span>
-            </div>
-          </article>
-
-          <article class="service-card span-4 reveal reveal-delay-2">
-            <span class="service-number">05</span>
-            <h3>Box braids</h3>
-            <p><span data-lang="nl">Knee-length tot bob — vlechten in elke lengte.</span><span data-lang="en">Knee-length to bob — braids in every length.</span></p>
-            <div class="service-meta">
-              <span class="service-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></span>
-              <span class="service-duration" data-lang="nl">4-8 uur</span>
-              <span class="service-duration" data-lang="en">4-8 hours</span>
-            </div>
-          </article>
-
-          <article class="service-card span-6 reveal">
-            <span class="service-number">06</span>
-            <h3><span data-lang="nl">Closures &amp; toppers</span><span data-lang="en">Closures &amp; toppers</span></h3>
-            <p><span data-lang="nl">4×4 closures voor dekking aan de kruin met natuurlijke parting.</span><span data-lang="en">4×4 closures for crown coverage with natural parting.</span></p>
-            <div class="service-meta">
-              <span class="service-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></span>
-              <span class="service-duration" data-lang="nl">3-5 uur</span>
-              <span class="service-duration" data-lang="en">3-5 hours</span>
-            </div>
-          </article>
-
-          <article class="service-card span-6 reveal reveal-delay-1">
-            <span class="service-number">07</span>
-            <h3>Twist outs &amp; cornrows</h3>
-            <p><span data-lang="nl">Cornrows, twist outs, dutch braids — alle protective styles.</span><span data-lang="en">Cornrows, twist outs, dutch braids — all protective styles.</span></p>
-            <div class="service-meta">
-              <span class="service-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></span>
-              <span class="service-duration" data-lang="nl">1-3 uur</span>
-              <span class="service-duration" data-lang="en">1-3 hours</span>
-            </div>
-          </article>
-        </div>
-
-        <div style="margin-top: 56px; text-align: center;" class="reveal">
-          <a href="/services" class="btn btn-outline-dark">
-            <span data-lang="nl">Alle diensten →</span>
-            <span data-lang="en">All services →</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- STATS -->
-    <section class="section-noir">
-      <div class="container">
-        <div class="stat-band reveal">
-          <div class="stat-band-grid">
-            <div class="stat-cell"><div class="stat-n">10+</div><div class="stat-l"><span data-lang="nl">Jaar vakmanschap</span><span data-lang="en">Years of craft</span></div></div>
-            <a class="stat-cell" href="https://share.google/lDGjUx62SWGhLpPBK" target="_blank" rel="noopener" style="display:block"><div class="stat-n">4,7</div><div class="stat-l"><span data-lang="nl">★ op Google · 39 reviews</span><span data-lang="en">★ on Google · 39 reviews</span></div></a>
-            <div class="stat-cell"><div class="stat-n">2</div><div class="stat-l"><span data-lang="nl">Stoelen, alle aandacht</span><span data-lang="en">Chairs, full attention</span></div></div>
-            <div class="stat-cell"><div class="stat-n">100%</div><div class="stat-l"><span data-lang="nl">Op afspraak, persoonlijk</span><span data-lang="en">By appointment, personal</span></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WHY US — features on dark -->
-    <section class="section-dark">
+    <!-- 2 · WERK ZIEN — galerij direct onder de hero -->
+    <section class="section-dark section-tight">
       <div class="container">
-        <div class="section-head center reveal">
-          <span class="eyebrow"><span data-lang="nl">Waarom Ghana House</span><span data-lang="en">Why Ghana House</span></span>
-          <h2 class="section-title"><span data-lang="nl">Meer dan een <em>salon</em>.</span><span data-lang="en">More than a <em>salon</em>.</span></h2>
-        </div>
-
-        <div class="features-row">
-          <div class="feature-item reveal">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V11"/><path d="M12 11C12 7 9 5 4 5c0 4 3 6 8 6Z"/><path d="M12 11c0-3.5 2.5-5.5 7-5.5 0 3.5-2.5 5.5-7 5.5Z"/></svg>
-            </div>
-            <h3><span data-lang="nl">Ghanese roots</span><span data-lang="en">Ghanaian roots</span></h3>
-            <p><span data-lang="nl">Technieken doorgegeven van generatie op generatie, voor zwart en gemengd haar van elke textuur.</span><span data-lang="en">Techniques passed down across generations, for black and mixed hair of every texture.</span></p>
-          </div>
-          <div class="feature-item reveal reveal-delay-1">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 5-9 13L3 8Z"/><path d="M3 8h18"/><path d="M9 3 7.5 8 12 21l4.5-13L15 3"/></svg>
-            </div>
-            <h3><span data-lang="nl">Premium materialen</span><span data-lang="en">Premium materials</span></h3>
-            <p><span data-lang="nl">Alleen virgin / Remy haar van bekende leveranciers. Lace fronts in HD-kwaliteit. Geen synthetisch.</span><span data-lang="en">Only virgin / Remy hair from known suppliers. HD-quality lace fronts. No synthetic.</span></p>
-          </div>
-          <div class="feature-item reveal reveal-delay-2">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 14a2 2 0 0 1-2 2H8l-4 3V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2Z"/><path d="M8.5 9.5h7M8.5 12.5h4"/></svg>
-            </div>
-            <h3><span data-lang="nl">Persoonlijk advies</span><span data-lang="en">Personal advice</span></h3>
-            <p><span data-lang="nl">Geen rush, geen template. We praten over jouw haartype, levensstijl, en wat past bij wie jij bent.</span><span data-lang="en">No rush, no template. We talk about your hair type, lifestyle, and what fits who you are.</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROCESS -->
-    <section class="section-cream">
-      <div class="container">
-        <div class="section-head center reveal">
-          <span class="eyebrow"><span data-lang="nl">Zo werkt het</span><span data-lang="en">How it works</span></span>
-          <h2 class="section-title"><span data-lang="nl">Een afspraak in <em>drie stappen</em>.</span><span data-lang="en">An appointment in <em>three steps</em>.</span></h2>
-        </div>
-        <div class="process-grid">
-          <div class="process-step reveal">
-            <span class="ps-num"></span>
-            <h3><span data-lang="nl">Kies je dienst</span><span data-lang="en">Pick your service</span></h3>
-            <p><span data-lang="nl">Knippen? Boek meteen online. Extensions, braids of frontals? Stuur een WhatsApp — dan stemmen we eerst je haartype en wensen af.</span><span data-lang="en">A cut? Book online right away. Extensions, braids or frontals? Send a WhatsApp so we can first discuss your hair type and wishes.</span></p>
-          </div>
-          <div class="process-step reveal reveal-delay-1">
-            <span class="ps-num"></span>
-            <h3><span data-lang="nl">Wij bevestigen</span><span data-lang="en">We confirm</span></h3>
-            <p><span data-lang="nl">Je krijgt snel een bevestiging — meestal binnen een uur tijdens openingstijden — met datum, tijd en alle details.</span><span data-lang="en">You get a quick confirmation, usually within an hour during opening hours, with date, time and all details.</span></p>
-          </div>
-          <div class="process-step reveal reveal-delay-2">
-            <span class="ps-num"></span>
-            <h3><span data-lang="nl">Tot in de salon</span><span data-lang="en">See you at the salon</span></h3>
-            <p><span data-lang="nl">Kom langs aan de Korte Haaksbergerstraat. Twee stoelen, geen rush — alle aandacht voor jouw haar.</span><span data-lang="en">Drop by on Korte Haaksbergerstraat. Two chairs, no rush — full attention for your hair.</span></p>
-          </div>
-        </div>
-        <div style="margin-top: 44px; text-align: center;" class="reveal">
-          <a href="/booking" class="btn btn-outline-dark"><span data-lang="nl">Plan je afspraak →</span><span data-lang="en">Plan your appointment →</span></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="section-dark">
-      <div class="container">
-        <div class="section-head center reveal">
-          <span class="eyebrow"><span data-lang="nl">Recent werk</span><span data-lang="en">Recent work</span></span>
-          <h2 class="section-title"><span data-lang="nl">Resultaat dat je <em>ziet</em>.</span><span data-lang="en">Results you can <em>see</em>.</span></h2>
-          <p class="section-intro" style="margin-left:auto;margin-right:auto;"><span data-lang="nl">Een greep uit ons werk. Echte foto's volgen binnenkort.</span><span data-lang="en">A glimpse of our work. Real photos coming soon.</span></p>
+        <div class="section-head row">
+          <h2 class="section-title"><span data-lang="nl">Ons <em>werk</em>.</span><span data-lang="en">Our <em>work</em>.</span></h2>
+          <a class="link-arrow" href="https://instagram.com/extensions_barbershop" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> <span data-lang="nl">Meer op Instagram</span><span data-lang="en">More on Instagram</span></a>
         </div>
         <div class="gallery-grid">
-          <figure class="g-tile reveal">
+          <figure class="g-tile">
             <!-- FOTO-SLOT: zodra photos/gallery1.jpg bestaat, haal dit commentaar weg zodat de img-regel actief wordt:
                  <img class="visual-photo" src="photos/gallery1.jpg" alt="Sew-in extensions" loading="lazy" /> -->
-            <div class="g-tile-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V11"/><path d="M12 11C12 7 9 5 4 5c0 4 3 6 8 6Z"/><path d="M12 11c0-3.5 2.5-5.5 7-5.5 0 3.5-2.5 5.5-7 5.5Z"/></svg></div>
-            <span class="g-tile-label">Sew-in extensions</span>
+            <div class="g-tile-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22V11"/><path d="M12 11C12 7 9 5 4 5c0 4 3 6 8 6Z"/><path d="M12 11c0-3.5 2.5-5.5 7-5.5 0 3.5-2.5 5.5-7 5.5Z"/></svg></div>
+            <figcaption class="g-tile-label"><span data-lang="nl">Sew-in extensions</span><span data-lang="en">Sew-in extensions</span></figcaption>
           </figure>
-          <figure class="g-tile reveal reveal-delay-1">
+          <figure class="g-tile">
             <!-- FOTO-SLOT: zodra photos/gallery2.jpg bestaat, haal dit commentaar weg zodat de img-regel actief wordt:
                  <img class="visual-photo" src="photos/gallery2.jpg" alt="Lace frontal" loading="lazy" /> -->
-            <div class="g-tile-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="9" r="5"/><path d="M5 21c1.5-4 4-6 7-6s5.5 2 7 6"/></svg></div>
-            <span class="g-tile-label">Lace frontal</span>
+            <div class="g-tile-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M5 21c1.5-4 4-6 7-6s5.5 2 7 6"/></svg></div>
+            <figcaption class="g-tile-label"><span data-lang="nl">Lace frontal</span><span data-lang="en">Lace frontal</span></figcaption>
           </figure>
-          <figure class="g-tile reveal reveal-delay-2">
+          <figure class="g-tile">
             <!-- FOTO-SLOT: zodra photos/gallery3.jpg bestaat, haal dit commentaar weg zodat de img-regel actief wordt:
                  <img class="visual-photo" src="photos/gallery3.jpg" alt="Box braids" loading="lazy" /> -->
-            <div class="g-tile-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v18M12 3v18M16 3v18"/></svg></div>
-            <span class="g-tile-label">Box braids</span>
+            <div class="g-tile-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 3v18M12 3v18M16 3v18"/></svg></div>
+            <figcaption class="g-tile-label"><span data-lang="nl">Box braids</span><span data-lang="en">Box braids</span></figcaption>
           </figure>
-          <figure class="g-tile reveal reveal-delay-3">
+          <figure class="g-tile">
             <!-- FOTO-SLOT: zodra photos/gallery4.jpg bestaat, haal dit commentaar weg zodat de img-regel actief wordt:
-                 <img class="visual-photo" src="photos/gallery4.jpg" alt="Fresh cut" loading="lazy" /> -->
-            <div class="g-tile-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5 20 18M8.5 15.5 20 6"/></svg></div>
-            <span class="g-tile-label"><span data-lang="nl">Knippen</span><span data-lang="en">Fresh cut</span></span>
+                 <img class="visual-photo" src="photos/gallery4.jpg" alt="Knippen" loading="lazy" /> -->
+            <div class="g-tile-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5 20 18M8.5 15.5 20 6"/></svg></div>
+            <figcaption class="g-tile-label"><span data-lang="nl">Knippen</span><span data-lang="en">Fresh cut</span></figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <!-- STORY -->
+    <!-- 3 · VERGELIJKEN — diensten als rustige lijst -->
     <section class="section-cream">
-      <div class="container">
-        <div class="story-grid">
-          <div class="story-visual reveal">
-            <!-- FOTO: zet een portretfoto van Victoria als photos/victoria.jpg — verschijnt dan automatisch. -->
-            <!-- FOTO-SLOT: zodra photos/victoria.jpg bestaat, haal dit commentaar weg zodat de img-regel actief wordt:
-                 <img class="visual-photo" src="photos/victoria.jpg" alt="Victoria — Ghana House" loading="lazy" /> -->
-            <div class="story-visual-text">V</div>
-            <span class="visual-caption"><span data-lang="nl">Foto volgt</span><span data-lang="en">Photo coming</span></span>
-          </div>
-          <div class="story-content reveal reveal-delay-1">
-            <span class="eyebrow"><span data-lang="nl">Het verhaal</span><span data-lang="en">The story</span></span>
-            <h2 class="section-title" style="margin-top: 8px;"><span data-lang="nl">Van Accra naar <em>Enschede</em>.</span><span data-lang="en">From Accra to <em>Enschede</em>.</span></h2>
-            <p><span data-lang="nl">Ghana House is meer dan een salon — het is Victoria's verhaal. Geboren in Ghana, geboren met scharen en kammen in de hand. Wat begon als familietraditie groeide uit tot een plek waar mensen uit heel Nederland naartoe komen.</span><span data-lang="en">Ghana House is more than a salon — it's Victoria's story. Born in Ghana, born with scissors and combs in hand. What started as family tradition grew into a place where people from all over the Netherlands come.</span></p>
-            <div class="story-quote"><span data-lang="nl">"Haar is geen accessoire — het is een gesprek tussen jou en de wereld."</span><span data-lang="en">"Hair is not an accessory — it's a conversation between you and the world."</span></div>
-            <div style="margin-top: 28px;">
-              <a href="/about" class="btn btn-outline-dark">
-                <span data-lang="nl">Lees meer over ons</span>
-                <span data-lang="en">Read more about us</span>
-              </a>
-            </div>
-          </div>
+      <div class="container-narrow">
+        <div class="section-head">
+          <h2 class="section-title"><span data-lang="nl">Diensten en <em>tijden</em>.</span><span data-lang="en">Services and <em>times</em>.</span></h2>
+          <p class="section-intro"><span data-lang="nl">Knipbeurten plan je direct online. Voor extensions, frontals en braids app je ons: we bespreken eerst je haartype en wensen, dan prikken we een tijd. Twijfel je wat bij je past? Stuur een foto, advies is gratis en vrijblijvend.</span><span data-lang="en">Cuts are booked online. For extensions, frontals and braids, message us: we discuss your hair type and wishes first, then pick a time. Not sure what suits you? Send a photo, advice is free and without obligation.</span></p>
         </div>
+        <div class="svc-list">
+          <a class="svc-row" href="#" data-wa="booking" data-service="Sew-in extensions" target="_blank" rel="noopener">
+            <span class="svc-name"><span data-lang="nl">Sew-in extensions</span><span data-lang="en">Sew-in extensions</span></span>
+            <span class="svc-dur"><span data-lang="nl">3-5 uur</span><span data-lang="en">3-5 hours</span></span>
+            <span class="svc-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></span>
+            <span class="svc-route wa"><span data-lang="nl">Via WhatsApp</span><span data-lang="en">Via WhatsApp</span></span>
+          </a>
+          <a class="svc-row" href="#" data-wa="booking" data-service="Lace frontals" target="_blank" rel="noopener">
+            <span class="svc-name"><span data-lang="nl">Lace frontals</span><span data-lang="en">Lace frontals</span></span>
+            <span class="svc-dur"><span data-lang="nl">4-6 uur</span><span data-lang="en">4-6 hours</span></span>
+            <span class="svc-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></span>
+            <span class="svc-route wa"><span data-lang="nl">Via WhatsApp</span><span data-lang="en">Via WhatsApp</span></span>
+          </a>
+          <a class="svc-row" href="#" data-wa="booking" data-service="Closures / toppers" target="_blank" rel="noopener">
+            <span class="svc-name"><span data-lang="nl">Closures &amp; toppers</span><span data-lang="en">Closures &amp; toppers</span></span>
+            <span class="svc-dur"><span data-lang="nl">3-5 uur</span><span data-lang="en">3-5 hours</span></span>
+            <span class="svc-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></span>
+            <span class="svc-route wa"><span data-lang="nl">Via WhatsApp</span><span data-lang="en">Via WhatsApp</span></span>
+          </a>
+          <a class="svc-row" href="#" data-wa="booking" data-service="Box braids" target="_blank" rel="noopener">
+            <span class="svc-name"><span data-lang="nl">Box braids</span><span data-lang="en">Box braids</span></span>
+            <span class="svc-dur"><span data-lang="nl">4-8 uur</span><span data-lang="en">4-8 hours</span></span>
+            <span class="svc-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></span>
+            <span class="svc-route wa"><span data-lang="nl">Via WhatsApp</span><span data-lang="en">Via WhatsApp</span></span>
+          </a>
+          <a class="svc-row" href="#" data-wa="booking" data-service="Twist outs / cornrows" target="_blank" rel="noopener">
+            <span class="svc-name"><span data-lang="nl">Twist outs &amp; cornrows</span><span data-lang="en">Twist outs &amp; cornrows</span></span>
+            <span class="svc-dur"><span data-lang="nl">1-3 uur</span><span data-lang="en">1-3 hours</span></span>
+            <span class="svc-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></span>
+            <span class="svc-route wa"><span data-lang="nl">Via WhatsApp</span><span data-lang="en">Via WhatsApp</span></span>
+          </a>
+          <a class="svc-row" href="/booking?service=Knippen">
+            <span class="svc-name"><span data-lang="nl">Knippen</span><span data-lang="en">Cut</span></span>
+            <span class="svc-dur"><span data-lang="nl">15-20 min</span><span data-lang="en">15-20 min</span></span>
+            <span class="svc-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></span>
+            <span class="svc-route online"><span data-lang="nl">Online te boeken</span><span data-lang="en">Book online</span></span>
+          </a>
+          <a class="svc-row" href="/booking?service=Kinderknip">
+            <span class="svc-name"><span data-lang="nl">Kinderknip (t/m 12)</span><span data-lang="en">Kids cut (up to 12)</span></span>
+            <span class="svc-dur"><span data-lang="nl">15-20 min</span><span data-lang="en">15-20 min</span></span>
+            <span class="svc-price"><span data-lang="nl">Op aanvraag</span><span data-lang="en">On request</span></span>
+            <span class="svc-route online"><span data-lang="nl">Online te boeken</span><span data-lang="en">Book online</span></span>
+          </a>
+        </div>
+        <p class="svc-note"><span data-lang="nl">Alleen virgin en Remy haar, geen synthetisch. Twee stoelen, alle aandacht.</span><span data-lang="en">Only virgin and Remy hair, never synthetic. Two chairs, full attention.</span> <a href="/services"><span data-lang="nl">Alle diensten en uitleg →</span><span data-lang="en">All services and details →</span></a></p>
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
+    <!-- 4 · VERTROUWEN — echte Google-reviews -->
     <section class="section-noir">
       <div class="container">
-        <div class="section-head center reveal">
-          <span class="eyebrow"><span data-lang="nl">Wat klanten zeggen</span><span data-lang="en">What clients say</span></span>
-          <h2 class="section-title"><span data-lang="nl">Geliefd, ver buiten <em>Enschede</em>.</span><span data-lang="en">Loved, far beyond <em>Enschede</em>.</span></h2>
+        <div class="section-head row">
+          <h2 class="section-title"><span data-lang="nl">Wat klanten <em>zeggen</em>.</span><span data-lang="en">What clients <em>say</em>.</span></h2>
+          <a class="link-arrow" href="https://share.google/lDGjUx62SWGhLpPBK" target="_blank" rel="noopener"><span class="hr-stars" aria-hidden="true">★★★★★</span> <span data-lang="nl">4,7 van 5 · alle 39 reviews op Google</span><span data-lang="en">4.7 out of 5 · all 39 reviews on Google</span></a>
         </div>
         <div class="reviews-grid">
-          <article class="review-card reveal">
-            <div class="review-stars">★★★★★</div>
-            <p><span data-lang="nl">"Wat een geweldige zaak! Super warm welkom, de kwaliteit van het haar is top, en Vicky — wauw, wat een professional. Ze luistert echt naar je wensen en denkt met je mee; mijn haar ziet er prachtig uit. Zoek je hoogwaardige extensions en goede service, dan zit je hier goed."</span><span data-lang="en">"What a great business! A super warm welcome, the quality of the hair is amazing, and Vicky, what a professional. She listens carefully to your wishes and thinks along with you; my hair looks beautiful. If you're looking for high-quality extensions and good service, you've come to the right place."</span></p>
+          <article class="review-card">
+            <div class="review-stars" aria-label="5 sterren">★★★★★</div>
+            <p><span data-lang="nl">“Wat een geweldige zaak! Super warm welkom, de kwaliteit van het haar is top, en Vicky — wauw, wat een professional. Ze luistert echt naar je wensen en denkt met je mee; mijn haar ziet er prachtig uit.”</span><span data-lang="en">“What a great business! A super warm welcome, the quality of the hair is amazing, and Vicky, what a professional. She listens carefully to your wishes and thinks along with you; my hair looks beautiful.”</span></p>
             <div class="review-who"><div class="review-av">G</div><div><strong>Galila Kamphuis</strong><small>Google review</small></div></div>
           </article>
-          <article class="review-card reveal reveal-delay-1">
-            <div class="review-stars">★★★★★</div>
-            <p><span data-lang="nl">"Topkapper voor Afro-haar. Knipt het haar van mijn zoon elke twee weken perfect. Makkelijk een afspraak te maken en heel goed met kinderen."</span><span data-lang="en">"Great Afro hairdresser. Cuts my son's hair perfectly every two weeks. Easy to schedule an appointment, and they're great with kids."</span></p>
+          <article class="review-card">
+            <div class="review-stars" aria-label="5 sterren">★★★★★</div>
+            <p><span data-lang="nl">“Topkapper voor Afro-haar. Knipt het haar van mijn zoon elke twee weken perfect. Makkelijk een afspraak te maken en heel goed met kinderen.”</span><span data-lang="en">“Great Afro hairdresser. Cuts my son's hair perfectly every two weeks. Easy to schedule an appointment, and they're great with kids.”</span></p>
             <div class="review-who"><div class="review-av">P</div><div><strong>Patrick</strong><small>Local Guide · Google</small></div></div>
           </article>
-          <article class="review-card reveal reveal-delay-2">
-            <div class="review-stars">★★★★★</div>
-            <p><span data-lang="nl">"Een van de beste Afrikaanse salons in Enschede, met allerlei verschillende kapsels."</span><span data-lang="en">"One of the best African salons in Enschede, with all kinds of different hairstyles."</span></p>
+          <article class="review-card">
+            <div class="review-stars" aria-label="5 sterren">★★★★★</div>
+            <p><span data-lang="nl">“Een van de beste Afrikaanse salons in Enschede, met allerlei verschillende kapsels.”</span><span data-lang="en">“One of the best African salons in Enschede, with all kinds of different hairstyles.”</span></p>
             <div class="review-who"><div class="review-av">O</div><div><strong>Ogunlana O.</strong><small>Google review</small></div></div>
           </article>
         </div>
-        <div style="margin-top: 40px; text-align: center;" class="reveal">
-          <a href="https://share.google/lDGjUx62SWGhLpPBK" target="_blank" rel="noopener" class="btn btn-outline"><span data-lang="nl">Lees alle reviews op Google →</span><span data-lang="en">Read all reviews on Google →</span></a>
-        </div>
       </div>
     </section>
 
-    <!-- SERVICE AREA -->
-    <section class="section-cream">
-      <div class="container">
-        <div class="area-grid">
-          <div class="reveal">
-            <span class="eyebrow"><span data-lang="nl">Waar we zitten</span><span data-lang="en">Where we are</span></span>
-            <h2 class="section-title" style="margin: 8px 0 16px;"><span data-lang="nl">In Enschede, klanten uit <em>heel Nederland</em>.</span><span data-lang="en">In Enschede, clients from <em>across the country</em>.</span></h2>
-            <p class="section-intro"><span data-lang="nl">Onze klanten komen niet alleen uit Enschede en Twente, maar uit heel Nederland — sommigen reizen er met plezier voor. Vlak bij het centrum en goed bereikbaar met auto, fiets of OV.</span><span data-lang="en">Our clients come not just from Enschede and the region, but from across the Netherlands — some happily travel for it. Close to the centre, easy to reach by car, bike or public transport.</span></p>
-            <ul class="area-pills">
-              <li>Enschede</li><li>Hengelo</li><li>Deventer</li><li>Apeldoorn</li><li>Zwolle</li><li>Arnhem</li><li><span data-lang="nl">&amp; heel Nederland</span><span data-lang="en">&amp; nationwide</span></li>
-            </ul>
-            <div style="margin-top: 28px;">
-              <a href="/visit" class="btn btn-outline-dark"><span data-lang="nl">Plan je bezoek →</span><span data-lang="en">Plan your visit →</span></a>
-            </div>
-          </div>
-          <div class="area-map reveal reveal-delay-1">
-            <div class="am-lines"></div>
-            <div class="am-pin">
-              <div class="am-dot"></div>
-              <span class="am-label">Korte Haaksbergerstraat 19</span>
-            </div>
-          </div>
+    <!-- 5 · KOPEN — één boekblok met de twee routes -->
+    <section class="section-cream" id="boeken">
+      <div class="container-narrow">
+        <div class="section-head">
+          <h2 class="section-title"><span data-lang="nl">Zo maak je een <em>afspraak</em>.</span><span data-lang="en">How to <em>book</em>.</span></h2>
         </div>
-      </div>
-    </section>
-
-    <!-- WORK WITH US / CHAIR RENTAL -->
-    <section class="section-cream" style="padding-top: 0;">
-      <div class="container">
-        <div class="workwith reveal">
-          <div>
-            <span class="ww-eyebrow"><span data-lang="nl">Werken bij Ghana House</span><span data-lang="en">Work with Ghana House</span></span>
-            <h3><span data-lang="nl">Stoel te huur — en een plek vrij in ons team.</span><span data-lang="en">A chair to rent — and a spot open in our team.</span></h3>
-            <p><span data-lang="nl">Ben je stylist, barber of vlechtspecialist en zoek je een mooie plek? We hebben een stoel te huur én een vacature. Werk zelfstandig of als collega — in een warme, drukbezochte salon.</span><span data-lang="en">Are you a stylist, barber or braiding specialist looking for a great spot? We have a chair to rent and a vacancy. Work independently or as a colleague, in a warm, busy salon.</span></p>
-          </div>
-          <a href="https://wa.me/31687030400?text=Hoi%20Ghana%20House%2C%20ik%20heb%20interesse%20in%20een%20stoel%20huren%20%2F%20de%20vacature." target="_blank" rel="noopener" class="btn btn-wa">
-            <svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
-            <span data-lang="nl">Neem contact op</span><span data-lang="en">Get in touch</span>
+        <div class="route-grid">
+          <a class="route-card primary" href="#" data-wa="booking" target="_blank" rel="noopener">
+            <span class="route-tag">Extensions · frontals · braids · wigs</span>
+            <h3><span data-lang="nl">Stuur een WhatsApp</span><span data-lang="en">Send a WhatsApp</span></h3>
+            <p><span data-lang="nl">Je bericht staat al voor je klaar, je hoeft alleen je wens en voorkeursdatum in te vullen. We stemmen haartype, lengte en kleur af en reageren meestal binnen een uur (di t/m za). Met twee stoelen zijn plekken beperkt: hoe eerder je appt, hoe meer keuze in tijden.</span><span data-lang="en">Your message is pre-written, you only add your wish and preferred date. We match hair type, length and colour and usually reply within the hour (Tue to Sat). With two chairs, spots are limited: the sooner you message, the more times to choose from.</span></p>
+            <span class="btn btn-gold"><svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg> <span data-lang="nl">Open WhatsApp</span><span data-lang="en">Open WhatsApp</span></span>
+          </a>
+          <a class="route-card" href="/booking?service=Knippen">
+            <span class="route-tag"><span data-lang="nl">Knippen · kinderknip</span><span data-lang="en">Cuts · kids cuts</span></span>
+            <h3><span data-lang="nl">Plan online</span><span data-lang="en">Book online</span></h3>
+            <p><span data-lang="nl">Zie direct welke tijden vrij zijn en kies er een. Je krijgt meteen een bevestiging per e-mail; verzetten kan gewoon via WhatsApp.</span><span data-lang="en">See which times are free right away and pick one. You get an email confirmation immediately; rescheduling is easy via WhatsApp.</span></p>
+            <span class="btn btn-outline-dark"><span data-lang="nl">Naar de agenda</span><span data-lang="en">Open the calendar</span></span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="section-noir" style="text-align: center;">
-      <div class="container-narrow">
-        <div class="reveal">
-          <span class="eyebrow"><span data-lang="nl">Klaar om te boeken?</span><span data-lang="en">Ready to book?</span></span>
-          <h2 class="section-title" style="margin-top: 16px;"><span data-lang="nl">Maak je <em>volgende</em> afspraak.</span><span data-lang="en">Book your <em>next</em> appointment.</span></h2>
-          <p class="section-intro" style="margin: 18px auto 32px;"><span data-lang="nl">Knipbeurten online, alle andere diensten via WhatsApp voor een persoonlijke afstemming.</span><span data-lang="en">Cuts online, all other services via WhatsApp for personal consultation.</span></p>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
-            <a href="/booking" class="btn btn-gold">
-              <span data-lang="nl">Online boeken</span>
-              <span data-lang="en">Book online</span>
-            </a>
-            <a href="#" data-wa="booking" target="_blank" rel="noopener" class="btn btn-wa">
-              <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
-              WhatsApp
-            </a>
+    <!-- 6 · GEBRUIKEN & TERUGKOMEN — bezoek + volgen -->
+    <section class="section-dark">
+      <div class="container">
+        <div class="visit-band">
+          <div>
+            <h2 class="section-title"><span data-lang="nl">Kom <em>langs</em>.</span><span data-lang="en">Come <em>by</em>.</span></h2>
+            <p class="section-intro"><span data-lang="nl">Korte Haaksbergerstraat 19, Enschede, vlak bij het centrum. Klanten komen uit heel Nederland; sommigen reizen er graag voor.</span><span data-lang="en">Korte Haaksbergerstraat 19, Enschede, close to the centre. Clients come from all over the Netherlands; some happily travel for it.</span></p>
           </div>
+          <dl class="visit-facts">
+            <div><dt><span data-lang="nl">Open</span><span data-lang="en">Open</span></dt><dd><span data-lang="nl">Di t/m za · vanaf 10:30</span><span data-lang="en">Tue to Sat · from 10:30</span></dd></div>
+            <div><dt><span data-lang="nl">Adres</span><span data-lang="en">Address</span></dt><dd><a href="https://maps.google.com/?q=Korte+Haaksbergerstraat+19+Enschede" target="_blank" rel="noopener">Korte Haaksbergerstraat 19<br />7511 JV Enschede</a></dd></div>
+            <div><dt>Contact</dt><dd><a href="tel:+31687030400">+31 6 8703 0400</a><br /><a href="https://wa.me/31687030400" target="_blank" rel="noopener">WhatsApp</a></dd></div>
+            <div><dt><span data-lang="nl">Volgen</span><span data-lang="en">Follow</span></dt><dd><a href="https://instagram.com/extensions_barbershop" target="_blank" rel="noopener">Instagram</a> · <a href="https://tiktok.com/@extensions_barbershop" target="_blank" rel="noopener">TikTok</a></dd></div>
+          </dl>
         </div>
+        <p class="visit-more"><a href="/visit"><span data-lang="nl">Openingstijden, parkeren en route →</span><span data-lang="en">Opening hours, parking and directions →</span></a> &nbsp;·&nbsp; <a href="/about"><span data-lang="nl">Het verhaal van Victoria →</span><span data-lang="en">Victoria's story →</span></a></p>
       </div>
     </section>
 
@@ -612,21 +361,14 @@
     </div>
   </footer>
 
-  <!-- Floating WhatsApp -->
-  <a href="#" data-wa="generic" target="_blank" rel="noopener" class="float-wa" aria-label="WhatsApp ons">
-    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
-  </a>
-
   <!-- Sticky mobile action bar -->
   <div class="action-bar">
-    <a href="/booking" class="btn btn-gold"><span data-lang="nl">Online boeken</span><span data-lang="en">Book online</span></a>
-    <a href="#" data-wa="booking" target="_blank" rel="noopener" class="btn btn-wa">
-      <svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
-      WhatsApp
-    </a>
+    <a href="#" data-wa="booking" target="_blank" rel="noopener" class="btn btn-gold"><svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16.003 3C9.382 3 4 8.383 4 15c0 2.124.555 4.193 1.61 6.014L4 28l7.18-1.586A11.94 11.94 0 0 0 16.003 28C22.624 28 28 22.617 28 16S22.624 3 16.003 3z"/></svg>
+      WhatsApp</a>
+    <a href="/booking" class="btn btn-outline"><span data-lang="nl">Online boeken</span><span data-lang="en">Book online</span></a>
   </div>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>
